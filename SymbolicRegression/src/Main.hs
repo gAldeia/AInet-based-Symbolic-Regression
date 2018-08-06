@@ -7,7 +7,6 @@ the IT datastructure.
 TODO LIST
 --trainTestSplit method that returns the dataset divided in (Train, Test)
 --create a better textRepresentation, or make Le derive show
---use a filter in unique (if possible)
 --use gradient descent if det is zero in adjust method
 --create better comments (check if haskell have some standard of comments, like python have the "numPy way")
 --implement random LE generator
@@ -15,12 +14,15 @@ TODO LIST
 --make mutation random
 --implement simplify
 --make ainet recursive fuction caudal
+--change for map later simplifyPop if convenient
+--remove the unsafe on traintestsplit
 
 -}
 
 import Data.Matrix
 import System.Random
 import Data.List     (sort)
+import System.IO.Unsafe (unsafePerformIO) --this should be eliminated as we learn how to use IO monads
 
 
 -- DATASET OPERATIONS ----------------------------------------------------------
@@ -30,13 +32,13 @@ type Y         = Matrix Double
 type Dataset   = (X, Y)
 type Datapoint = ([Double], Double)
 
---test dataset, function id
-sample = [[1.0,1.0,1.0,1.0,1.0 ],
-          [2.0,2.0,2.0,2.0,4.0 ],
-          [3.0,3.0,3.0,3.0,9.0 ],
-          [4.0,4.0,4.0,4.0,16.0],
-          [5.0,5.0,5.0,5.0,25.0],
-          [6.0,6.0,6.0,6.0,36.0]]
+--test dataset, function id with 4 explanatory variables
+sample = [[1.0,1.0,1.0,1.0,1.0],
+          [2.0,2.0,2.0,2.0,2.0],
+          [3.0,3.0,3.0,3.0,3.0],
+          [4.0,4.0,4.0,4.0,4.0],
+          [5.0,5.0,5.0,5.0,5.0],
+          [6.0,6.0,6.0,6.0,6.0]]
 
 --returns a dataset
 listsToDataset :: [[Double]] -> Dataset
@@ -45,14 +47,28 @@ listsToDataset lss = (fromLists xs, fromLists ys)
         xs = [init ls   | ls <- lss] :: [[Double]]
         ys = [[last ls] | ls <- lss] :: [[Double]]
 
---returns a specific element from the dataset, in the form of (list, Double)
+--returns a specific element from the dataset, in the form of ([Double], Double)
 (#) :: Int -> Dataset -> Datapoint
 (#) i (xss,ys) = (xs', y')
     where
         xs' = [xss ! (i, j) | j <- [1..ncols xss]]
         y' = ys ! (i, 1)
 
---trainTestSplit :: Dataset -> (Dataset, Dataset) NEEDS A RANDOM GENERATOR
+--returns a shuffled dataset (changes 2 random rows n times)
+shuffle :: Dataset -> Int -> Dataset
+shuffle ds 0     = ds
+shuffle (x, y) n = (x', y')
+    where
+        --rows to change
+        row1 = unsafePerformIO $ randomRIO(1, nrows x)
+        row2 = unsafePerformIO $ randomRIO(1, nrows x)
+
+        --new randomly arranged values
+        x' = switchRows row1 row2 $ fst $ previouslysorted
+        y' = switchRows row1 row2 $ snd $ previouslysorted
+        previouslysorted = shuffle (x,y) (n-1)
+
+--trainTestSplit :: Dataset -> Int -> (Dataset, Dataset)
 
 
 -- EXPRESSION OPERATIONS -------------------------------------------------------
@@ -115,12 +131,13 @@ solve le (xs, y) = [(eval o e) * c | (c, o, e) <- le]
 adjust :: Le -> Dataset -> Le
 adjust le ds = [(c', o, e) | (c', (c, o, e)) <- zip (toList coeffs) le]
     where
-        x          = fromLists [solve le (i # ds) | i <- [1..nrows $ fst ds]]
-        xt         = transpose x
-        xtxi       = inverse $ multStd xt x
-        xty        = multStd xt $ snd ds
-        coeffs     = either (gradient) (`multStd` xty) (xtxi)
-        gradient a = fromList 1 (length le) [c | (c,o,e) <-le]
+        x        = fromLists [solve le (i # ds) | i <- [1..nrows $ fst ds]]
+        xt       = transpose x
+        xty      = xt `multStd` (snd ds)
+        coeffs   = case (inverse $ xt `multStd` x) of
+            Left msg  -> (gradient)
+            Right inv -> (inv `multStd` xty) 
+        gradient = fromList 1 (length le) [c | (c,o,e) <-le]
 
 --returns the SCORE for a LE for a given dataset
 evaluate :: Le -> Dataset -> Score
@@ -129,8 +146,19 @@ evaluate le ds = 1 / (1 + mae)
         mae     = sum[abs $ diff (i # ds) | i <- [1..nrows $ fst ds]] / length
         diff dp = (product $ solve le dp) - (snd dp)
         length  = fromIntegral $ nrows $ fst ds
-        
 
+--returns a simplified expression
+simplify :: Le -> SimplifyT -> Le
+simplify le sT = if length simplified == 0 then le --garantee to return a non empty le
+                 else simplified
+    where simplified = [(c, o, e) | (c,o,e) <- le, c>= sT]
+   
+--returns a mutated LE
+mutate :: Le -> Le
+mutate le = le
+
+
+-- IGNORAR DAQUI PARA BAIXO: TUDO FOI FEITO NA FORÇA DA GAMBIARRA --------------
 -- AINET ALGORITHM -------------------------------------------------------------
 type PopSize     = Int
 type LeSize      = Int
@@ -144,6 +172,10 @@ sortByScore :: [Le] -> Dataset -> [Le]
 sortByScore pop ds = [le' | (sort, le') <- sorted] 
     where
         sorted = sort[(evaluate le ds, le) | le <- pop]
+
+--returns a random population and a new random generator
+rndPopulation :: StdGen -> PopSize -> LeSize -> Dataset -> ([Le], StdGen)
+rndPopulation generator p l ds = ([linearExpression $ ncols $ fst ds | i <- [1.. p]], generator)
 
 --ainet' suposes that the given populaion is always ordened by worst to best score
 --ainet' is a recursive call to simulate the interaction
@@ -165,7 +197,7 @@ ainet' pop g p c sT rndGen ds = ainet' newPop (g-1) p c sT rndGen ds
 --takes a number of generations and performs an AInet based symbolic regression
 --for the given number of generations
 ainet :: NumGen -> PopSize -> LeSize -> NumClones -> SupressionT -> SimplifyT -> Dataset -> Le
-ainet g p l c sT sS ds = last $ simplify (ainet' (sortByScore pop ds) g p c sT nextGen ds)
+ainet g p l c sT sS ds = last $ simplifyPop (ainet' (sortByScore pop ds) g p c sT nextGen ds)
     where
         seed = 42 :: Int --seed
         generator = mkStdGen seed :: StdGen --generator
@@ -175,7 +207,7 @@ ainet g p l c sT sS ds = last $ simplify (ainet' (sortByScore pop ds) g p c sT n
         --creates a new pop and adjust its coeffs
         --pop = [adjust solution ds | solution <- [linearExpression $ ncols $ fst ds | i <- [1.. p]]] --todo: make it create p random solutions, instead of all being the root
 
-        simplify pop = pop
+        simplifyPop pop = sortByScore [simplify le sT | le <-pop] ds
 
 
 -- EXAMPLES --------------------------------------------------------------------
@@ -187,4 +219,7 @@ le = linearExpression $ ncols $ fst aux :: Le
 -- MAIN METHOD -----------------------------------------------------------------
 main :: IO ()
 main = do
+    let seed = 42 :: Int --random seed
+    setStdGen $ mkStdGen seed --making the behaviour deterministig for reproducibility
+
     putStrLn "hello world"
