@@ -82,7 +82,8 @@ type Le    = [It]
 
 --operators used for the ITs. if you want a new operator, first add it here
 --then create an aplication of the operator in the "solve" method
-ops = ["id", "sin", "cos", "tan", "abs", "sqrt", "exp", "log"] :: [String]
+ops      = [ id ,  sin ,  cos ,  tan ,  abs ,  sqrt ,  exp ,  log ] :: [Double -> Double]
+opsNames = ["id", "sin", "cos", "tan", "abs", "sqrt", "exp", "log"] :: [String]
 
 --returns an LE that is a linear combination of n variables
 linearExpression :: Int -> Le
@@ -96,7 +97,7 @@ linearExpression n = [(1.0, 0, e) | e <- (exps n)]
 
 --get a friendly printable expression to better understanding
 textRepresentation :: Le -> String
-textRepresentation le = concat[show c ++ "*" ++ ops !! o ++ exps e | (c, o, e) <- le]
+textRepresentation le = concat[show c ++ "*" ++ opsNames !! o ++ exps e | (c, o, e) <- le]
     where
         exps e = "(" ++ concat[show ei ++ " " | ei <- e] ++ ") "
 
@@ -105,10 +106,8 @@ textRepresentation le = concat[show c ++ "*" ++ ops !! o ++ exps e | (c, o, e) <
 --to invert the matrix to adjust coeffs! so, it's important to remove duplicated
 --ITs from an LE
 uniques :: Le -> Le
-uniques [x] = [x]
-uniques (x:xs)
-    | x `elem` xs = uniques xs
-    | otherwise   = x : uniques xs
+uniques [] = []
+uniques (x:xs) = uniques $ filter (x/=) xs
 
 --returns an array with evaluated values for the given datapoint
 solve :: Le -> Datapoint -> [Double]
@@ -116,16 +115,8 @@ solve le (xs, y) = [(eval o e) * c | (c, o, e) <- le]
     where
         value exps = product[x^e | (e, x) <- zip exps xs]
         eval op exps
-            | op == 0   = id   $       value exps
-            | op == 1   = sin  $       value exps
-            | op == 2   = cos  $       value exps
-            | op == 3   = tan  $       value exps
-            | op == 4   = abs  $       value exps
-            | op == 5   = sqrt $ abs $ value exps
-            | op == 6   = exp  $       value exps
-            | op == 7   = log  $       value exps
-            | otherwise = error ("Unknown operator")
-
+            | op >= length ops = error ("Unknown operator")
+            | otherwise        = ops !! op $ value exps
 --returns an array containing the optimum coeffs using OLS or an array of 1s if error
 --NOTE: adjusting an expression twice results in the expression with all coeffs being 1
 adjust :: Le -> Dataset -> Le
