@@ -82,8 +82,8 @@ type Le    = [It]
 
 --operators used for the ITs. if you want a new operator, first add it here
 --then create an aplication of the operator in the "solve" method
-ops      = [ id ,  sin ,  cos ,  tan ,  abs ,  sqrt ,  exp ,  log ] :: [Double -> Double]
-opsNames = ["id", "sin", "cos", "tan", "abs", "sqrt", "exp", "log"] :: [String]
+ops      = [ id ,  sin ,  cos ,  tan ,  abs ,  sqrt.abs ,  exp ,  log ] :: [Double -> Double]
+opsNames = ["id", "sin", "cos", "tan", "abs", "sqrt.abs", "exp", "log"] :: [String]
 
 --returns an LE that is a linear combination of n variables
 linearExpression :: Int -> Le
@@ -198,11 +198,13 @@ ainet g p l c sT sS ds = last $ simplifyPop (ainet' (sortByScore pop ds) g p c s
         --creates a new pop and adjust its coeffs
         --pop = [adjust solution ds | solution <- [linearExpression $ ncols $ fst ds | i <- [1.. p]]] --todo: make it create p random solutions, instead of all being the root
 
-        simplifyPop pop = sortByScore (pop' pop) ds
-        pop' []         = []
-        pop' (le:les') = case simplify le sT of
-            Nothing  -> pop' les'
-            Just le' -> le':(pop' les')
+        simplifyPop pop = sortByScore (re'pop [] pop) ds
+        re'pop ps []         = ps
+        re'pop ps (le:les') = case simplify le sT of
+            Nothing  -> re'pop ps les'
+            Just le' -> ps' `seq` re'pop ps' les'
+                where
+                    ps' = le':ps
 
 
 -- EXAMPLES --------------------------------------------------------------------
