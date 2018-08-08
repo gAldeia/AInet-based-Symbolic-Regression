@@ -139,9 +139,9 @@ evaluate le ds = 1 / (1 + mae)
         length  = fromIntegral $ nrows $ fst ds
 
 --returns a simplified expression
-simplify :: Le -> SimplifyT -> Le
-simplify le sT = if length simplified == 0 then le --garantee to return a non empty le
-                 else simplified
+simplify :: Le -> SimplifyT -> Maybe Le
+simplify le sT = if length simplified == 0 then Nothing --garantee to return a non empty le
+                 else Just simplified
     where simplified = [(c, o, e) | (c,o,e) <- le, c>= sT]
    
 --returns a mutated LE
@@ -198,7 +198,11 @@ ainet g p l c sT sS ds = last $ simplifyPop (ainet' (sortByScore pop ds) g p c s
         --creates a new pop and adjust its coeffs
         --pop = [adjust solution ds | solution <- [linearExpression $ ncols $ fst ds | i <- [1.. p]]] --todo: make it create p random solutions, instead of all being the root
 
-        simplifyPop pop = sortByScore [simplify le sT | le <-pop] ds
+        simplifyPop pop = sortByScore (pop' pop) ds
+        pop' []         = []
+        pop' (le:les') = case simplify le sT of
+            Nothing  -> pop' les'
+            Just le' -> le':(pop' les')
 
 
 -- EXAMPLES --------------------------------------------------------------------
