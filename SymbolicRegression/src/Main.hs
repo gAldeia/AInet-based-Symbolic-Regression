@@ -79,6 +79,7 @@ type Exps  = [Int]
 type Op    = Int
 type It    = (Coeff, Op, Exps)
 type Le    = [It]
+type Pop   = [Le]
 
 --operators used for the ITs. if you want a new operator, first add it here
 --then create an aplication of the operator in the "solve" method
@@ -140,11 +141,24 @@ evaluate le ds = 1 / (1 + mae)
 
 --returns a simplified expression
 simplify :: Le -> SimplifyT -> Maybe Le
-simplify le sT = if length simplified == 0 then Nothing --garantee to return a non empty le
-                 else Just simplified
-    where simplified = [(c, o, e) | (c,o,e) <- le, c>= sT]
-   
---returns a mutated LE
+simplify le sT
+    | leng == 0 = Nothing --garantee to return a non empty le
+    | otherwise = Just simplified
+    where
+        simplified = [(c, o, e) | (c,o,e) <- le, c>= sT]
+        leng = length simplified
+
+
+simplifyPop :: Pop -> SimplifyT -> Pop
+simplifyPop pop sS = re'pop [] pop
+    where
+        re'pop p_p []        = p_p
+        re'pop p_p (le:les') = case simplify le sS of
+            Nothing  -> re'pop p_p les'
+            Just le' -> p_p' `seq` re'pop p_p' les'
+                where p_p' = le':p_p
+
+                    --returns a mutated LE
 mutate :: Le -> Le
 mutate le = le
 
@@ -159,18 +173,18 @@ type SimplifyT   = Double
 type SupressionT = Double
 
 --suposes that all the Le in the pop is adjusted
-sortByScore :: [Le] -> Dataset -> [Le]
+sortByScore :: Pop -> Dataset -> Pop
 sortByScore pop ds = [le' | (sort, le') <- sorted] 
     where
         sorted = sort[(evaluate le ds, le) | le <- pop]
 
 --returns a random population and a new random generator
-rndPopulation :: StdGen -> PopSize -> LeSize -> Dataset -> ([Le], StdGen)
+rndPopulation :: StdGen -> PopSize -> LeSize -> Dataset -> (Pop, StdGen)
 rndPopulation generator p l ds = ([linearExpression $ ncols $ fst ds | i <- [1.. p]], generator)
 
 --ainet' suposes that the given populaion is always ordened by worst to best score
 --ainet' is a recursive call to simulate the interaction
-ainet' :: [Le] -> NumGen -> PopSize -> NumClones -> SupressionT -> StdGen -> Dataset -> [Le]
+ainet' :: Pop -> NumGen -> PopSize -> NumClones -> SupressionT -> StdGen -> Dataset -> Pop
 ainet' pop 0 p c sT rndGen ds = []
 ainet' pop g p c sT rndGen ds = ainet' newPop (g-1) p c sT rndGen ds
     where
@@ -188,7 +202,7 @@ ainet' pop g p c sT rndGen ds = ainet' newPop (g-1) p c sT rndGen ds
 --takes a number of generations and performs an AInet based symbolic regression
 --for the given number of generations
 ainet :: NumGen -> PopSize -> LeSize -> NumClones -> SupressionT -> SimplifyT -> Dataset -> Le
-ainet g p l c sT sS ds = last $ simplifyPop (ainet' (sortByScore pop ds) g p c sT nextGen ds)
+ainet g p l c sT sS ds = last $ sortByScore ( simplifyPop (ainet' (sortByScore pop ds) g p c sT nextGen ds) sS ) ds
     where
         seed = 42 :: Int --seed
         generator = mkStdGen seed :: StdGen --generator
@@ -197,14 +211,6 @@ ainet g p l c sT sS ds = last $ simplifyPop (ainet' (sortByScore pop ds) g p c s
 
         --creates a new pop and adjust its coeffs
         --pop = [adjust solution ds | solution <- [linearExpression $ ncols $ fst ds | i <- [1.. p]]] --todo: make it create p random solutions, instead of all being the root
-
-        simplifyPop pop = sortByScore (re'pop [] pop) ds
-        re'pop ps []         = ps
-        re'pop ps (le:les') = case simplify le sT of
-            Nothing  -> re'pop ps les'
-            Just le' -> ps' `seq` re'pop ps' les'
-                where
-                    ps' = le':ps
 
 
 -- EXAMPLES --------------------------------------------------------------------
