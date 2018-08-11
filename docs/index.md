@@ -1,6 +1,6 @@
 ---
-title: This is my title
-layout: post
+title: AInet Symbolic Regression
+layout: default
 ---
 
-#AInet Symbolic Regression
+#lorem lipsum blablabalbalba
