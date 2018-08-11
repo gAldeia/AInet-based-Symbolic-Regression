@@ -4,7 +4,7 @@ module Manipulators where
 Module containing implementation of expression manipulation functions.
 -}
 
-import Matrix
+import Dataset
 import System.Random
 import Data.Matrix (fromLists,
                     fromList,
@@ -148,9 +148,26 @@ simplify le sT
         simplified = [(c, o, e) | (c,o,e) <- le, c>= sT]
         leng = length simplified
 
-mutate :: Le -> Le
+mutateTrans :: Le -> IO (Le)
 --returns a mutated LE
-mutate le = le
+mutateTrans le = do
+    chosenIndex <- randomRIO(0, length le -1)
+    randOp <- randomRIO(0, (length ops-1))
+    let newIt = [(c, randOp, e) | (c, o, e) <- [le !! chosenIndex]]
+    let le' = [it | it<-le, it /= (le !! chosenIndex)]
+
+    return (le' ++ newIt)
+
+mutateInter :: Int -> Le -> IO (Le)
+--returns a mutated LE. you need to pass the number of variables of the problem
+mutateInter n le = do
+    chosenIndex <- randomRIO(0, length le -1)
+    randExps <- randomExps n
+    let newIt = [(c, o, randExps) | (c, o, e) <- [le !! chosenIndex]]
+    let le' = [it | it<-le, it /= (le !! chosenIndex)]
+
+    return (le' ++ newIt)
+
 
 --POPULATION METHODS -----------------------------------------------------------
 simplifyPop :: Pop -> SimplifyT -> Pop
@@ -169,9 +186,14 @@ sortByScore pop ds = [le' | (sort, le') <- sorted]
     where
         sorted = sort[(evaluate le ds, le) | le <- pop]
 
-mutatePop :: Pop -> Pop
--- | Calls the mutation method in all expressions
-mutatePop pop = pop
+mutatePop :: Pop -> Int -> IO (Pop)
+-- | Calls the mutation method in all expressions. need to pass as argument the number of variables
+mutatePop [] n = do return []
+mutatePop (p:pop) n = do
+    mutatedI <- mutateInter n p
+    mutatedIT <- mutateTrans mutatedI
+    remaining <- mutatePop pop n 
+    return (mutatedIT:remaining)
 
 rndPopulation ::  PopSize -> LeSize -> Dataset -> IO (Pop)
 --returns a random population
@@ -180,3 +202,7 @@ rndPopulation p l ds = do
     le  <- randomExpression (ncols $ fst ds) l
     le' <- rndPopulation (p-1) l ds
     return (le:le')
+
+supressionPop :: Pop -> SupressionT -> Pop
+--returns a population without the supressed expressions
+supressionPop pop supT = pop

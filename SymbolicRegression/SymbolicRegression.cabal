@@ -1,13 +1,13 @@
 name:                SymbolicRegression
-version:             0.1.0.0
+version:             0.1.1.0
 -- synopsis:
 -- description:
-homepage:            https://gAldeia.github.com/AInet-Symbolic-Regression
+homepage:            https://galdeia.github.io/AInet-based-Symbolic-Regression/
 license:             
 license-file:        
-author:              Author name here
-maintainer:          example@example.com
-copyright:           2018 Author name here
+author:              Guilherme S I Aldeia and Heitor R Savegnago
+maintainer:          guilherme.aldeia@aluno.ufabc.edu.br, heitor.rodrigues@aluno.ufabc.edu.br
+copyright:           2018 Guilherme S I Aldeia and Heitor R Savegnago
 category:            Web
 build-type:          Simple
 cabal-version:       >=1.10
@@ -16,6 +16,6 @@ extra-source-files:
 executable SymbolicRegression
   hs-source-dirs:      src
   main-is:             Main.hs
-  other-modules:       Matrix, Manipulators, AInet
+  other-modules:       Dataset, Manipulators, AInet
   default-language:    Haskell2010
   build-depends:       base >= 4.7 && < 5, matrix, random
