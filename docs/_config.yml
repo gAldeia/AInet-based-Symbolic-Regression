@@ -6,20 +6,9 @@ kramdown:
 future: true
 jailed: false
 theme: jekyll-theme-minimal
-gfm_quirks: paragraph_end
 
 footer-links:
-  dribbble:
   email: guilherme.seidyo@gmail.com
-  facebook:
-  flickr:
-  github:
-  instagram:
-  pinterest:
-  rss:
-  twitter:
-  stackoverflow:
-  youtube:
-  googleplus:
+  github: gAldeia
   
 google_analytics:
