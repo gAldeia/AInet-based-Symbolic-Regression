@@ -1,0 +1,1182 @@
+
+==================== FINAL INTERFACE ====================
+2018-08-11 17:16:46.6775872 UTC
+
+interface main:Manipulators 8043
+  interface hash: 46b90d75c1f676fee96151cbeeae8fa5
+  ABI hash: 115239a5f1588b994f449d513125ab60
+  export-list hash: ef5476b3ac82bda01a68423d9bbf8b79
+  orphan hash: ffa036553536266febb46e515c128d02
+  flag hash: 5ecb6ba9b6af706f6efd41d947c65787
+  opt_hash: 14e536840aca4e889cad654e6f9b79c1
+  hpc_hash: 93b885adfe0da089cdf634904fd59f71
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Manipulators.adjust
+  Manipulators.evaluate
+  Manipulators.linearExpression
+  Manipulators.mutate
+  Manipulators.mutatePop
+  Manipulators.nomeator
+  Manipulators.operator
+  Manipulators.ops
+  Manipulators.randomExpression
+  Manipulators.randomExps
+  Manipulators.randomIt
+  Manipulators.rndPopulation
+  Manipulators.simplify
+  Manipulators.simplifyPop
+  Manipulators.solve
+  Manipulators.sortByScore
+  Manipulators.textRepresentation
+  Manipulators.uniques
+  Manipulators.Coeff
+  Manipulators.Exps
+  Manipulators.It
+  Manipulators.Le
+  Manipulators.LeSize
+  Manipulators.Op
+  Manipulators.Op'n'Name
+  Manipulators.Operator
+  Manipulators.Pop
+  Manipulators.PopSize
+  Manipulators.Score{Manipulators.Score}
+  Manipulators.SimplifyT
+  Manipulators.SupressionT
+module dependencies: Matrix
+package dependencies: array-0.5.2.0 base-4.11.1.0 deepseq-1.4.3.0
+                      ghc-prim-0.5.2.0 integer-gmp-1.0.2.0 loop-0.3.0 matrix-0.3.6.1
+                      primitive-0.6.3.0 random-1.1 time-1.8.0.2 transformers-0.5.5.0
+                      vector-0.12.0.1
+orphans: time-1.8.0.2:Data.Time.Format.Parse
+         time-1.8.0.2:Data.Time.LocalTime.Internal.ZonedTime
+         time-1.8.0.2:Data.Time.LocalTime.Internal.LocalTime
+         time-1.8.0.2:Data.Time.Calendar.Gregorian
+         vector-0.12.0.1:Data.Vector.Fusion.Bundle
+         transformers-0.5.5.0:Control.Monad.Trans.Error
+         base-4.11.1.0:GHC.Float base-4.11.1.0:GHC.Base
+family instance modules: base-4.11.1.0:Control.Applicative
+                         base-4.11.1.0:Data.Complex base-4.11.1.0:Data.Functor.Compose
+                         base-4.11.1.0:Data.Functor.Const
+                         base-4.11.1.0:Data.Functor.Identity
+                         base-4.11.1.0:Data.Functor.Product base-4.11.1.0:Data.Functor.Sum
+                         base-4.11.1.0:Data.Monoid base-4.11.1.0:Data.Semigroup
+                         base-4.11.1.0:Data.Semigroup.Internal base-4.11.1.0:Data.Version
+                         base-4.11.1.0:Data.Void base-4.11.1.0:GHC.Exts
+                         base-4.11.1.0:GHC.Generics base-4.11.1.0:GHC.IO.Exception
+                         matrix-0.3.6.1:Data.Matrix
+                         primitive-0.6.3.0:Control.Monad.Primitive
+                         primitive-0.6.3.0:Data.Primitive.Array vector-0.12.0.1:Data.Vector
+import  -/  base-4.11.1.0:Data.Either 39d922b371c4c52d426e9ee66de8371a
+import  -/  base-4.11.1.0:Data.Foldable 8ed35c38958063956af33c935ea03444
+import  -/  base-4.11.1.0:Data.List 83dc843e47bfc0c5af51e19c6f3476d5
+import  -/  base-4.11.1.0:Data.OldList 1b35aa3c6805ff7c8887a35a866fe006
+import  -/  base-4.11.1.0:Data.Tuple 3af66f3ac61ed95ba8a3a3f68ebc5003
+import  -/  base-4.11.1.0:GHC.Base 604111500e81281298777e721c75643b
+import  -/  base-4.11.1.0:GHC.Err 5e26aa744981f14e0f1e4d29c44ac52e
+import  -/  base-4.11.1.0:GHC.Float 99c69d365bb2607725a22530ce1ca4b4
+import  -/  base-4.11.1.0:GHC.List 1e4357702d8d00cded0703bd293e50e8
+import  -/  base-4.11.1.0:GHC.Num 8e54b26dce4495382dc4b50cf36ab754
+import  -/  base-4.11.1.0:GHC.Real b4beb0389ba1ad5d9640aae67848c5d3
+import  -/  base-4.11.1.0:GHC.Show 73be67392447c974f19c3befd83c46c0
+import  -/  base-4.11.1.0:Prelude 0750c25585e2b797cd78291d423d39dd
+import  -/  ghc-prim-0.5.2.0:GHC.Classes 122abfcd7450c6c11602933c9ca5f80d
+import  -/  ghc-prim-0.5.2.0:GHC.Types d9b3023de7feae4a5308d643da5543f7
+import  -/  Matrix bb555b639a8c4553d7fbd1bd5172c1ce
+  exports: 8f45b4e20711129c5086b6fd2d9c567b
+  # eb5cd59d3c773d40772777c6f18d5262
+  DataPoint 378fc68fa1c2e6377e2122804c4d1498
+  Dataset 03634abfa1035ffb9d959e971bf2b362
+import  -/  matrix-0.3.6.1:Data.Matrix 253b9ea0b56099efabb5b93ae23f99a5
+import  -/  random-1.1:System.Random 31994b60c33f032d578c64a928f735f7
+67034cbd43e515e53275a384d82318f5
+  $fEqScore :: GHC.Classes.Eq Manipulators.Score
+  DFunId
+  {- HasNoCafRefs, Strictness: m, Inline: CONLIKE,
+     Unfolding: DFun:.
+                  @ Manipulators.Score
+                  GHC.Classes.eqDouble
+                    `cast`
+                  (Sym (Manipulators.N:Score[0])
+                   ->_R Sym (Manipulators.N:Score[0])
+                   ->_R <GHC.Types.Bool>_R)
+                  GHC.Classes.$fEqDouble_$c/=
+                    `cast`
+                  (Sym (Manipulators.N:Score[0])
+                   ->_R Sym (Manipulators.N:Score[0])
+                   ->_R <GHC.Types.Bool>_R) -}
+67034cbd43e515e53275a384d82318f5
+  $fOrdScore :: GHC.Classes.Ord Manipulators.Score
+  DFunId
+  {- HasNoCafRefs, Strictness: m, Inline: CONLIKE,
+     Unfolding: DFun:.
+                  @ Manipulators.Score
+                  Manipulators.$fEqScore
+                  GHC.Classes.$fOrdDouble_$ccompare
+                    `cast`
+                  (Sym (Manipulators.N:Score[0])
+                   ->_R Sym (Manipulators.N:Score[0])
+                   ->_R <GHC.Types.Ordering>_R)
+                  GHC.Classes.$fOrdDouble_$c<
+                    `cast`
+                  (Sym (Manipulators.N:Score[0])
+                   ->_R Sym (Manipulators.N:Score[0])
+                   ->_R <GHC.Types.Bool>_R)
+                  GHC.Classes.$fOrdDouble_$c<=
+                    `cast`
+                  (Sym (Manipulators.N:Score[0])
+                   ->_R Sym (Manipulators.N:Score[0])
+                   ->_R <GHC.Types.Bool>_R)
+                  GHC.Classes.$fOrdDouble_$c>
+                    `cast`
+                  (Sym (Manipulators.N:Score[0])
+                   ->_R Sym (Manipulators.N:Score[0])
+                   ->_R <GHC.Types.Bool>_R)
+                  GHC.Classes.$fOrdDouble_$c>=
+                    `cast`
+                  (Sym (Manipulators.N:Score[0])
+                   ->_R Sym (Manipulators.N:Score[0])
+                   ->_R <GHC.Types.Bool>_R)
+                  GHC.Classes.$fOrdDouble_$cmax
+                    `cast`
+                  (Sym (Manipulators.N:Score[0])
+                   ->_R Sym (Manipulators.N:Score[0])
+                   ->_R Sym (Manipulators.N:Score[0]))
+                  GHC.Classes.$fOrdDouble_$cmin
+                    `cast`
+                  (Sym (Manipulators.N:Score[0])
+                   ->_R Sym (Manipulators.N:Score[0])
+                   ->_R Sym (Manipulators.N:Score[0])) -}
+67034cbd43e515e53275a384d82318f5
+  $fShowScore :: GHC.Show.Show Manipulators.Score
+  DFunId
+  {- Strictness: m, Inline: CONLIKE,
+     Unfolding: DFun:.
+                  @ Manipulators.Score
+                  Manipulators.$fShowScore_$cshowsPrec
+                  Manipulators.$fShowScore_$cshow
+                  Manipulators.$fShowScore_$cshowList -}
+67034cbd43e515e53275a384d82318f5
+  $fShowScore1 :: Manipulators.Score -> GHC.Show.ShowS
+  {- Arity: 1, Strictness: <L,1*U(U)>,
+     Unfolding: (\ (w :: Manipulators.Score) ->
+                 Manipulators.$w$cshowsPrec 0# w) -}
+f71ea93c2539b8ff9fb4f13f6f963963
+  $fShowScore2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString#
+                   Manipulators.$fShowScore3) -}
+84741b730752bd03d1f967a7c23c20a7
+  $fShowScore3 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("Score "#) -}
+f6c449174ed96cb6e1c5f4a36bf177ac
+  $fShowScore4 :: GHC.Types.Int
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.I# 11#) -}
+67034cbd43e515e53275a384d82318f5
+  $fShowScore_$cshow :: Manipulators.Score -> GHC.Base.String
+  {- Arity: 1, Strictness: <L,1*U(U)>,
+     Unfolding: (\ (x :: Manipulators.Score) ->
+                 GHC.Base.++
+                   @ GHC.Types.Char
+                   Manipulators.$fShowScore2
+                   (case x `cast`
+                         (Manipulators.N:Score[0]) of ww { GHC.Types.D# ww1 ->
+                    GHC.Float.$w$sshowSignedFloat
+                      GHC.Float.$fShowDouble2
+                      Manipulators.$fShowScore4
+                      ww1
+                      (GHC.Types.[] @ GHC.Types.Char) })) -}
+67034cbd43e515e53275a384d82318f5
+  $fShowScore_$cshowList :: [Manipulators.Score] -> GHC.Show.ShowS
+  {- Arity: 2, Strictness: <S,1*U><L,U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (ls :: [Manipulators.Score]) (s :: GHC.Base.String) ->
+                 GHC.Show.showList__
+                   @ Manipulators.Score
+                   Manipulators.$fShowScore1
+                   ls
+                   s) -}
+67034cbd43e515e53275a384d82318f5
+  $fShowScore_$cshowsPrec ::
+    GHC.Types.Int -> Manipulators.Score -> GHC.Show.ShowS
+  {- Arity: 2, Strictness: <S(S),1*U(U)><L,1*U(U)>, Inline: [0],
+     Unfolding: InlineRule (2, True, False)
+                (\ (w :: GHC.Types.Int) (w1 :: Manipulators.Score) ->
+                 case w of ww { GHC.Types.I# ww1 ->
+                 Manipulators.$w$cshowsPrec ww1 w1 }) -}
+2b22c2cfdaa7dafba9d3a45bead10409
+  $s$fEq(,,) ::
+    GHC.Classes.Eq (GHC.Types.Double, GHC.Types.Int, [GHC.Types.Int])
+  {- HasNoCafRefs, Strictness: m, Inline: CONLIKE,
+     Unfolding: DFun:.
+                  @ (GHC.Types.Double, GHC.Types.Int, [GHC.Types.Int])
+                  (GHC.Classes.$fEq(,,)_$c==
+                     @ GHC.Types.Double
+                     @ GHC.Types.Int
+                     @ [GHC.Types.Int]
+                     GHC.Classes.$fEqDouble
+                     GHC.Classes.$fEqInt
+                     GHC.Classes.$fEq[]_$s$fEq[])
+                  Manipulators.$s$fEq(,,)_$s$fEq(,,)_$c/= -}
+650dbf25863dfd11b1510c9b2c4531f1
+  $s$fEq(,,)_$s$fEq(,,)_$c/= ::
+    (GHC.Types.Double, GHC.Types.Int, [GHC.Types.Int])
+    -> (GHC.Types.Double, GHC.Types.Int, [GHC.Types.Int])
+    -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <S(S(S)LL),1*U(1*U(U),1*U(U),1*U)><S(S(S)LL),1*U(1*U(U),1*U(U),1*U)>,
+     Inline: (sat-args=2),
+     Unfolding: InlineRule (2, False, False)
+                (\ (x :: (GHC.Types.Double, GHC.Types.Int, [GHC.Types.Int]))
+                   (y :: (GHC.Types.Double, GHC.Types.Int, [GHC.Types.Int])) ->
+                 case GHC.Classes.$fEq(,,)_$c==
+                        @ GHC.Types.Double
+                        @ GHC.Types.Int
+                        @ [GHC.Types.Int]
+                        GHC.Classes.$fEqDouble
+                        GHC.Classes.$fEqInt
+                        GHC.Classes.$fEq[]_$s$fEq[]
+                        x
+                        y of wild {
+                   GHC.Types.False -> GHC.Types.True
+                   GHC.Types.True -> GHC.Types.False }) -}
+fc0f355aebb79e54ee9dd73ae5816e16
+  $s$fOrd(,)_$ccompare_$s$fOrd(,,) ::
+    GHC.Classes.Ord (GHC.Types.Double, GHC.Types.Int, [GHC.Types.Int])
+  {- HasNoCafRefs, Strictness: m, Inline: CONLIKE,
+     Unfolding: DFun:.
+                  @ (GHC.Types.Double, GHC.Types.Int, [GHC.Types.Int])
+                  Manipulators.$s$fEq(,,)
+                  (GHC.Classes.$fOrd(,,)_$ccompare
+                     @ GHC.Types.Double
+                     @ GHC.Types.Int
+                     @ [GHC.Types.Int]
+                     GHC.Classes.$fOrdDouble
+                     GHC.Classes.$fOrdInt
+                     GHC.Classes.$fOrd[]_$s$fOrd[])
+                  (GHC.Classes.$fOrd(,,)_$c<
+                     @ GHC.Types.Double
+                     @ GHC.Types.Int
+                     @ [GHC.Types.Int]
+                     GHC.Classes.$fOrdDouble
+                     GHC.Classes.$fOrdInt
+                     GHC.Classes.$fOrd[]_$s$fOrd[])
+                  (\ (a1 :: (GHC.Types.Double, GHC.Types.Int, [GHC.Types.Int]))
+                     (b1 :: (GHC.Types.Double, GHC.Types.Int, [GHC.Types.Int])) ->
+                   case GHC.Classes.$fOrd(,,)_$c<
+                          @ GHC.Types.Double
+                          @ GHC.Types.Int
+                          @ [GHC.Types.Int]
+                          GHC.Classes.$fOrdDouble
+                          GHC.Classes.$fOrdInt
+                          GHC.Classes.$fOrd[]_$s$fOrd[]
+                          b1
+                          a1 of wild {
+                     GHC.Types.False -> GHC.Types.True
+                     GHC.Types.True -> GHC.Types.False })
+                  (\ (a1 :: (GHC.Types.Double, GHC.Types.Int, [GHC.Types.Int]))
+                     (b1 :: (GHC.Types.Double, GHC.Types.Int, [GHC.Types.Int])) ->
+                   GHC.Classes.$fOrd(,,)_$c<
+                     @ GHC.Types.Double
+                     @ GHC.Types.Int
+                     @ [GHC.Types.Int]
+                     GHC.Classes.$fOrdDouble
+                     GHC.Classes.$fOrdInt
+                     GHC.Classes.$fOrd[]_$s$fOrd[]
+                     b1
+                     a1)
+                  (\ (a1 :: (GHC.Types.Double, GHC.Types.Int, [GHC.Types.Int]))
+                     (b1 :: (GHC.Types.Double, GHC.Types.Int, [GHC.Types.Int])) ->
+                   case GHC.Classes.$fOrd(,,)_$c<
+                          @ GHC.Types.Double
+                          @ GHC.Types.Int
+                          @ [GHC.Types.Int]
+                          GHC.Classes.$fOrdDouble
+                          GHC.Classes.$fOrdInt
+                          GHC.Classes.$fOrd[]_$s$fOrd[]
+                          a1
+                          b1 of wild {
+                     GHC.Types.False -> GHC.Types.True
+                     GHC.Types.True -> GHC.Types.False })
+                  (\ (x :: (GHC.Types.Double, GHC.Types.Int, [GHC.Types.Int]))
+                     (y :: (GHC.Types.Double, GHC.Types.Int, [GHC.Types.Int])) ->
+                   case GHC.Classes.$fOrd(,,)_$c<
+                          @ GHC.Types.Double
+                          @ GHC.Types.Int
+                          @ [GHC.Types.Int]
+                          GHC.Classes.$fOrdDouble
+                          GHC.Classes.$fOrdInt
+                          GHC.Classes.$fOrd[]_$s$fOrd[]
+                          y
+                          x of wild {
+                     GHC.Types.False -> y GHC.Types.True -> x })
+                  (\ (x :: (GHC.Types.Double, GHC.Types.Int, [GHC.Types.Int]))
+                     (y :: (GHC.Types.Double, GHC.Types.Int, [GHC.Types.Int])) ->
+                   case GHC.Classes.$fOrd(,,)_$c<
+                          @ GHC.Types.Double
+                          @ GHC.Types.Int
+                          @ [GHC.Types.Int]
+                          GHC.Classes.$fOrdDouble
+                          GHC.Classes.$fOrdInt
+                          GHC.Classes.$fOrd[]_$s$fOrd[]
+                          y
+                          x of wild {
+                     GHC.Types.False -> x GHC.Types.True -> y }) -}
+8eb5fc272d523f84097dfa17c45dd442
+  $s^1 :: GHC.Types.Double
+  {- Strictness: x -}
+e79c1f03caad7c71e6b9c45550c7c905
+  $s^2 :: GHC.Types.Double
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.D# 1.0##) -}
+70c6e5cb2581f97980026fb420e0d7ed
+  $tc'Score :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   10405113892861870797##
+                   5421042067079949806##
+                   Manipulators.$trModule
+                   Manipulators.$tc'Score2
+                   0#
+                   Manipulators.$tc'Score1) -}
+771644ffa690c929f761b05da54f76ba
+  $tc'Score1 :: GHC.Types.KindRep
+  {- HasNoCafRefs, Strictness: m4, Inline: [~] -}
+612c6fde857a2989f4d49d0c4316c79e
+  $tc'Score2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Manipulators.$tc'Score3) -}
+c26de4b58b28b79916e8eccb55e4534b
+  $tc'Score3 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("'Score"#) -}
+c3b0d1bcc03de9f4a36f0c4b0d2cf1b2
+  $tcScore :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   2946911807956718327##
+                   9413902117429169329##
+                   Manipulators.$trModule
+                   Manipulators.$tcScore1
+                   0#
+                   GHC.Types.krep$*) -}
+35003ddd9965f46c62b5c21b17b36d8c
+  $tcScore1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Manipulators.$tcScore2) -}
+ee1816c887eaa2f8d2f9832a11733872
+  $tcScore2 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("Score"#) -}
+39cbec24e46ed5104f34c54351d1e132
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module
+                   Manipulators.$trModule3
+                   Manipulators.$trModule1) -}
+626abade549a7f9c5e71045762e50638
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Manipulators.$trModule2) -}
+3f2074a75512c62d4f952f2ad96f46f1
+  $trModule2 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("Manipulators"#) -}
+152e92f1f58fbf2a04cfde800976ad8e
+  $trModule3 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Manipulators.$trModule4) -}
+d8c029a04c24b8dbf29ece031073b582
+  $trModule4 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("main"#) -}
+67034cbd43e515e53275a384d82318f5
+  $w$cshowsPrec ::
+    GHC.Prim.Int# -> Manipulators.Score -> GHC.Show.ShowS
+  {- Arity: 2, Strictness: <S,U><L,1*U(U)>, Inline: [0],
+     Unfolding: (\ (ww :: GHC.Prim.Int#) (w :: Manipulators.Score) ->
+                 let {
+                   g :: GHC.Base.String -> GHC.Base.String
+                   = case w `cast`
+                          (Manipulators.N:Score[0]) of ww1 { GHC.Types.D# ww2 ->
+                     GHC.Float.$w$sshowSignedFloat
+                       GHC.Float.$fShowDouble2
+                       Manipulators.$fShowScore4
+                       ww2 }
+                 } in
+                 case GHC.Prim.>=# ww 11# of lwild {
+                   DEFAULT
+                   -> \ (x :: GHC.Base.String) ->
+                      GHC.Base.++ @ GHC.Types.Char Manipulators.$fShowScore2 (g x)
+                   1#
+                   -> \ (x :: GHC.Base.String) ->
+                      GHC.Types.:
+                        @ GHC.Types.Char
+                        GHC.Show.$fShow(,)4
+                        (GHC.Base.++
+                           @ GHC.Types.Char
+                           Manipulators.$fShowScore2
+                           (g (GHC.Types.: @ GHC.Types.Char GHC.Show.$fShow(,)2 x))) }) -}
+cf4688fab1fe1c67e10a1da50760aee3
+  $wadjust ::
+    Manipulators.Le
+    -> GHC.Prim.Int#
+    -> GHC.Prim.Int#
+    -> GHC.Prim.Int#
+    -> GHC.Prim.Int#
+    -> GHC.Prim.Int#
+    -> Data.Vector.Vector GHC.Types.Double
+    -> Matrix.Y
+    -> [Manipulators.It]
+  {- Arity: 8,
+     Strictness: <L,U><S,U><L,U><L,U><L,U><L,U><L,U(U,A,U)><L,U(U,U,U,U,U,U(U,A,U))>,
+     Inline: [0] -}
+bb95c3a3e96a133dd839c121fe775a5e
+  $wevaluate ::
+    Manipulators.Le
+    -> GHC.Prim.Int#
+    -> GHC.Prim.Int#
+    -> GHC.Prim.Int#
+    -> GHC.Prim.Int#
+    -> GHC.Prim.Int#
+    -> Data.Vector.Vector GHC.Types.Double
+    -> Matrix.Y
+    -> GHC.Prim.Double#
+  {- Arity: 8,
+     Strictness: <L,U><S,U><L,U><L,U><L,U><L,U><L,U(U,A,U)><L,U(U,U,U,U,U,U(U,A,U))>,
+     Inline: [0],
+     Unfolding: (\ (w :: Manipulators.Le)
+                   (ww :: GHC.Prim.Int#)
+                   (ww1 :: GHC.Prim.Int#)
+                   (ww2 :: GHC.Prim.Int#)
+                   (ww3 :: GHC.Prim.Int#)
+                   (ww4 :: GHC.Prim.Int#)
+                   (ww5 :: Data.Vector.Vector GHC.Types.Double)
+                   (ww6 :: Matrix.Y) ->
+                 case GHC.Prim.># 1# ww of lwild {
+                   DEFAULT
+                   -> let {
+                        wild :: Data.Matrix.Matrix GHC.Types.Double
+                        = Data.Matrix.M @ GHC.Types.Double ww ww1 ww2 ww3 ww4 ww5
+                      } in
+                      let {
+                        exit :: GHC.Prim.Double#
+                                -> GHC.Prim.Double# -> GHC.Prim.Double# -> GHC.Prim.Double#
+                          <join 3> {- Arity: 3, Strictness: <S,U><S,U><S,U> -}
+                        = \ (ww7 :: GHC.Prim.Double#)[OneShot]
+                            (ww8 :: GHC.Prim.Double#)[OneShot]
+                            (x :: GHC.Prim.Double#)[OneShot] ->
+                          case GHC.Prim./##
+                                 (GHC.Prim.+## ww7 (GHC.Prim.fabsDouble# (GHC.Prim.-## x ww8)))
+                                 (GHC.Prim.int2Double# ww) of wild2 { DEFAULT ->
+                          GHC.Prim./## 1.0## (GHC.Prim.+## 1.0## wild2) }
+                      } in
+                      letrec {
+                        $wgo :: GHC.Prim.Int# -> GHC.Prim.Double# -> GHC.Prim.Double#
+                          <join 2> {- Arity: 2, Strictness: <S,U><S,U>, Inline: [0] -}
+                        = \ (w1 :: GHC.Prim.Int#) (ww7 :: GHC.Prim.Double#) ->
+                          case Matrix.$w#
+                                 (GHC.Types.I# w1)
+                                 wild
+                                 ww6 of ww8 { (#,#) ww9 ww10 ->
+                          case ww10 of ww11 { GHC.Types.D# ww12 ->
+                          let {
+                            $j :: GHC.Prim.Double# -> GHC.Prim.Double#
+                              <join 1> {- Arity: 1, Strictness: <S,U> -}
+                            = \ (x :: GHC.Prim.Double#)[OneShot] ->
+                              case GHC.Prim.==# w1 ww of lwild1 {
+                                DEFAULT
+                                -> $wgo
+                                     (GHC.Prim.+# w1 1#)
+                                     (GHC.Prim.+## ww7 (GHC.Prim.fabsDouble# (GHC.Prim.-## x ww12)))
+                                1# -> exit ww7 ww12 x }
+                          } in
+                          letrec {
+                            $wgo1 :: [GHC.Types.Double] -> GHC.Prim.Double# -> GHC.Prim.Double#
+                              <join 2> {- Arity: 2, Strictness: <S,1*U><S,U>, Inline: [0] -}
+                            = \ (w2 :: [GHC.Types.Double]) (ww13 :: GHC.Prim.Double#) ->
+                              case w2 of wild1 {
+                                [] -> $j ww13
+                                : y ys
+                                -> case y of wild2 { GHC.Types.D# y1 ->
+                                   $wgo1 ys (GHC.Prim.*## ww13 y1) } }
+                          } in
+                          $wgo1 (Manipulators.$wsolve w ww9) 1.0## } }
+                      } in
+                      $wgo 1# 0.0##
+                   1#
+                   -> case GHC.Prim./##
+                             0.0##
+                             (GHC.Prim.int2Double# ww) of wild2 { DEFAULT ->
+                      GHC.Prim./## 1.0## (GHC.Prim.+## 1.0## wild2) } }) -}
+c40f838d884f940b88f4e1f1f6c5c368
+  $wf :: GHC.Prim.Double# -> GHC.Prim.Int# -> GHC.Prim.Double#
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,U><S,U>, Inline: [0] -}
+50bac7f23542a2eff70f41894787122e
+  $wgo2 ::
+    [GHC.Types.Int]
+    -> [GHC.Types.Double] -> GHC.Prim.Double# -> GHC.Types.Double
+  {- Arity: 3, Strictness: <S,1*U><L,1*U><S,U>m, Inline: [0] -}
+60c7168467a1eaaa67e696ee920d1bcf
+  $wlinearExpression :: GHC.Prim.Int# -> [Manipulators.It]
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,U>, Inline: [0],
+     Unfolding: (\ (ww :: GHC.Prim.Int#) ->
+                 case GHC.Prim.># 1# ww of lwild {
+                   DEFAULT
+                   -> letrec {
+                        go1 :: GHC.Prim.Int# -> [Manipulators.It]
+                          {- Arity: 1, Strictness: <L,U> -}
+                        = \ (x :: GHC.Prim.Int#) ->
+                          GHC.Types.:
+                            @ Manipulators.It
+                            (Manipulators.$s^2, Manipulators.linearExpression2,
+                             letrec {
+                               go3 :: GHC.Prim.Int# -> [GHC.Types.Int]
+                                 {- Arity: 1, Strictness: <L,U> -}
+                               = \ (x1 :: GHC.Prim.Int#) ->
+                                 GHC.Types.:
+                                   @ GHC.Types.Int
+                                   (case GHC.Prim.==# x x1 of lwild1 {
+                                      DEFAULT -> Manipulators.linearExpression2
+                                      1# -> Manipulators.linearExpression1 })
+                                   (case GHC.Prim.==# x1 ww of lwild1 {
+                                      DEFAULT -> go3 (GHC.Prim.+# x1 1#)
+                                      1# -> GHC.Types.[] @ GHC.Types.Int })
+                             } in
+                             go3 1#)
+                            (case GHC.Prim.==# x ww of lwild1 {
+                               DEFAULT -> go1 (GHC.Prim.+# x 1#)
+                               1# -> GHC.Types.[] @ Manipulators.It })
+                      } in
+                      go1 1#
+                   1# -> GHC.Types.[] @ Manipulators.It }) -}
+e15a153a5479d310fa985dfe12f18477
+  $wlvl ::
+    GHC.Prim.Double#
+    -> [Manipulators.It]
+    -> GHC.Prim.Double#
+    -> [Manipulators.It]
+    -> GHC.Types.Ordering
+  {- Arity: 4, HasNoCafRefs, Strictness: <S,U><L,1*U><S,U><L,1*U>,
+     Inline: [0],
+     Unfolding: (\ (ww :: GHC.Prim.Double#)
+                   (ww1 :: [Manipulators.It])
+                   (ww2 :: GHC.Prim.Double#)
+                   (ww3 :: [Manipulators.It]) ->
+                 case GHC.Prim.<## ww ww2 of lwild {
+                   DEFAULT
+                   -> case GHC.Prim.==## ww ww2 of lwild1 {
+                        DEFAULT -> GHC.Types.GT
+                        1#
+                        -> GHC.Classes.$fOrd[]_$ccompare
+                             @ (Manipulators.Coeff, Manipulators.Op, Manipulators.Exps)
+                             Manipulators.$s$fOrd(,)_$ccompare_$s$fOrd(,,)
+                             ww1
+                             ww3 }
+                   1# -> GHC.Types.LT }) -}
+c63ea086b42d65e86236638d08751ad8
+  $wrandomExpression ::
+    GHC.Types.Int
+    -> GHC.Prim.Int#
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, Manipulators.Le #)
+  {- Arity: 3, Strictness: <L,1*U(U)><S,1*U><S,U>, Inline: [0] -}
+062c26488a3eabe8a0da62178a8f33cd
+  $wrandomExps ::
+    GHC.Prim.Int#
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, [GHC.Types.Int] #)
+  {- Arity: 2, Strictness: <S,1*U><S,U>, Inline: [0] -}
+391270b055c514b0b8ef1a9394050c8d
+  $wrndPopulation ::
+    GHC.Prim.Int#
+    -> Manipulators.LeSize
+    -> Matrix.Dataset
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, Manipulators.Pop #)
+  {- Arity: 4,
+     Strictness: <S,1*U><L,1*U(U)><L,U(U(A,U,A,A,A,A),A)><S,U>,
+     Inline: [0] -}
+15731e88e24e22cbd969ad5eb8dd3b9f
+  $wsolve ::
+    Manipulators.Le -> [GHC.Types.Double] -> [GHC.Types.Double]
+  {- Arity: 2, Strictness: <S,1*U><L,U>, Inline: [0],
+     Unfolding: (\ (w :: Manipulators.Le) (ww :: [GHC.Types.Double]) ->
+                 letrec {
+                   go1 :: [(Manipulators.Coeff, Manipulators.Op, Manipulators.Exps)]
+                          -> [GHC.Types.Double]
+                     {- Arity: 1, Strictness: <S,1*U> -}
+                   = \ (ds :: [(Manipulators.Coeff, Manipulators.Op,
+                                Manipulators.Exps)]) ->
+                     case ds of wild {
+                       [] -> GHC.Types.[] @ GHC.Types.Double
+                       : y ys
+                       -> case y of wild1 { (,,) c o e ->
+                          GHC.Types.:
+                            @ GHC.Types.Double
+                            (case o of wild2 { GHC.Types.I# x ->
+                             case Manipulators.evaluate3 of wild3 { GHC.Types.I# y1 ->
+                             case GHC.Prim.>=# x y1 of lwild {
+                               DEFAULT
+                               -> case GHC.List.$w!!
+                                         @ Manipulators.Op'n'Name
+                                         Manipulators.ops
+                                         x of wild4 { (,) o1 ds1 ->
+                                  case o1
+                                         (Manipulators.$wgo2
+                                            e
+                                            ww
+                                            1.0##) of wild5 { GHC.Types.D# x1 ->
+                                  case c of wild6 { GHC.Types.D# y2 ->
+                                  GHC.Types.D# (GHC.Prim.*## x1 y2) } } }
+                               1# -> Manipulators.evaluate2 } } })
+                            (go1 ys) } }
+                 } in
+                 go1 w) -}
+ee36b08f38ff792d5473f326883a5acd
+  type Coeff = GHC.Types.Double
+144065053a8dcd2bfb262112fb3af015
+  type Exps = [GHC.Types.Int]
+0c888c6c88e9ba38a5c2ae9ccadab593
+  type It = (Manipulators.Coeff, Manipulators.Op, Manipulators.Exps)
+78d4852ac142b396d7a034f3ca8fed73
+  type Le = [Manipulators.It]
+143152edb3db22638f41318efbbe69bf
+  type LeSize = GHC.Types.Int
+faf827add579ef49b7a6b202cd3bd166
+  type Op = GHC.Types.Int
+33ef31a05c8b32ff6e67455d9aae8b66
+  type Op'n'Name = (Manipulators.Operator, GHC.Base.String)
+a51d4800efa2708fd220b047de7ab70a
+  type Operator = GHC.Types.Double -> GHC.Types.Double
+ed0c997ddeee1bbeb15dd74b77603676
+  type Pop = [Manipulators.Le]
+d9e62db1d022bd681d984d5985933cac
+  type PopSize = GHC.Types.Int
+67034cbd43e515e53275a384d82318f5
+  newtype Score = Score GHC.Types.Double
+1f19f38ae60f3e6dc752278014e42cf4
+  type SimplifyT = GHC.Types.Double
+1eba80d815ad965a1ca5982dc530a252
+  type SupressionT = GHC.Types.Double
+3005c6dcf5c71e402417389d1697fe7a
+  adjust :: Manipulators.Le -> Matrix.Dataset -> Manipulators.Le
+  {- Arity: 2,
+     Strictness: <L,U><S(S(SSSSSL)L),1*U(1*U(U,U,U,U,U,U(U,A,U)),U(U,U,U,U,U,U(U,A,U)))>,
+     Inline: [0],
+     Unfolding: InlineRule (2, True, False)
+                (\ (w :: Manipulators.Le) (w1 :: Matrix.Dataset) ->
+                 case w1 of ww { (,) ww1 ww2 ->
+                 case ww1 of ww3 { Data.Matrix.M ww4 ww5 ww6 ww7 ww8 ww9 ->
+                 Manipulators.$wadjust w ww4 ww5 ww6 ww7 ww8 ww9 ww2 } }) -}
+06dcc590be875f5acb2c6ad121e70a60
+  evaluate :: Manipulators.Le -> Matrix.Dataset -> Manipulators.Score
+  {- Arity: 2,
+     Strictness: <L,U><S(S(SSSSSL)L),1*U(1*U(U,U,U,U,U,U(U,A,U)),U(U,U,U,U,U,U(U,A,U)))>m,
+     Unfolding: InlineRule (0, True, True)
+                Manipulators.evaluate1
+                  `cast`
+                (<Manipulators.Le>_R
+                 ->_R <Matrix.Dataset>_R
+                 ->_R Sym (Manipulators.N:Score[0])) -}
+91fb2d16438d3dd2f7ab127cf71bf6a1
+  evaluate1 :: Manipulators.Le -> Matrix.Dataset -> GHC.Types.Double
+  {- Arity: 2,
+     Strictness: <L,U><S(S(SSSSSL)L),1*U(1*U(U,U,U,U,U,U(U,A,U)),U(U,U,U,U,U,U(U,A,U)))>m,
+     Inline: [0],
+     Unfolding: InlineRule (2, True, False)
+                (\ (w :: Manipulators.Le) (w1 :: Matrix.Dataset) ->
+                 case w1 of ww { (,) ww1 ww2 ->
+                 case ww1 of ww3 { Data.Matrix.M ww4 ww5 ww6 ww7 ww8 ww9 ->
+                 case Manipulators.$wevaluate
+                        w
+                        ww4
+                        ww5
+                        ww6
+                        ww7
+                        ww8
+                        ww9
+                        ww2 of ww10 { DEFAULT ->
+                 GHC.Types.D# ww10 } } }) -}
+b8eee6954adf9eb67da7ae1e62ed2fb5
+  evaluate2 :: GHC.Types.Double
+  {- Strictness: x -}
+944203e03045e2e10927fe3df0b8f98a
+  evaluate3 :: GHC.Types.Int
+  {- Unfolding: (case GHC.List.$wlenAcc
+                        @ (Manipulators.Operator, GHC.Base.String)
+                        Manipulators.ops
+                        0# of ww2 { DEFAULT ->
+                 GHC.Types.I# ww2 }) -}
+418648f1651079e683981c412b423b82
+  linearExpression :: GHC.Types.Int -> Manipulators.Le
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(S),1*U(U)>, Inline: [0],
+     Unfolding: InlineRule (1, True, False)
+                (\ (w :: GHC.Types.Int) ->
+                 case w of ww { GHC.Types.I# ww1 ->
+                 Manipulators.$wlinearExpression ww1 }) -}
+2536d519368bfaaebf8183a62e774104
+  linearExpression1 :: GHC.Types.Int
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.I# 1#) -}
+bd56e81a0e86ffadaaabd3c77682df65
+  linearExpression2 :: GHC.Types.Int
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.I# 0#) -}
+6c07e74419f655d01101f68e2bb8b97a
+  mutate :: Manipulators.Le -> Manipulators.Le
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, True)
+                (\ (le :: Manipulators.Le) -> le) -}
+5ae5250683805a2f5cb64ac7a07db555
+  mutatePop :: Manipulators.Pop -> Manipulators.Pop
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, True)
+                (\ (pop :: Manipulators.Pop) -> pop) -}
+ed4083c70f460e573b6abbb4c505ed57
+  nomeator :: Manipulators.Op'n'Name -> GHC.Base.String
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(LS),1*U(A,1*U)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: (Manipulators.Operator, GHC.Base.String)) ->
+                 case ds of wild { (,) ds1 s -> s }) -}
+3a16602cd598f97656e2255071d689b1
+  operator :: Manipulators.Op'n'Name -> Manipulators.Operator
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(SL),1*U(1*U,A)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: (Manipulators.Operator, GHC.Base.String)) ->
+                 case ds of wild { (,) o ds1 -> o }) -}
+5f7c6753b31fa803c2be4832535bbe34
+  ops :: [Manipulators.Op'n'Name]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ Manipulators.Op'n'Name
+                   Manipulators.ops30
+                   Manipulators.ops1) -}
+6252b1a8f1ca8ea58e5ccdfbf749dda6
+  ops1 :: [Manipulators.Op'n'Name]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ Manipulators.Op'n'Name
+                   Manipulators.ops27
+                   Manipulators.ops2) -}
+01a395e6e5bdebb086ae187c1a045d08
+  ops10 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("sqrt.abs"#) -}
+a700bfc7da8e49e609f25ec7ec0c2c8a
+  ops11 :: GHC.Types.Double -> GHC.Types.Double
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(S),1*U(U)>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (x :: GHC.Types.Double) ->
+                 case x of wild { GHC.Types.D# x1 ->
+                 GHC.Types.D# (GHC.Prim.sqrtDouble# (GHC.Prim.fabsDouble# x1)) }) -}
+3691a25e6cc619f79ac3a2aff332fdbc
+  ops12 :: (GHC.Types.Double -> GHC.Types.Double, [GHC.Types.Char])
+  {- Strictness: m,
+     Unfolding: ((GHC.Float.logDouble, Manipulators.ops13)) -}
+a1565147ab3f20fe24bf31f57c4b944a
+  ops13 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# Manipulators.ops14) -}
+09c19b7f97507882bf4635d23679c63e
+  ops14 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("log"#) -}
+597f0f8b3b79c0b38d1d6e54e5b9700a
+  ops15 :: (GHC.Types.Double -> GHC.Types.Double, [GHC.Types.Char])
+  {- Strictness: m,
+     Unfolding: ((GHC.Float.expDouble, Manipulators.ops16)) -}
+b65cdc1fcd3b69021d1c2b9bd75e0e5b
+  ops16 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# Manipulators.ops17) -}
+b96a557b5e7c2e0b514a0bb37981c9df
+  ops17 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("exp"#) -}
+2ac1c5f6fb00949b1077d7f4b2f0bc9b
+  ops18 :: (GHC.Types.Double -> GHC.Types.Double, [GHC.Types.Char])
+  {- Strictness: m,
+     Unfolding: ((GHC.Float.fabsDouble, Manipulators.ops19)) -}
+dff737df253d1b4949c4efd8d2ffa4f8
+  ops19 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# Manipulators.ops20) -}
+7db85182351cd780d9ddaac837dd0d31
+  ops2 :: [Manipulators.Op'n'Name]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ Manipulators.Op'n'Name
+                   Manipulators.ops24
+                   Manipulators.ops3) -}
+0e91d5a79ef3c3964e83a783f94ea798
+  ops20 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("abs"#) -}
+8ef6654ac81771000ba476be7a18bf98
+  ops21 :: (GHC.Types.Double -> GHC.Types.Double, [GHC.Types.Char])
+  {- Strictness: m,
+     Unfolding: ((GHC.Float.tanDouble, Manipulators.ops22)) -}
+d4016d249190cf86eb21ec4a2009055b
+  ops22 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# Manipulators.ops23) -}
+e032e8de2f7444a3e3eb7b60bb87e47a
+  ops23 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("tan"#) -}
+b152edc9f764e208385dfcc6b5162645
+  ops24 :: (GHC.Types.Double -> GHC.Types.Double, [GHC.Types.Char])
+  {- Strictness: m,
+     Unfolding: ((GHC.Float.cosDouble, Manipulators.ops25)) -}
+23d12544b82c416e3765949b52c2a025
+  ops25 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# Manipulators.ops26) -}
+64d187ff974d4e292d9277f82d33b7c0
+  ops26 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("cos"#) -}
+5d7a0d166d700ca34da67913b79044d2
+  ops27 :: (GHC.Types.Double -> GHC.Types.Double, [GHC.Types.Char])
+  {- Strictness: m,
+     Unfolding: ((GHC.Float.sinDouble, Manipulators.ops28)) -}
+3c219a84d314ededb99561e00b91a1ea
+  ops28 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# Manipulators.ops29) -}
+71b98d93b3af49e5cacd9d8cd0d5d349
+  ops29 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("sin"#) -}
+5c357e48c3afe9375a5791130187b368
+  ops3 :: [Manipulators.Op'n'Name]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ Manipulators.Op'n'Name
+                   Manipulators.ops21
+                   Manipulators.ops4) -}
+3e8b29f7eb09e8514bb4bca2196e6baa
+  ops30 :: (GHC.Types.Double -> GHC.Types.Double, [GHC.Types.Char])
+  {- Strictness: m,
+     Unfolding: ((GHC.Base.id @ GHC.Types.Double,
+                  Manipulators.ops31)) -}
+a3e1f5b85bd1534011c291183c7b0cd0
+  ops31 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# Manipulators.ops32) -}
+b96ca7b7e91977c5fd423740831e753b
+  ops32 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("id"#) -}
+dfb6fa410368a5125c93740669582c7f
+  ops4 :: [Manipulators.Op'n'Name]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ Manipulators.Op'n'Name
+                   Manipulators.ops18
+                   Manipulators.ops5) -}
+c59f427149348b350708951e72cb6c8c
+  ops5 :: [Manipulators.Op'n'Name]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ Manipulators.Op'n'Name
+                   Manipulators.ops15
+                   Manipulators.ops6) -}
+078b50fd8dbf0569d644b8d58b81a2aa
+  ops6 :: [Manipulators.Op'n'Name]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ Manipulators.Op'n'Name
+                   Manipulators.ops12
+                   Manipulators.ops7) -}
+6a881872ab0b82176e31bc4a002b18d2
+  ops7 :: [Manipulators.Op'n'Name]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ Manipulators.Op'n'Name
+                   Manipulators.ops8
+                   (GHC.Types.[] @ Manipulators.Op'n'Name)) -}
+aacf58bd65b04067def06f6716185fbb
+  ops8 :: (GHC.Types.Double -> GHC.Types.Double, [GHC.Types.Char])
+  {- Strictness: m,
+     Unfolding: ((Manipulators.ops11, Manipulators.ops9)) -}
+71db7e2827990db34ef1f6797bbf2a4d
+  ops9 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# Manipulators.ops10) -}
+139d20b4c7f9d3b8c2b60e47145fe229
+  randomExpression ::
+    GHC.Types.Int -> GHC.Types.Int -> GHC.Types.IO Manipulators.Le
+  {- Arity: 3, Strictness: <L,1*U(U)><S(S),1*U(1*U)><S,U>,
+     Unfolding: InlineRule (0, True, True)
+                Manipulators.randomExpression1
+                  `cast`
+                (<GHC.Types.Int>_R
+                 ->_R <GHC.Types.Int>_R
+                 ->_R Sym (GHC.Types.N:IO[0] <Manipulators.Le>_R)) -}
+0362ab5eac59003f6dfc528d040700a9
+  randomExpression1 ::
+    GHC.Types.Int
+    -> GHC.Types.Int
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, Manipulators.Le #)
+  {- Arity: 3, Strictness: <L,1*U(U)><S(S),1*U(1*U)><S,U>,
+     Inline: [0],
+     Unfolding: InlineRule (3, True, False)
+                (\ (w :: GHC.Types.Int)
+                   (w1 :: GHC.Types.Int)
+                   (w2 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                 case w1 of ww { GHC.Types.I# ww1 ->
+                 Manipulators.$wrandomExpression w ww1 w2 }) -}
+89b6073dc2e307539241738397e84328
+  randomExps :: GHC.Types.Int -> GHC.Types.IO [GHC.Types.Int]
+  {- Arity: 2, Strictness: <S(S),1*U(1*U)><S,U>,
+     Unfolding: InlineRule (0, True, True)
+                Manipulators.randomExps1
+                  `cast`
+                (<GHC.Types.Int>_R
+                 ->_R Sym (GHC.Types.N:IO[0] <[GHC.Types.Int]>_R)) -}
+4338864503eba51b363c240141c736c8
+  randomExps1 ::
+    GHC.Types.Int
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, [GHC.Types.Int] #)
+  {- Arity: 2, Strictness: <S(S),1*U(1*U)><S,U>, Inline: [0],
+     Unfolding: InlineRule (2, True, False)
+                (\ (w :: GHC.Types.Int)
+                   (w1 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                 case w of ww { GHC.Types.I# ww1 ->
+                 Manipulators.$wrandomExps ww1 w1 }) -}
+7a49bddc2f3ff2fef94b14acdac08d4e
+  randomIt ::
+    GHC.Types.Int
+    -> GHC.Types.IO (GHC.Types.Double, GHC.Types.Int, [GHC.Types.Int])
+  {- Arity: 2, Strictness: <L,1*U(1*U)><S,U>,
+     Unfolding: InlineRule (0, True, True)
+                Manipulators.randomIt1
+                  `cast`
+                (<GHC.Types.Int>_R
+                 ->_R Sym (GHC.Types.N:IO[0]
+                               <(GHC.Types.Double, GHC.Types.Int, [GHC.Types.Int])>_R)) -}
+0f8fe315fece4ff9fd2524885dc91606
+  randomIt1 ::
+    GHC.Types.Int
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+          (GHC.Types.Double, GHC.Types.Int, [GHC.Types.Int]) #)
+  {- Arity: 2, Strictness: <L,1*U(1*U)><S,U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (n :: GHC.Types.Int)
+                   (s :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                 case System.Random.$fRandomInt3
+                        Manipulators.randomIt2
+                        s of ds1 { (#,#) ipv ipv1 ->
+                 case Manipulators.randomExps1 n ipv of ds2 { (#,#) ipv2 ipv3 ->
+                 (# ipv2, (Manipulators.$s^2, ipv1, ipv3) #) } }) -}
+021f799635069a33ce1704669ecac12f
+  randomIt2 :: (GHC.Types.Int, GHC.Types.Int)
+  {- Strictness: m,
+     Unfolding: ((Manipulators.linearExpression2,
+                  Manipulators.randomIt3)) -}
+66b9a4fdc77d02ef9771a9d7ecdb1c4f
+  randomIt3 :: GHC.Types.Int
+  {- Unfolding: (case GHC.List.$wlenAcc
+                        @ (Manipulators.Operator, GHC.Base.String)
+                        Manipulators.ops
+                        0# of ww2 { DEFAULT ->
+                 GHC.Types.I# (GHC.Prim.-# ww2 1#) }) -}
+decb569dd2f13ba85a935651727c6095
+  rndPopulation ::
+    Manipulators.PopSize
+    -> Manipulators.LeSize
+    -> Matrix.Dataset
+    -> GHC.Types.IO Manipulators.Pop
+  {- Arity: 4,
+     Strictness: <S(S),1*U(1*U)><L,1*U(U)><L,U(U(A,U,A,A,A,A),A)><S,U>,
+     Unfolding: InlineRule (0, True, True)
+                Manipulators.rndPopulation1
+                  `cast`
+                (<Manipulators.PopSize>_R
+                 ->_R <Manipulators.LeSize>_R
+                 ->_R <Matrix.Dataset>_R
+                 ->_R Sym (GHC.Types.N:IO[0] <Manipulators.Pop>_R)) -}
+b3c3dbb7abc55b71c91357352741aba8
+  rndPopulation1 ::
+    Manipulators.PopSize
+    -> Manipulators.LeSize
+    -> Matrix.Dataset
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, Manipulators.Pop #)
+  {- Arity: 4,
+     Strictness: <S(S),1*U(1*U)><L,1*U(U)><L,U(U(A,U,A,A,A,A),A)><S,U>,
+     Inline: [0],
+     Unfolding: InlineRule (4, True, False)
+                (\ (w :: Manipulators.PopSize)
+                   (w1 :: Manipulators.LeSize)
+                   (w2 :: Matrix.Dataset)
+                   (w3 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                 case w of ww { GHC.Types.I# ww1 ->
+                 Manipulators.$wrndPopulation ww1 w1 w2 w3 }) -}
+118a11fe4aaca90829ee87e212bd12bb
+  simplify ::
+    Manipulators.Le
+    -> Manipulators.SimplifyT -> GHC.Base.Maybe Manipulators.Le
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><L,U(U)>,
+     Unfolding: (\ (le :: Manipulators.Le)
+                   (sT :: Manipulators.SimplifyT) ->
+                 letrec {
+                   go1 :: [(Manipulators.Coeff, Manipulators.Op, Manipulators.Exps)]
+                          -> [(Manipulators.Coeff, Manipulators.Op, Manipulators.Exps)]
+                     {- Arity: 1, Strictness: <S,1*U> -}
+                   = \ (ds :: [(Manipulators.Coeff, Manipulators.Op,
+                                Manipulators.Exps)]) ->
+                     case ds of wild {
+                       []
+                       -> GHC.Types.[]
+                            @ (Manipulators.Coeff, Manipulators.Op, Manipulators.Exps)
+                       : y ys
+                       -> case y of wild1 { (,,) c o e ->
+                          case c of wild2 { GHC.Types.D# x ->
+                          case sT of wild3 { GHC.Types.D# y1 ->
+                          case GHC.Prim.>=## x y1 of lwild {
+                            DEFAULT -> go1 ys
+                            1#
+                            -> GHC.Types.:
+                                 @ (Manipulators.Coeff, Manipulators.Op, Manipulators.Exps)
+                                 wild1
+                                 (go1 ys) } } } } }
+                 } in
+                 let {
+                   simplified :: [(Manipulators.Coeff, Manipulators.Op,
+                                   Manipulators.Exps)]
+                   = go1 le
+                 } in
+                 case GHC.List.$wlenAcc
+                        @ (Manipulators.Coeff, Manipulators.Op, Manipulators.Exps)
+                        simplified
+                        0# of ww2 {
+                   DEFAULT
+                   -> GHC.Base.Just
+                        @ [(Manipulators.Coeff, Manipulators.Op, Manipulators.Exps)]
+                        simplified
+                   0# -> GHC.Base.Nothing @ Manipulators.Le }) -}
+50dca0c193e84c4fbf629394b93ec505
+  simplifyPop ::
+    Manipulators.Pop -> Manipulators.SimplifyT -> Manipulators.Pop
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><L,U(U)>,
+     Unfolding: (\ (pop :: Manipulators.Pop)
+                   (sS :: Manipulators.SimplifyT) ->
+                 letrec {
+                   re'pop :: [Manipulators.Le]
+                             -> [Manipulators.Le] -> [Manipulators.Le]
+                     <join 2> {- Arity: 2, Strictness: <L,U><S,1*U> -}
+                   = \ (p_p :: [Manipulators.Le]) (ds :: [Manipulators.Le]) ->
+                     case ds of wild {
+                       [] -> p_p
+                       : le les'
+                       -> case Manipulators.simplify le sS of wild1 {
+                            GHC.Base.Nothing -> re'pop p_p les'
+                            GHC.Base.Just le'
+                            -> re'pop (GHC.Types.: @ Manipulators.Le le' p_p) les' } }
+                 } in
+                 re'pop (GHC.Types.[] @ Manipulators.Le) pop) -}
+34e5a361cdafb9d7fe6ce3a12b0b0590
+  solve :: Manipulators.Le -> Matrix.DataPoint -> [GHC.Types.Double]
+  {- Arity: 2, Strictness: <S,1*U><S,1*U(U,A)>, Inline: [0],
+     Unfolding: InlineRule (2, True, False)
+                (\ (w :: Manipulators.Le) (w1 :: Matrix.DataPoint) ->
+                 case w1 of ww { (,) ww1 ww2 -> Manipulators.$wsolve w ww1 }) -}
+e25952c2092f9a9ec09e569e678d911a
+  sortByScore ::
+    Manipulators.Pop -> Matrix.Dataset -> Manipulators.Pop
+  {- Arity: 2,
+     Strictness: <S,1*U><L,U(U(U,U,U,U,U,U(U,A,U)),U(U,U,U,U,U,U(U,A,U)))>,
+     Unfolding: (\ (pop :: Manipulators.Pop) (ds :: Matrix.Dataset) ->
+                 letrec {
+                   go1 :: [Manipulators.Le] -> [(Manipulators.Score, Manipulators.Le)]
+                     {- Arity: 1, Strictness: <S,1*U> -}
+                   = \ (ds1 :: [Manipulators.Le]) ->
+                     case ds1 of wild {
+                       [] -> GHC.Types.[] @ (Manipulators.Score, Manipulators.Le)
+                       : y ys
+                       -> GHC.Types.:
+                            @ (Manipulators.Score, Manipulators.Le)
+                            ((Manipulators.evaluate1 y ds)
+                               `cast`
+                             (Sym (Manipulators.N:Score[0])),
+                             y)
+                            (go1 ys) }
+                 } in
+                 Manipulators.sortByScore_go
+                   (Data.OldList.sortBy
+                      @ (Manipulators.Score, Manipulators.Le)
+                      Manipulators.sortByScore1
+                      (go1 pop))) -}
+f5c96857379497c8d959143f303f8166
+  sortByScore1 ::
+    (Manipulators.Score, [Manipulators.It])
+    -> (Manipulators.Score, [Manipulators.It]) -> GHC.Types.Ordering
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <S(S(S)L),1*U(1*U(U),1*U)><S(S(S)L),1*U(1*U(U),1*U)>,
+     Inline: [0],
+     Unfolding: InlineRule (2, True, False)
+                (\ (w :: (Manipulators.Score, [Manipulators.It]))
+                   (w1 :: (Manipulators.Score, [Manipulators.It])) ->
+                 case w of ww { (,) ww1 ww2 ->
+                 case ww1
+                        `cast`
+                      (Manipulators.N:Score[0]) of ww3 { GHC.Types.D# ww4 ->
+                 case w1 of ww5 { (,) ww6 ww7 ->
+                 case ww6
+                        `cast`
+                      (Manipulators.N:Score[0]) of ww8 { GHC.Types.D# ww9 ->
+                 Manipulators.$wlvl ww4 ww2 ww9 ww7 } } } }) -}
+02bfcf8f2db76b103679ecfa9b66d73f
+  sortByScore_go ::
+    [(Manipulators.Score, Manipulators.Le)] -> [Manipulators.Le]
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U> -}
+2513870a3b29258ca781c626c8bee1df
+  textRepresentation :: Manipulators.Le -> GHC.Base.String
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: (\ (le :: Manipulators.Le) ->
+                 case Manipulators.textRepresentation_go le of wild {
+                   [] -> GHC.List.init2 @ GHC.Types.Char
+                   : x xs -> GHC.List.init1 @ GHC.Types.Char x xs }) -}
+86cdadf4f12edb1aa31ee0c38175a36a
+  textRepresentation_go :: [Manipulators.It] -> [GHC.Types.Char]
+  {- Arity: 1, Strictness: <S,1*U> -}
+ecf2db5a35cc1ae0ccaf363c6eb051cf
+  uniques :: Manipulators.Le -> Manipulators.Le
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U> -}
+instance GHC.Classes.Eq [Manipulators.Score]
+  = Manipulators.$fEqScore
+instance GHC.Classes.Ord [Manipulators.Score]
+  = Manipulators.$fOrdScore
+instance GHC.Show.Show [Manipulators.Score]
+  = Manipulators.$fShowScore
+"SPEC/Manipulators $fEq(,,) @ Double @ Int @ [Int]" [orphan] forall (v2 :: GHC.Classes.Eq
+                                                                             [GHC.Types.Int])
+                                                                    (v1 :: GHC.Classes.Eq
+                                                                             GHC.Types.Int)
+                                                                    (v :: GHC.Classes.Eq
+                                                                            GHC.Types.Double)
+  GHC.Classes.$fEq(,,) @ GHC.Types.Double
+                       @ GHC.Types.Int
+                       @ [GHC.Types.Int]
+                       v
+                       v1
+                       v2
+  = Manipulators.$s$fEq(,,)
+"SPEC/Manipulators $fEq(,,)_$c/= @ Double @ Int @ [Int]" [orphan] forall ($dEq2 :: GHC.Classes.Eq
+                                                                                     [GHC.Types.Int])
+                                                                         ($dEq1 :: GHC.Classes.Eq
+                                                                                     GHC.Types.Int)
+                                                                         ($dEq :: GHC.Classes.Eq
+                                                                                    GHC.Types.Double)
+  GHC.Classes.$fEq(,,)_$c/= @ GHC.Types.Double
+                            @ GHC.Types.Int
+                            @ [GHC.Types.Int]
+                            $dEq
+                            $dEq1
+                            $dEq2
+  = Manipulators.$s$fEq(,,)_$s$fEq(,,)_$c/=
+"SPEC/Manipulators $fOrd(,,) @ Double @ Int @ [Int]" [orphan] forall (v2 :: GHC.Classes.Ord
+                                                                              [GHC.Types.Int])
+                                                                     (v1 :: GHC.Classes.Ord
+                                                                              GHC.Types.Int)
+                                                                     (v :: GHC.Classes.Ord
+                                                                             GHC.Types.Double)
+  GHC.Classes.$fOrd(,,) @ GHC.Types.Double
+                        @ GHC.Types.Int
+                        @ [GHC.Types.Int]
+                        v
+                        v1
+                        v2
+  = Manipulators.$s$fOrd(,)_$ccompare_$s$fOrd(,,)
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: none
+require own pkg trusted: False
+

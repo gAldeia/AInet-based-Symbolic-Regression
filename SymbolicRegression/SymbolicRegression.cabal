@@ -2,16 +2,16 @@ name:                SymbolicRegression
 version:             0.1.0.0
 -- synopsis:
 -- description:
-homepage:            https://github.com/githubuser/SymbolicRegression#readme
-license:             BSD3
-license-file:        LICENSE
+homepage:            https://gAldeia.github.com/AInet-Symbolic-Regression
+license:             
+license-file:        
 author:              Author name here
 maintainer:          example@example.com
 copyright:           2018 Author name here
 category:            Web
 build-type:          Simple
 cabal-version:       >=1.10
-extra-source-files:  ../README.md
+extra-source-files:
 
 executable SymbolicRegression
   hs-source-dirs:      src
