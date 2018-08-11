@@ -1,1 +1,18 @@
 theme: jekyll-theme-minimal
+name: AInet Symbolic Regression
+
+footer-links:
+  dribbble:
+  email: guilherme.seidyo@gmail.com
+  facebook:
+  flickr:
+  github:
+  instagram:
+  pinterest:
+  rss:
+  twitter:
+  stackoverflow:
+  youtube:
+  googleplus:
+  
+google_analytics:
