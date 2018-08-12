@@ -4,5 +4,7 @@ title: Your awesome title
 author: GitHub User
 email: your-email@domain.com
 
+markdown: kramdown
+
 #Analytics
 google_analytics:
