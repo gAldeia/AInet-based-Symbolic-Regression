@@ -19,16 +19,16 @@ import Data.List   (sort)
 
 -- EXPRESSION OPERATIONS -------------------------------------------------------
 --defining the auxiliary types for representing the IT
-newtype Score = Score Double
+newtype Score    = Score Double
         deriving (Eq, Ord, Show)
-type Coeff = Double
-type Exps  = [Int]
-type Op    = Int
-type It    = (Coeff, Op, Exps)
-type Le    = [It]
-type Pop   = [Le]
-type Operator = (Double -> Double)
-type Op'n'Name = (Operator, String)
+type Coeff       = Double
+type Exps        = [Int]
+type Op          = Int
+type It          = (Coeff, Op, Exps)
+type Le          = [It]
+type Pop         = [Le]
+type Operator    = (Double -> Double)
+type Op'n'Name   = (Operator, String)
 type SimplifyT   = Double
 type SupressionT = Double
 type PopSize     = Int
@@ -203,6 +203,4 @@ rndPopulation p l ds = do
     le' <- rndPopulation (p-1) l ds
     return (le:le')
 
-supressionPop :: Pop -> SupressionT -> Pop
---returns a population without the supressed expressions
-supressionPop pop supT = pop
+    

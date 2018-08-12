@@ -3,11 +3,6 @@ module Main where
 {-
 Haskell implementation of AInet based symbolic regression algorithm, using
 the IT datastructure.
-
-TODO LIST
---trainTestSplit method that returns the dataset divided in (Train, Test)
---create better comments (check if haskell have some standard of comments, like python have the "numPy way")
---use sequence and sequenceA in the monads population methods
 -}
 
 import Dataset
@@ -16,7 +11,7 @@ import AInet
 import System.Random
 
 
---sample matrix to create a dataset, function with 4 explanatory variables
+--sample list-of-lists to create a dataset, function with 4 variables
 sample :: [[Double]]
 sample = [[1.0,1.0,1.0,1.0,1.0],
           [2.0,2.0,2.0,2.0,2.0],
@@ -25,11 +20,11 @@ sample = [[1.0,1.0,1.0,1.0,1.0],
           [5.0,5.0,5.0,5.0,5.0],
           [6.0,6.0,6.0,6.0,6.0]]
 
-          
+
 -- MAIN METHOD -----------------------------------------------------------------
 main :: IO ()
 main = do
-    -- seed of the global generator, used to make deterministic
+    --seed of the global generator, used to make deterministic
     let seed = 42 :: Int
 
     --defining the global random generator
@@ -50,3 +45,9 @@ main = do
     --printing the result
     print (textRepresentation res)
     print (evaluate res ds)
+
+
+--TODO LIST
+--trainTestSplit method that returns the dataset divided in (Train, Test)
+--create better comments (check if haskell have some standard of comments, like python have the "numPy way")
+--use sequence and sequenceA in the monads population methods

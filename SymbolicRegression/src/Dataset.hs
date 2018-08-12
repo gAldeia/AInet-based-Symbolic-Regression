@@ -8,12 +8,13 @@ for the data used to train the AInet algorithm.
 import Data.Matrix
 import Data.List     (sort)
 
--- DATASET OPERATIONS ----------------------------------------------------------
+
 --defining the auxiliary types for representing the dataset
 type X         = Matrix Double
 type Y         = Matrix Double
 type Dataset   = (X, Y)
 type DataPoint = ([Double], Double)
+
 
 listsToDataset :: [[Double]] -> Dataset
 --returns a dataset
@@ -22,6 +23,7 @@ listsToDataset lss = (fromLists xs, fromLists ys)
         xs = [init ls   | ls <- lss] :: [[Double]]
         ys = [[last ls] | ls <- lss] :: [[Double]]
 
+        
 (#) :: Int -> Dataset -> DataPoint
 --returns a specific element from the dataset, in the form of ([Double], Double)
 (#) i (xss,ys) = (xs', y')
