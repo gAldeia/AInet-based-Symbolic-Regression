@@ -33,7 +33,7 @@
  */
 #menuToggle span
 {
-  display: block;
+  display: inline-block;
   width: 33px;
   height: 4px;
   margin-bottom: 5px;
@@ -62,28 +62,20 @@
 }
 
 /* 
- * Transform all the slices of hamburger
- * into a crossmark.
+ * Transform all the slices of hamburger into a crossmark.
  */
 #menuToggle input:checked ~ span
 {
   opacity: 1;
   transform: rotate(45deg) translate(-2px, -1px);
-  background: #232323;
+  background: #cdcdcd;
 }
-
-/*
- * But let's hide the middle one.
- */
-#menuToggle input:checked ~ span:nth-last-child(3)
+#menuToggle input:checked ~ span:nth-last-child(3) /*middle*/
 {
   opacity: 0;
   transform: rotate(0deg) scale(0.2, 0.2);
 }
 
-/*
- * Ohyeah and the last one should go the other direction
- */
 #menuToggle input:checked ~ span:nth-last-child(2)
 {
   transform: rotate(-45deg) translate(0, -1px);
