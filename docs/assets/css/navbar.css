@@ -33,13 +33,13 @@
  */
 #menuToggle span
 {
-  display: inline-block;
+  display: block;
   width: 33px;
   height: 4px;
   margin-bottom: 5px;
   position: relative;
   
-  background: #cdcdcd;
+  background: #232323;
   border-radius: 3px;
   
   z-index: 1;
@@ -88,7 +88,7 @@
 #menu
 {
   position: absolute;
-  width: 200px;
+  width: 180px;
   margin: -100px 0 0 -50px;
   padding: 50px;
   padding-top: 125px;
