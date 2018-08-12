@@ -20,7 +20,7 @@ type NumClones   = Int
 
 ainet' :: NumGen -> Pop -> LeSize -> NumClones -> SupressionT -> Dataset -> IO (Pop)
 --performs one interation of the ainet algorithm. suposes that the given populaion is always ordened by worst to best score
-ainet' 0 _ _ _ _ _ = do return []
+ainet' 0 pop _ _ _ _ = do return pop
 ainet' g pop l c supT ds = do
     --the number of clones is the index of each solution (the solutions should be ordered from worst to best, this way there will be more best solutions and few bad solutions)
     let clones = concat[  [pop !! leIndex | i<- [0..leIndex-1]] | leIndex <- [0..(length pop)-1]  ]
@@ -31,7 +31,7 @@ ainet' g pop l c supT ds = do
 
     pop' <- ainet' (g-1) (sortByScore newPop ds) l c supT ds
 
-    return (newPop ++ pop')
+    return pop'
 
 
 ainet :: NumGen -> PopSize -> LeSize -> NumClones -> SupressionT -> SimplifyT -> Dataset -> IO (Le)
@@ -47,7 +47,4 @@ ainet g p l c supT simS ds = do
 {-
 ainet' :: Pop -> NumGen -> PopSize -> LeSize -> NumClones -> SupressionT -> Dataset -> Pop
 ainet' pop g p c sT rndGen ds = ainet' newPop (g-1) p c sT rndGen ds
-
-ainet g p l c sT sS ds = last $ sortByScore ( simplifyPop (ainet' (sortByScore pop ds) g p c sT nextGen ds) sS ) ds
-    where
 -}
