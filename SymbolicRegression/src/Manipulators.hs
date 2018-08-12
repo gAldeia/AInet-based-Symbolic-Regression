@@ -30,7 +30,7 @@ type Pop         = [Le]
 type Operator    = (Double -> Double)
 type Op'n'Name   = (Operator, String)
 type SimplifyT   = Double
-type SupressionT = Double
+type SupressionT = Int
 type PopSize     = Int
 type LeSize      = Int
 
@@ -188,7 +188,7 @@ sortByScore pop ds = [le' | (sort, le') <- sorted]
 
 mutatePop :: Pop -> Int -> IO (Pop)
 -- | Calls the mutation method in all expressions. need to pass as argument the number of variables
-mutatePop [] n = do return []
+mutatePop [] n      = do return []
 mutatePop (p:pop) n = do
     mutatedI <- mutateInter n p
     mutatedIT <- mutateTrans mutatedI
@@ -197,10 +197,39 @@ mutatePop (p:pop) n = do
 
 rndPopulation ::  PopSize -> LeSize -> Dataset -> IO (Pop)
 --returns a random population
-rndPopulation 0 _ _ = do return []
+rndPopulation 0 _ _  = do return []
 rndPopulation p l ds = do
     le  <- randomExpression (ncols $ fst ds) l
     le' <- rndPopulation (p-1) l ds
     return (le:le')
 
-    
+distExpr :: Le -> Le -> Int
+distExpr [ ] [ ] = 0
+distExpr [ ] le2 = (dummyDist $ head le2) + (distExpr [] le2)
+    where
+        dummyDist (c,o,e)
+            | c==0      = 1 + sum[abs ex | ex <-e]
+            | otherwise = sum[abs ex | ex <-e] 
+distExpr le1 [ ] = (dummyDist $ head le1) + (distExpr [] le1)
+    where
+        dummyDist (c,o,e)
+            | c==0      = 1 + sum[abs ex | ex <-e]
+            | otherwise = sum[abs ex | ex <-e] 
+distExpr (it:its) (it':its') = (itDist it it') + (distExpr its its')
+    where
+        expDist exp exp' = sum[abs(e-e') | (e,e') <- zip exp exp']
+        itDist (c,o,e) (c',o',e')
+            | c==c'     = expDist e e'
+            | otherwise = 1 + (expDist e e')
+
+supress :: Pop -> SupressionT -> Dataset -> Pop
+supress [] _ _ = []
+supress (p:ps) supT ds = supress (ps') supT ds
+    where
+        closest = snd $ head $ sort[ (distExpr p le, le) | le<-ps ]
+        worst le1 le2
+            | (evaluate le1 ds)>(evaluate le2 ds) = le2
+            | otherwise            = le1
+        ps' = if ((distExpr p (worst p closest)) < supT) then
+                [l | l<-ps, l/=(worst p closest)]
+              else ps
