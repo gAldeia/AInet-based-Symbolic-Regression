@@ -1,0 +1,209 @@
+Configuring primitive-0.6.3.0...
+Preprocessing library for primitive-0.6.3.0..
+Building library for primitive-0.6.3.0..
+[ 1 of 12] Compiling Control.Monad.Primitive ( Control/Monad/Primitive.hs, .stack-work/dist/x86_64-linux/Cabal-2.2.0.1/build/Control/Monad/Primitive.o )
+
+[;1mControl/Monad/Primitive.hs:46:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wdeprecations[0m[0m[;1m][0m[0m[;1m
+    Module ‘Control.Monad.Trans.List’ is deprecated:
+      This transformer is invalid on most monads[0m[0m
+[;1m[34m   |[0m[0m
+[;1m[34m46 |[0m[0m [;1m[35mimport Control.Monad.Trans.List     ( ListT    )[0m[0m
+[;1m[34m   |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1mControl/Monad/Primitive.hs:48:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wdeprecations[0m[0m[;1m][0m[0m[;1m
+    Module ‘Control.Monad.Trans.Error’ is deprecated:
+      Use Control.Monad.Trans.Except instead[0m[0m
+[;1m[34m   |[0m[0m
+[;1m[34m48 |[0m[0m [;1m[35mimport Control.Monad.Trans.Error    ( ErrorT, Error)[0m[0m
+[;1m[34m   |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1mControl/Monad/Primitive.hs:111:36: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wdeprecations[0m[0m[;1m][0m[0m[;1m
+    In the use of type constructor or class ‘ListT’
+    (imported from Control.Monad.Trans.List):
+    Deprecated: "This transformer is invalid on most monads"[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m111 |[0m[0m instance PrimMonad m => PrimMonad ([;1m[35mListT[0m[0m m) where
+[;1m[34m    |[0m[0m[;1m[35m                                    ^^^^^[0m[0m
+[0m[0m[0m
+[;1mControl/Monad/Primitive.hs:112:19: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wdeprecations[0m[0m[;1m][0m[0m[;1m
+    In the use of type constructor or class ‘ListT’
+    (imported from Control.Monad.Trans.List):
+    Deprecated: "This transformer is invalid on most monads"[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m112 |[0m[0m   type PrimState ([;1m[35mListT[0m[0m m) = PrimState m
+[;1m[34m    |[0m[0m[;1m[35m                   ^^^^^[0m[0m
+[0m[0m[0m
+[;1mControl/Monad/Primitive.hs:119:11: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wdeprecations[0m[0m[;1m][0m[0m[;1m
+    In the use of type constructor or class ‘Error’
+    (imported from Control.Monad.Trans.Error):
+    Deprecated: "Use Control.Monad.Trans.Except instead"[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m119 |[0m[0m instance ([;1m[35mError[0m[0m e, PrimMonad m) => PrimMonad (ErrorT e m) where
+[;1m[34m    |[0m[0m[;1m[35m           ^^^^^[0m[0m
+[0m[0m[0m
+[;1mControl/Monad/Primitive.hs:119:47: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wdeprecations[0m[0m[;1m][0m[0m[;1m
+    In the use of type constructor or class ‘ErrorT’
+    (imported from Control.Monad.Trans.Error):
+    Deprecated: "Use Control.Monad.Trans.Except instead"[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m119 |[0m[0m instance (Error e, PrimMonad m) => PrimMonad ([;1m[35mErrorT[0m[0m e m) where
+[;1m[34m    |[0m[0m[;1m[35m                                               ^^^^^^[0m[0m
+[0m[0m[0m
+[;1mControl/Monad/Primitive.hs:120:19: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wdeprecations[0m[0m[;1m][0m[0m[;1m
+    In the use of type constructor or class ‘ErrorT’
+    (imported from Control.Monad.Trans.Error):
+    Deprecated: "Use Control.Monad.Trans.Except instead"[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m120 |[0m[0m   type PrimState ([;1m[35mErrorT[0m[0m e m) = PrimState m
+[;1m[34m    |[0m[0m[;1m[35m                   ^^^^^^[0m[0m
+[0m[0m[0m[ 2 of 12] Compiling Data.Primitive.Internal.Compat ( Data/Primitive/Internal/Compat.hs, .stack-work/dist/x86_64-linux/Cabal-2.2.0.1/build/Data/Primitive/Internal/Compat.o )
+[ 3 of 12] Compiling Data.Primitive.Array ( Data/Primitive/Array.hs, .stack-work/dist/x86_64-linux/Cabal-2.2.0.1/build/Data/Primitive/Array.o )
+[ 4 of 12] Compiling Data.Primitive.MachDeps ( Data/Primitive/MachDeps.hs, .stack-work/dist/x86_64-linux/Cabal-2.2.0.1/build/Data/Primitive/MachDeps.o )
+[ 5 of 12] Compiling Data.Primitive.Internal.Operations ( Data/Primitive/Internal/Operations.hs, .stack-work/dist/x86_64-linux/Cabal-2.2.0.1/build/Data/Primitive/Internal/Operations.o )
+[ 6 of 12] Compiling Data.Primitive.MutVar ( Data/Primitive/MutVar.hs, .stack-work/dist/x86_64-linux/Cabal-2.2.0.1/build/Data/Primitive/MutVar.o )
+[ 7 of 12] Compiling Data.Primitive.SmallArray ( Data/Primitive/SmallArray.hs, .stack-work/dist/x86_64-linux/Cabal-2.2.0.1/build/Data/Primitive/SmallArray.o )
+
+[;1mData/Primitive/SmallArray.hs:79:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wunused-imports[0m[0m[;1m][0m[0m[;1m
+    The import of ‘Data.Monoid’ is redundant
+      except perhaps to import instances from ‘Data.Monoid’
+    To import instances alone, use: import Data.Monoid()[0m[0m
+[;1m[34m   |[0m[0m
+[;1m[34m79 |[0m[0m [;1m[35mimport Data.Monoid[0m[0m
+[;1m[34m   |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m[ 8 of 12] Compiling Data.Primitive.Types ( Data/Primitive/Types.hs, .stack-work/dist/x86_64-linux/Cabal-2.2.0.1/build/Data/Primitive/Types.o )
+[ 9 of 12] Compiling Data.Primitive.ByteArray ( Data/Primitive/ByteArray.hs, .stack-work/dist/x86_64-linux/Cabal-2.2.0.1/build/Data/Primitive/ByteArray.o )
+[10 of 12] Compiling Data.Primitive.Addr ( Data/Primitive/Addr.hs, .stack-work/dist/x86_64-linux/Cabal-2.2.0.1/build/Data/Primitive/Addr.o )
+[11 of 12] Compiling Data.Primitive   ( Data/Primitive.hs, .stack-work/dist/x86_64-linux/Cabal-2.2.0.1/build/Data/Primitive.o )
+[12 of 12] Compiling Data.Primitive.UnliftedArray ( Data/Primitive/UnliftedArray.hs, .stack-work/dist/x86_64-linux/Cabal-2.2.0.1/build/Data/Primitive/UnliftedArray.o )
+ignoring (possibly broken) abi-depends field for packages
+Preprocessing library for primitive-0.6.3.0..
+Running Haddock on library for primitive-0.6.3.0..
+
+Control/Monad/Primitive.hs:46:1: warning: [-Wdeprecations]
+    Module ‘Control.Monad.Trans.List’ is deprecated:
+      This transformer is invalid on most monads
+   |
+46 | import Control.Monad.Trans.List     ( ListT    )
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Control/Monad/Primitive.hs:48:1: warning: [-Wdeprecations]
+    Module ‘Control.Monad.Trans.Error’ is deprecated:
+      Use Control.Monad.Trans.Except instead
+   |
+48 | import Control.Monad.Trans.Error    ( ErrorT, Error)
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Control/Monad/Primitive.hs:111:36: warning: [-Wdeprecations]
+    In the use of type constructor or class ‘ListT’
+    (imported from Control.Monad.Trans.List):
+    Deprecated: "This transformer is invalid on most monads"
+    |
+111 | instance PrimMonad m => PrimMonad (ListT m) where
+    |                                    ^^^^^
+
+Control/Monad/Primitive.hs:112:19: warning: [-Wdeprecations]
+    In the use of type constructor or class ‘ListT’
+    (imported from Control.Monad.Trans.List):
+    Deprecated: "This transformer is invalid on most monads"
+    |
+112 |   type PrimState (ListT m) = PrimState m
+    |                   ^^^^^
+
+Control/Monad/Primitive.hs:119:11: warning: [-Wdeprecations]
+    In the use of type constructor or class ‘Error’
+    (imported from Control.Monad.Trans.Error):
+    Deprecated: "Use Control.Monad.Trans.Except instead"
+    |
+119 | instance (Error e, PrimMonad m) => PrimMonad (ErrorT e m) where
+    |           ^^^^^
+
+Control/Monad/Primitive.hs:119:47: warning: [-Wdeprecations]
+    In the use of type constructor or class ‘ErrorT’
+    (imported from Control.Monad.Trans.Error):
+    Deprecated: "Use Control.Monad.Trans.Except instead"
+    |
+119 | instance (Error e, PrimMonad m) => PrimMonad (ErrorT e m) where
+    |                                               ^^^^^^
+
+Control/Monad/Primitive.hs:120:19: warning: [-Wdeprecations]
+    In the use of type constructor or class ‘ErrorT’
+    (imported from Control.Monad.Trans.Error):
+    Deprecated: "Use Control.Monad.Trans.Except instead"
+    |
+120 |   type PrimState (ErrorT e m) = PrimState m
+    |                   ^^^^^^
+
+Data/Primitive/SmallArray.hs:79:1: warning: [-Wunused-imports]
+    The import of ‘Data.Monoid’ is redundant
+      except perhaps to import instances from ‘Data.Monoid’
+    To import instances alone, use: import Data.Monoid()
+   |
+79 | import Data.Monoid
+   | ^^^^^^^^^^^^^^^^^^
+Haddock coverage:
+  81% ( 17 / 21) in 'Control.Monad.Primitive'
+  Missing documentation for:
+    unsafeInlinePrim (Control/Monad/Primitive.hs:246)
+    unsafeInlineIO (Control/Monad/Primitive.hs:250)
+    unsafeInlineST (Control/Monad/Primitive.hs:254)
+    touch (Control/Monad/Primitive.hs:258)
+  90% ( 19 / 21) in 'Data.Primitive.Array'
+  Missing documentation for:
+    sizeofArray (Data/Primitive/Array.hs:81)
+    sizeofMutableArray (Data/Primitive/Array.hs:85)
+   3% (  1 / 35) in 'Data.Primitive.MachDeps'
+  Missing documentation for:
+    sIZEOF_CHAR (Data/Primitive/MachDeps.hs:19)
+    aLIGNMENT_CHAR (Data/Primitive/MachDeps.hs:19)
+    sIZEOF_INT (Data/Primitive/MachDeps.hs:19)
+    aLIGNMENT_INT (Data/Primitive/MachDeps.hs:19)
+    sIZEOF_WORD (Data/Primitive/MachDeps.hs:19)
+    aLIGNMENT_WORD (Data/Primitive/MachDeps.hs:19)
+    sIZEOF_DOUBLE (Data/Primitive/MachDeps.hs:19)
+    aLIGNMENT_DOUBLE (Data/Primitive/MachDeps.hs:19)
+    sIZEOF_FLOAT (Data/Primitive/MachDeps.hs:19)
+    aLIGNMENT_FLOAT (Data/Primitive/MachDeps.hs:19)
+    sIZEOF_PTR (Data/Primitive/MachDeps.hs:19)
+    aLIGNMENT_PTR (Data/Primitive/MachDeps.hs:19)
+    sIZEOF_FUNPTR (Data/Primitive/MachDeps.hs:19)
+    aLIGNMENT_FUNPTR (Data/Primitive/MachDeps.hs:19)
+    sIZEOF_STABLEPTR (Data/Primitive/MachDeps.hs:19)
+    aLIGNMENT_STABLEPTR (Data/Primitive/MachDeps.hs:19)
+    sIZEOF_INT8 (Data/Primitive/MachDeps.hs:19)
+    aLIGNMENT_INT8 (Data/Primitive/MachDeps.hs:19)
+    sIZEOF_WORD8 (Data/Primitive/MachDeps.hs:19)
+    aLIGNMENT_WORD8 (Data/Primitive/MachDeps.hs:19)
+    sIZEOF_INT16 (Data/Primitive/MachDeps.hs:19)
+    aLIGNMENT_INT16 (Data/Primitive/MachDeps.hs:19)
+    sIZEOF_WORD16 (Data/Primitive/MachDeps.hs:19)
+    aLIGNMENT_WORD16 (Data/Primitive/MachDeps.hs:19)
+    sIZEOF_INT32 (Data/Primitive/MachDeps.hs:19)
+    aLIGNMENT_INT32 (Data/Primitive/MachDeps.hs:19)
+    sIZEOF_WORD32 (Data/Primitive/MachDeps.hs:19)
+    aLIGNMENT_WORD32 (Data/Primitive/MachDeps.hs:19)
+    sIZEOF_INT64 (Data/Primitive/MachDeps.hs:19)
+    aLIGNMENT_INT64 (Data/Primitive/MachDeps.hs:19)
+    sIZEOF_WORD64 (Data/Primitive/MachDeps.hs:19)
+    aLIGNMENT_WORD64 (Data/Primitive/MachDeps.hs:19)
+    Word64_# (Data/Primitive/MachDeps.hs:120)
+    Int64_# (Data/Primitive/MachDeps.hs:121)
+ 100% (  9 /  9) in 'Data.Primitive.MutVar'
+  78% ( 14 / 18) in 'Data.Primitive.SmallArray'
+  Missing documentation for:
+    SmallArray (Data/Primitive/SmallArray.hs:93)
+    SmallMutableArray (Data/Primitive/SmallArray.hs:126)
+    sizeofSmallArray (Data/Primitive/SmallArray.hs:364)
+    sizeofSmallMutableArray (Data/Primitive/SmallArray.hs:372)
+ 100% (  5 /  5) in 'Data.Primitive.Types'
+  94% ( 29 / 31) in 'Data.Primitive.ByteArray'
+  Missing documentation for:
+    ByteArray#
+    MutableByteArray#
+ 100% ( 16 / 16) in 'Data.Primitive.Addr'
+ 100% (  7 /  7) in 'Data.Primitive'
+ 100% ( 21 / 21) in 'Data.Primitive.UnliftedArray'
+Documentation created:
+.stack-work/dist/x86_64-linux/Cabal-2.2.0.1/doc/html/primitive/index.html,
+.stack-work/dist/x86_64-linux/Cabal-2.2.0.1/doc/html/primitive/primitive.txt
+Installing library in /home/Guilherme/.stack/snapshots/x86_64-linux/lts-12.2/8.4.3/lib/x86_64-linux-ghc-8.4.3/primitive-0.6.3.0-DaZpcxwJp2TGn8ITSgfI4C
+Registering library for primitive-0.6.3.0..

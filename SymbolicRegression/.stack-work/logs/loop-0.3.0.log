@@ -1,0 +1,16 @@
+Configuring loop-0.3.0...
+Preprocessing library for loop-0.3.0..
+Building library for loop-0.3.0..
+[1 of 2] Compiling Control.Loop     ( src/Control/Loop.hs, .stack-work/dist/x86_64-linux/Cabal-2.2.0.1/build/Control/Loop.o )
+[2 of 2] Compiling Control.Loop.Internal ( src/Control/Loop/Internal.hs, .stack-work/dist/x86_64-linux/Cabal-2.2.0.1/build/Control/Loop/Internal.o )
+ignoring (possibly broken) abi-depends field for packages
+Preprocessing library for loop-0.3.0..
+Running Haddock on library for loop-0.3.0..
+Haddock coverage:
+ 100% (  7 /  7) in 'Control.Loop'
+ 100% (  3 /  3) in 'Control.Loop.Internal'
+Documentation created:
+.stack-work/dist/x86_64-linux/Cabal-2.2.0.1/doc/html/loop/index.html,
+.stack-work/dist/x86_64-linux/Cabal-2.2.0.1/doc/html/loop/loop.txt
+Installing library in /home/Guilherme/.stack/snapshots/x86_64-linux/lts-12.2/8.4.3/lib/x86_64-linux-ghc-8.4.3/loop-0.3.0-Gcl98xwz1Mc7L0xRqBlnhk
+Registering library for loop-0.3.0..
