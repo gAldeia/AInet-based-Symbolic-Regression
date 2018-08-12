@@ -1,9 +1,17 @@
-module Main where
+{-|
+Module      : Main
+Description : Main method to 
+Copyright   : (c) Guilherme S I Aldeia, 2018
+                  Heitor R Savegnago, 2018
+License     : GPL-3
+Maintainer  : guilherme.aldeia@aluno.ufabc.edu.br
+Stability   : experimental
+Portability : POSIX
 
-{-
 Haskell implementation of AInet based symbolic regression algorithm, using
 the IT datastructure.
 -}
+module Main where
 
 import Dataset
 import Manipulators
@@ -11,7 +19,7 @@ import AInet
 import System.Random
 
 
---sample list-of-lists to create a dataset, function with 4 variables
+-- |sample list-of-lists to create a dataset, function with 4 variables
 sample :: [[Double]]
 sample = [[1.0,1.0,1.0,1.0,1.0],
           [2.0,2.0,2.0,2.0,2.0],
@@ -23,6 +31,7 @@ sample = [[1.0,1.0,1.0,1.0,1.0],
 
 -- MAIN METHOD -----------------------------------------------------------------
 main :: IO ()
+-- |Main method
 main = do
     --seed of the global generator, used to make deterministic
     let seed = 42 :: Int
