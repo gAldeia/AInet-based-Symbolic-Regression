@@ -4,7 +4,7 @@ title: Your awesome title
 author: GitHub User
 email: your-email@domain.com
 
-baseurl: https://galdeia.github.io/AInet-based-Symbolic-Regression/docs/
+root: /
 
 kramdown:  
   parse_block_html: true
