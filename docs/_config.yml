@@ -6,5 +6,7 @@ email: your-email@domain.com
 
 markdown: kramdown
 
+baseurl: /project
+
 #Analytics
 google_analytics:
