@@ -1,36 +1,8 @@
 name: AInet Symbolic Regression
 
-#Configurations
-theme: jekyll-theme-minimal
-encoding: UTF-8
-kramdown:
-  input: GFM
-  hard_wrap: false
-future: true
-jailed: false
-
-uistring:
-    title: Jekyll Doc Project theme # title to appear in nav bar and page meta
-    description: Description of the site # Displays as site description meta tag for site
-    copyright: 2017 Your Company, Inc. # appears in footer
-    breadcrumb_home_name: Home # display name for "Home" path in the breadcrumb
-    tableofcontents: Table of Contents # text that appears before in-page table of contents
-    expandall: Expand All # appears as text in sidebar to expand all levels
-    collapseall: Collapse All # appears as text in sidebar to collapse all levels
-    search_placeholder_text: Search ... # appears as placeholder in search field
-    no_search_results_found: No matches found. Try using other keywords?
-    feedback_link_name: Feedback # name of Feedback link
-    feedback_subject_line: Feedback about docs # Auto-filled Subject link of email
-
-
-#Navbar
-navbar-links:
-  About Me: "aboutme"
-
-#Footer
-footer-links:
-  email: guilherme.seidyo@gmail.com
-  github: gAldeia
+title: Your awesome title
+author: GitHub User
+email: your-email@domain.com
 
 #Analytics
 google_analytics:
