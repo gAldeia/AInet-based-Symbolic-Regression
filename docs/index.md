@@ -12,19 +12,19 @@ Haskell implementation of a symbolic regression algorithm. The regression search
 The regression is done by creating a random population of solutions, where each solution is a linear combination of IT terms. Then, for a given number of generations, the algorithm performs a symbolic regression inspired by the biological immune system.
 
 
-## The IT (Interaction-Transformation) data structure
+## 1.1 The IT (Interaction-Transformation) data structure
 
 The IT data structure is like the building block of expressions in this symbolic regression algorithm. The expressions are composed of a linear sum of many ITs, where each IT is a function composition that can be applied to a sample. 
 
 The samples are the values of the database used to train the algorithm, or unknown values that you can pass to the model to predict the behaviour of the target variable given specific circunstances.
 
 
-## The AInet algorithm
+## 1.2 The AInet algorithm
 
 The AInet algorithm is based in a theory that tries to explain the biological immune system.
 
 
-## Further reading
+## 1.3 Further reading
 
 - IT datastructure by Fabrício Olivetti de França
 - (PDF containing the pseudoalgorithms)
@@ -34,7 +34,7 @@ The AInet algorithm is based in a theory that tries to explain the biological im
 
 -----
 
-# Source files
+# 2 Source files
 
 The main project is within the SymbolicRegression folder. There are 4 modules that compose the algorithm:
 
@@ -46,7 +46,7 @@ The main project is within the SymbolicRegression folder. There are 4 modules th
 | Main.hs | Main file, containing an example of how to use the algorithm and our recomended parameters to run it.|
 
 
-## Our Types, Newtypes and Classes
+## 2.1 Our Types, Newtypes and Classes
 
 To increase readability of our code, we created several new datatypes, listed below:
 
@@ -57,7 +57,7 @@ To increase readability of our code, we created several new datatypes, listed be
 
 -----
 
-# Instalation
+# 3 Instalation
 
 Open the SymbolicRegression folder in a terminal and execute the folowing commands:
 
@@ -71,7 +71,7 @@ stack exec
 
 -----
 
-# Usage
+# 4 Usage
 
 Just set the parameters and get the result from the regression IO (Le)
 
@@ -92,3 +92,5 @@ res <- ainet g p l c supT simT ds
 print (textRepresentation res)
 print (evaluate res ds)
 ```
+
+> Tip: note that all of the parameters are presented in the section 2.1 as *Type*, so they are just a rename of *Int*, *Double* and *[lists]*. 
