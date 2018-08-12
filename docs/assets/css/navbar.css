@@ -97,7 +97,6 @@
   background: #232323;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
-  /* to stop flickering of text in safari */
   
   transform-origin: 0% 0%;
   transform: translate(-100%, 0);
@@ -108,7 +107,7 @@
 #menu li
 {
   padding: 10px 0;
-  font-size: 22px;
+  font-size: 15px;
 }
 
 /*
