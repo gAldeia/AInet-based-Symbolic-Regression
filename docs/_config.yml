@@ -6,7 +6,7 @@ email: your-email@domain.com
 
 markdown: kramdown
 
-baseurl: /project
+baseurl: /AInet-based-Symbolic-Regression
 
 #Analytics
 google_analytics:
