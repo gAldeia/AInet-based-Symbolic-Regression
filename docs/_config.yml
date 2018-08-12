@@ -6,7 +6,5 @@ email: your-email@domain.com
 
 markdown: kramdown
 
-baseurl: http://name.github.io/AInet-based-Symbolic-Regression/docs
-
 #Analytics
 google_analytics:
