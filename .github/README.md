@@ -47,7 +47,7 @@ This way, the iteration of those stages will produce a strongly specialized popu
 
 
 
-1.2.2 The IT-AInet algorithm
+### 1.2.2 The IT-AInet algorithm
 
 The algorithm used to perform the regression is based on the AInet family, and works just like described above: creating clones, applying mutation and iterating through generations.
 
