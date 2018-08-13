@@ -34,7 +34,7 @@ ainet' 0 pop _ _ _ _ = do return pop
 ainet' g pop l c supT ds = do
     --the number of clones is the index of each solution (since the solutions are ordered from worst to best). this way there will be more best solutions and few bad solutions)
 
-    let clones = concat[  [pop !! leIndex | i<- [0..c']] | (leIndex, c') <- zip [0..(length pop)-1] [0..c]  ]
+    let clones = concat population
     mutatedClones <- mutatePop clones (ncols $ fst ds)
 
     let adjustedMutatedCLones = map (`adjust` ds) mutatedClones
@@ -45,7 +45,10 @@ ainet' g pop l c supT ds = do
     pop' <- ainet' (g-1) (sortByScore (supress newPop supT ds) ds) l c supT ds
 
     return pop'
-
+    where 
+        population = [ afinityCloning lIc | lIc <- afinityZipping ]
+        afinityCloning (leIndex, c') = [pop !! leIndex | i<- [0..c']]
+        afinityZipping = zip [(length pop - 1)..0] [0..c]
 
 ainet :: NumGen -> PopSize -> LeSize -> NumClones -> SupressionT -> SimplifyT -> Dataset -> IO (Le)
 --performs an AInet based symbolic regression for the given number of generations

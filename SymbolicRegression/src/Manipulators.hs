@@ -80,7 +80,7 @@ randomExps :: Int -> IO ([Int])
 randomExps 0 = do return []
 randomExps n = do
     r  <- randomRIO(0,7)
-    r' <-  randomExps (n-1)
+    r' <- randomExps (n-1)
     return (r:r')
 
 randomIt :: Int -> IO ((Double, Int, [Int]))
