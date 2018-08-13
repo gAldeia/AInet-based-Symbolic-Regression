@@ -25,6 +25,8 @@ To evaluate a IT, first we perform the *g* function, that takes as argument the 
 
 After that, the *f* function is applied to the result obtained from *g*, *f* being the first element of the tuple that represents one IT.
 
+Also, there's a linear coefficient multiplied to every IT to adjust and minimize the error.
+
 Given this datastructure, the algorithm creates it's solutions by composing linear expressions of IT expressions, and performs the symbolic search manipulating those expressions.
 
 
@@ -88,6 +90,28 @@ To increase readability of our code, we created several new datatypes, listed be
 ### 2.1.2 Manipulators Module
 
 | Name | Datatype | What is this |
+|:-----|:---------|:-------------|
+| Score| newtype (Double, deriving Eq, Ord, Show)| Double ranging from [0,1] indicating the performance of the solution for a given dataset|
+| Coeff| newtype (Double, deriving Eq, Ord, Show)| Coefficient associated with the ITs|
+| Exps| newtype ([Int], deriving Eq, Ord, Show)| Vector of expoents of ITs, to be applied to the samples on IT evaluation|
+| Op| newtype (Int, deriving Eq, Ord, Show)| Index of the *operator* of the ITs|
+| It|  | IT data structure|
+| Le|  | Linear combination of ITs|
+| Pop|  | Vector containing many Les, called population|
+| Operator|  |  One-argument functions, used to compose ITs|
+| Op'n'Name|  |  Tuple containing One operator and one string to print it|
+|SimplifyT|  |  Simplification threshold|
+|SupressionT|  |  Supression threshold|
+|PopSize|  |  Size of the population|
+|LeSize|  |  Size of the expressions|
+
+
+### 2.1.3 Ainet Module
+
+| Name | Datatype | What is this |
+|:-----|:---------|:-------------|
+| NumGen| type (Int)| Number of generations to perform the regression|
+| NumClones| type (Int)| Highest number of clones to create on the AInet algorithm|
 
 
 
