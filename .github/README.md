@@ -74,7 +74,10 @@ To increase readability of our code, we created several new datatypes, listed be
 
 | Name | Datatype | What is this |
 |:-----|:---------|:-------------|
-|Score| Class (deriving show nananan) | This is how we measure the accuracy of the expressions. The value ranges from 0 to 1, being 0 the worst score and 1 the best possible score. Based on the score the solutions are selected as potential answers to the regression.|
+| X| type (Matrix Double)| Matrix of explanatory variables|
+| Y| type (Matrix Double)| Column matrix of target variables|
+| Dataset| type ((X,Y))| Tuple with explanatory variables associated with the target variable|
+| Datapoint| type (([Double], Double))|A single line from a Dataset in a function friendly type|
 
 
 
