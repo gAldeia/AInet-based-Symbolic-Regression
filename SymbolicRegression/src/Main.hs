@@ -35,7 +35,7 @@ main :: IO ()
 --  values here were used for testing the algorithm, and are our recomendated
 --  values.
 main = do
-    -- |seed of the global generator, used to make deterministic.
+    -- seed of the global generator, used to make deterministic.
     let seed = 42 :: Int
 
     setStdGen $ mkStdGen seed

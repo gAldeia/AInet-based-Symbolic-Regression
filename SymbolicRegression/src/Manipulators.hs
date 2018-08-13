@@ -233,7 +233,8 @@ mutatePop (p:pop) n = do
     return (mutatedIT:remaining)
 
 rndPopulation ::  PopSize -> LeSize -> Dataset -> IO (Pop)
--- ^returns a random population
+-- ^Takes the size of the population, the size of the expressions and a dataset
+--  used to train the population. Then returns a random population.
 rndPopulation 0 _ _  = do return []
 rndPopulation p l ds = do
     le  <- randomExpression (ncols $ fst ds) l
@@ -241,11 +242,14 @@ rndPopulation p l ds = do
     return (le:le')
 
 dummyDist :: It -> Int
+-- ^Takes one It and calculates the distance between the IT and a dummy it
+--  (internal use only).
 dummyDist (It(Coeff c,_,Exps e))
         | c==0      = 1 + sum[abs ex | ex <-e]
         | otherwise =     sum[abs ex | ex <-e] 
 
 distExpr :: Le -> Le -> Int
+-- ^Takes two LEs and return an integer representing the index of similarity.
 distExpr [ ] [ ] = 0
 distExpr [ ] (e:le) = (dummyDist e) + (distExpr [] le)
 distExpr (e:le) [ ] = (dummyDist e) + (distExpr [] le)
@@ -257,9 +261,12 @@ distExpr (it:its) (it':its') = (itDist it it') + (distExpr its its')
             | otherwise = 1 + (expDist e e')
 
 supress :: Pop -> SupressionT -> Dataset -> Pop
+-- ^Takes an population, a supression threshold and a dataset and searchs for
+--  nearly identical solutions. Then, keeps the best of them and discarts the
+--  remaining.
 supress [] _ _ = []
 supress (p:[]) _ _ = [p]
 supress (p:ps) supT ds = (head neighbors):(supress (ps') supT ds)
     where
         neighbors = sortByScore (p:[l | l<-ps, (distExpr p l) < supT]) ds
-        ps' = [l | l<-ps, (distExpr p l) > supT] --expressions with distances higher than treshold
+        ps' = [l | l<-ps, (distExpr p l) > supT]
