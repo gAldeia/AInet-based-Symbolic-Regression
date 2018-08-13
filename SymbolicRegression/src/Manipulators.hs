@@ -249,16 +249,10 @@ dummyDist (It(Coeff c,_,Exps e))
         | otherwise =     sum[abs ex | ex <-e] 
 
 distExpr :: Le -> Le -> Int
-<<<<<<< HEAD
 -- ^Takes two LEs and return an integer representing the index of similarity.
-distExpr [ ] [ ] = 0
-distExpr [ ] (e:le) = (dummyDist e) + (distExpr [] le)
-distExpr (e:le) [ ] = (dummyDist e) + (distExpr [] le)
-=======
-distExpr [    ] [    ] = 0
-distExpr [    ] (e:le) = (dummyDist e) + (distExpr [] le)
-distExpr (e:le) [    ] = (dummyDist e) + (distExpr [] le)
->>>>>>> 152d1701ce5dee818fd12f26dd5479d86bbf764c
+distExpr [      ] [        ] = 0
+distExpr [      ] ( e : le ) = (dummyDist e) + (distExpr [] le)
+distExpr ( e:le ) [        ] = (dummyDist e) + (distExpr [] le)
 distExpr (it:its) (it':its') = (itDist it it') + (distExpr its its')
     where
         expDist exp exp' = sum[abs(e-e') | (e,e') <- zip exp exp']
@@ -267,14 +261,10 @@ distExpr (it:its) (it':its') = (itDist it it') + (distExpr its its')
             | otherwise = 1 + (expDist e e')
 
 supress :: Pop -> SupressionT -> Dataset -> Pop
-<<<<<<< HEAD
 -- ^Takes an population, a supression threshold and a dataset and searchs for
 --  nearly identical solutions. Then, keeps the best of them and discarts the
 --  remaining.
-supress [] _ _ = []
-=======
-supress [    ] _ _ = []
->>>>>>> 152d1701ce5dee818fd12f26dd5479d86bbf764c
+supress [    ] _ _ = [ ]
 supress (p:[]) _ _ = [p]
 supress (p:ps) supT ds = (head neighbors):(supress (ps') supT ds)
     where
