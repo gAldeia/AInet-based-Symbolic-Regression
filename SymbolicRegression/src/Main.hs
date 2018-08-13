@@ -1,6 +1,6 @@
 {-|
 Module      : Main
-Description : Main method to 
+Description : Main method containing example of usage.
 Copyright   : (c) Guilherme S I Aldeia, 2018
                   Heitor R Savegnago, 2018
 License     : GPL-3
@@ -21,7 +21,7 @@ import System.Random
 
 
 sample :: [[Double]]
--- ^Auxiliary list of lists to create a dataset and run the AInet algorithm
+-- ^Auxiliary list of lists to create a dataset and run the AInet algorithm.
 sample = [[1.0,1.0,1.0,1.0,1.0],
           [2.0,2.0,2.0,2.0,2.0],
           [3.0,3.0,3.0,3.0,3.0],
@@ -35,7 +35,7 @@ main :: IO ()
 --  values here were used for testing the algorithm, and are our recomendated
 --  values.
 main = do
-    -- |seed of the global generator, used to make deterministic
+    -- |seed of the global generator, used to make deterministic.
     let seed = 42 :: Int
 
     setStdGen $ mkStdGen seed

@@ -1,10 +1,20 @@
-module AInet where 
+{-|
+Module      : AInet
+Description : Dataset creation and manipulation 
+Copyright   : (c) Guilherme S I Aldeia, 2018
+                  Heitor R Savegnago, 2018
+License     : GPL-3
+Maintainer  : guilherme.aldeia@aluno.ufabc.edu.br
+              heitor.rodrigues@aluno.ufabc.edu.br
+Stability   : experimental
+Portability : POSIX
 
-{-
 Symbolic regression algorithm. The regression search is done by means of the IT
 data structure, and the general structure of the algorithm is based on the AInet
 algorithm (artificial imunne network).
 -}
+
+module AInet where 
 
 import Dataset
 import Manipulators
@@ -24,7 +34,7 @@ ainet' 0 pop _ _ _ _ = do return pop
 ainet' g pop l c supT ds = do
     --the number of clones is the index of each solution (since the solutions are ordered from worst to best). this way there will be more best solutions and few bad solutions)
 
-    let clones = concat[  [pop !! leIndex | i<- [0..leIndex-1]] | leIndex <- [0..(length pop)-1]  ]
+    let clones = concat[  [pop !! leIndex | i<- [0..c']] | (leIndex, c') <- zip [0..(length pop)-1] [0..c]  ]
     mutatedClones <- mutatePop clones (ncols $ fst ds)
 
     let adjustedMutatedCLones = map (`adjust` ds) mutatedClones

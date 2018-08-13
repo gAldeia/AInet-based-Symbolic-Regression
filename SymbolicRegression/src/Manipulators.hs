@@ -1,20 +1,25 @@
-module Manipulators where
+{-|
+Module      : Manipulators
+Description : Dataset creation and manipulation 
+Copyright   : (c) Guilherme S I Aldeia, 2018
+                  Heitor R Savegnago, 2018
+License     : GPL-3
+Maintainer  : guilherme.aldeia@aluno.ufabc.edu.br
+              heitor.rodrigues@aluno.ufabc.edu.br
+Stability   : experimental
+Portability : POSIX
 
-{-
 Module containing implementation of expression manipulation functions.
 -}
 
+module Manipulators where
+
 import Dataset
 import System.Random
-import Data.Matrix (fromLists,
-                    fromList,
-                    toList,
-                    nrows,
-                    ncols,
-                    transpose,
-                    multStd,
-                    inverse)
 import Data.List   (sort)
+import Data.Matrix (fromLists, fromList, toList, --lists manipulation
+                    transpose, multStd, inverse, --matrix operations
+                    nrows, ncols)                --accessing functions
 
 
 -- EXPRESSION OPERATIONS -------------------------------------------------------
@@ -57,6 +62,7 @@ nomeator :: Op'n'Name -> String
 --returns the name associated with the operator
 nomeator (_,s) = s
 
+
 --MANIPULATORS ----------------------------------------------------------------
 --EXPRESSION CREATORS -----------------------------------------------------------
 linearExpression :: Int -> Le
@@ -92,6 +98,8 @@ randomExpression n m = do
     le' <- randomExpression n (m-1)
     return (le:le')
 
+
+-- single expression manipulators ----------------------------------------------
 textRepresentation :: Le -> String
 --get a friendly printable expression to better understanding
 textRepresentation le = init $ concat [monomio it | it <- le]
@@ -190,8 +198,8 @@ mutatePop :: Pop -> Int -> IO (Pop)
 -- | Calls the mutation method in all expressions. need to pass as argument the number of variables
 mutatePop [] n      = do return []
 mutatePop (p:pop) n = do
-    mutatedI <- mutateInter n p
-    mutatedIT <- mutateTrans mutatedI
+    --mutatedI <- mutateInter n p
+    mutatedIT <- mutateTrans p
     remaining <- mutatePop pop n 
     return (mutatedIT:remaining)
 
@@ -205,12 +213,12 @@ rndPopulation p l ds = do
 
 distExpr :: Le -> Le -> Int
 distExpr [ ] [ ] = 0
-distExpr [ ] le2 = (dummyDist $ head le2) + (distExpr [] le2)
+distExpr [ ] (e:le) = (dummyDist $ e) + (distExpr [] le)
     where
         dummyDist (c,o,e)
             | c==0      = 1 + sum[abs ex | ex <-e]
             | otherwise = sum[abs ex | ex <-e] 
-distExpr le1 [ ] = (dummyDist $ head le1) + (distExpr [] le1)
+distExpr (e:le) [ ] = (dummyDist $ e) + (distExpr [] le)
     where
         dummyDist (c,o,e)
             | c==0      = 1 + sum[abs ex | ex <-e]
@@ -223,13 +231,14 @@ distExpr (it:its) (it':its') = (itDist it it') + (distExpr its its')
             | otherwise = 1 + (expDist e e')
 
 supress :: Pop -> SupressionT -> Dataset -> Pop
-supress [] _ _ = []
+supress pop _ _ = pop
+
+{-supress [] _ _ = []
+supress (p:[]) _ _ = [p]
 supress (p:ps) supT ds = supress (ps') supT ds
     where
-        closest = snd $ head $ sort[ (distExpr p le, le) | le<-ps ]
         worst le1 le2
             | (evaluate le1 ds)>(evaluate le2 ds) = le2
             | otherwise            = le1
-        ps' = if ((distExpr p (worst p closest)) < supT) then
-                [l | l<-ps, l/=(worst p closest)]
-              else ps
+        ps' = [l | l<-ps, (distExpr p l) > supT, ((worst p l)`elem`ps) == False]
+        -}

@@ -43,7 +43,6 @@ listsToDataset lss = (fromLists xs, fromLists ys)
         xs = [init ls   | ls <- lss] :: [[Double]]
         ys = [[last ls] | ls <- lss] :: [[Double]]
 
-        
 (#) :: Int -> Dataset -> DataPoint
 -- ^Takes a index (must be positive and smaller than the number of rows of the 
 --  dataset) and a dataset. Returns the equivalent row from the dataset, in the
