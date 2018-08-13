@@ -1,8 +1,42 @@
 AInet Symbolic Regression
 =====
 
-[contact](#1.1)
+### English Version:
 
+- [1 AInet Symbolic Regression](#introi)
+    - [1.1 The IT (Interaction-Transformation) data structure](#1.1i)
+    - [1.2 The AInet algorithm](#1.2i)
+        - [1.2.1 The Clonal Selection Principle](#1.2.1i)
+        - [1.2.2 The IT-AInet algorithm](#1.2.2i)
+- [2 Source files](#2i)
+    - [2.1 Our Types, Newtypes and Classes](#2.1i)
+        - [2.1.1 Dataset Module](#2.1.1i)
+        - [2.1.2 Manipulators Module](#2.1.2i)
+        - [2.1.3 Ainet Module](#2.1.3i)
+- [3 Instalation](#3i)
+- [4 Usage](#4i)
+     
+
+### Versão em Português:
+
+- [1 Regressão Simbólica AInet](#introp)
+    - [1.1 A estrutura de dados IT (Interação-Transformação)](#1.1p)
+    - [1.2 O algoritmo AInet](#1.2p)
+        - [1.2.1 Princípio de seleção de clonal](#1.2.1p)
+        - [1.2.2 O algoritmo IT-AInet](#1.2.2p)
+- [2 Códigos-fonte](#2p)
+    - [2.1 Nossos _Types_, _Newtypes_ and _Classes_](#2.1p)
+        - [2.1.1 _Dataset Module_](#2.1.1p)
+        - [2.1.2 _Manipulators Module_](#2.1.2p)
+        - [2.1.3 _Ainet Module_](#2.1.3p)
+- [3 Instalação](#3p)
+- [4 Uso](#4p)
+
+-----
+-----
+
+
+## <a id="introi">1 AInet Symbolic Regression</a>
 
 Haskell implementation of a symbolic regression algorithm. The regression search is done by means of the IT data structure, and the general algorithm is based on the AInet (artificial immune network) family algorithms.
 
@@ -10,7 +44,7 @@ The regression is done by creating a random population of solutions, where each 
 
 
 
-## <a id="1.1">1.1 The IT (Interaction-Transformation) data structure</a>
+## <a id="1.1i">1.1 The IT (Interaction-Transformation) data structure</a>
 
 The IT data structure is like the building block of expressions in this symbolic regression algorithm. The expressions are composed of a linear sum of many ITs, where each IT is a function composition that can be applied to a sample. 
 
@@ -32,7 +66,7 @@ Given this datastructure, the algorithm creates it's solutions by composing line
 
 
 
-## 1.2 The AInet algorithm
+## <a id="1.2i">1.2 The AInet algorithm</a>
 
 The algorithms of the AInet family are based on the Artificial Immune Systems paradigm.
 
@@ -40,7 +74,7 @@ The natural immune system is responsible for recognition and combat against path
 
 
 
-### 1.2.1 The Clonal Selection Principle
+### <a id="1.2.1i">1.2.1 The Clonal Selection Principle</a>
 
 The response against the pathogen is known as Clonal Selection Principle: when the antigens for a pathogen agent are identified, the immune system starts to clone the B-cells (immune cells), cells capable of binding to the antigens to indicate to the antibodies the structures that should be eliminated.
 
@@ -50,7 +84,7 @@ This way, the iteration of those stages will produce a strongly specialized popu
 
 
 
-### 1.2.2 The IT-AInet algorithm
+### <a id="1.2.2i">1.2.2 The IT-AInet algorithm</a>
 
 The algorithm used to perform the regression is based on the AInet family, and works just like described above: creating clones, applying mutation and iterating through generations.
 
@@ -58,7 +92,7 @@ The algorithm used to perform the regression is based on the AInet family, and w
 
 -----
 
-# 2 Source files
+# <a id="2i">2 Source files</a>
 
 The main project is within the SymbolicRegression folder. There are 4 modules that compose the algorithm:
 
@@ -71,13 +105,13 @@ The main project is within the SymbolicRegression folder. There are 4 modules th
 
 
 
-## 2.1 Our Types, Newtypes and Classes
+## <a id="2.1i">2.1 Our Types, Newtypes and Classes</a>
 
 To increase readability of our code, we created several new datatypes, listed below:
 
 
 
-## 2.1.1 Dataset Module
+## <a id="2.1.1i">2.1.1 Dataset Module</a>
 
 | Name | Datatype | What is this |
 |:-----|:---------|:-------------|
@@ -88,7 +122,7 @@ To increase readability of our code, we created several new datatypes, listed be
 
 
 
-### 2.1.2 Manipulators Module
+### <a id="2.1.2i">2.1.2 Manipulators Module</a>
 
 | Name | Datatype | What is this |
 |:-----|:---------|:-------------|
@@ -107,7 +141,8 @@ To increase readability of our code, we created several new datatypes, listed be
 |LeSize|  |  Size of the expressions|
 
 
-### 2.1.3 Ainet Module
+
+### <a id="2.1.3i">2.1.3 Ainet Module</a>
 
 | Name | Datatype | What is this |
 |:-----|:---------|:-------------|
@@ -118,7 +153,7 @@ To increase readability of our code, we created several new datatypes, listed be
 
 -----
 
-# 3 Instalation
+# <a id="3i">3 Instalation<a>
 
 Open the SymbolicRegression folder in a terminal and execute the folowing commands:
 
@@ -133,7 +168,7 @@ stack exec SymbolicRegression-exe
 
 -----
 
-# 4 Usage
+# <a id="4i">4 Usage</a>
 
 Just set the parameters and get the result from the regression IO (Le). For a better description, check out the official [documentation page](https://galdeia.github.io/AInet-based-Symbolic-Regression/).
 
@@ -154,3 +189,167 @@ res <- ainet g p l c supT simT ds
 print (textRepresentation res)
 print (evaluate res ds)
 ```
+
+
+
+-----
+-----
+
+
+## <a id="introp"> 1 Regressão simbólica AInet </a>
+
+Implementação de Haskell de um algoritmo de regressão simbólica. A pesquisa de regressão é feita por meio da estrutura de dados de TI, e o algoritmo geral é baseado nos algoritmos da família AInet (rede imune artificial).
+
+A regressão é feita criando uma população aleatória de soluções, onde cada solução é uma combinação linear de termos de TI. Então, por um determinado número de gerações, o algoritmo realiza uma regressão simbólica inspirada no sistema imunológico natural dos vertebrados.
+
+
+
+## <a id="1.1p"> 1.1 A estrutura de dados de TI (Interação-Transformação) </a>
+
+A estrutura de dados de TI é como o bloco de construção de expressões neste algoritmo de regressão simbólica. As expressões são compostas de uma soma linear de várias TIs, onde cada TI é uma composição de função que pode ser aplicada a uma amostra.
+
+As amostras são os valores do banco de dados usado para treinar o algoritmo ou valores desconhecidos que você pode passar para o modelo para prever o comportamento da variável de destino, dadas as circunstâncias específicas.
+
+A TI é uma tupla contendo uma função e um vetor de expoentes a serem aplicados à amostra.
+
+> <img src = "https://latex.codecogs.com/gif.latex?(\mathrm{op},&space;\mathrm{exp})" title = "(\ mathrm {op}, \ mathrm {exp }) "/>
+
+Para avaliar uma TI, primeiro realizamos a função * g *, que toma como argumento a amostra e o vetor da expoente, depois aplica cada expoente à respectiva variável da amostra e, finalmente, multiplica todos os resultados obtidos.
+
+> <img src = "https://latex.codecogs.com/gif.latex?g(X,&space;E)&space;=&space;\prod_{i=1}^{\left&space;\|&space;X&space ; \ right & space; \ |} & space; x_ {i} ^ {e_ {i}} "title =" g (X, E) = \ prod_ {i = 1} ^ {\ left \ | X \ right \ |} x_ {i} ^ {e_ {i}} "/>
+
+Depois disso, a função * f * é aplicada ao resultado obtido de * g *, * f * sendo o primeiro elemento da tupla que representa uma TI.
+
+Além disso, há um coeficiente linear multiplicado para cada TI para ajustar e minimizar o erro.
+
+Dada essa estrutura de dados, o algoritmo cria suas soluções ao compor expressões lineares de expressões de TI e realiza a busca simbólica manipulando essas expressões.
+
+
+## <a id="1.2p"> 1.2 O algoritmo AInet </a>
+
+Os algoritmos da família AInet são baseados no paradigma dos Sistemas Imunológicos Artificiais.
+
+O sistema imunológico natural é responsável pelo reconhecimento e combate a agentes patogênicos. Os antígenos são qualquer substância que possa se ligar aos anticorpos (células B) - e isso geralmente leva a uma resposta imune contra o patógeno.
+
+
+
+### <a id="1.2.1p"> 1.2.1 O Princípio de Seleção Clonal </a>
+
+A resposta contra o patógeno é conhecida como Princípio de Seleção Clonal: quando os antígenos para um agente patogênico são identificados, o sistema imune começa a clonar as células B (células imunes), células capazes de se ligar aos antígenos para indicar aos anticorpos estruturas que devem ser eliminadas.
+
+Durante o estágio de clonagem, os clones sofrem uma mutação controlada, criando variações das células-B. Juntos, é aplicada uma pressão seletiva que suprime os clones que, após a mutação, obtiveram um pior desempenho na identificação desses antígenos.
+
+Dessa forma, a iteração dessas etapas produzirá uma população fortemente especializada de células com competência para combater os patógenos.
+
+
+
+### <a id="1.2.2p"> 1.2.2 O algoritmo IT-AInet </a>
+
+O algoritmo usado para executar a regressão é baseado na família AInet e funciona como descrito acima: criando clones, aplicando mutação e iterando através de gerações.
+
+
+
+-----
+
+# <a id="2p"> 2 arquivos de origem </a>
+
+O projeto principal está dentro da pasta SymbolicRegression. Existem 4 módulos que compõem o algoritmo:
+
+| Arquivo | Descrição |
+|: ----- |: ------------ |
+| Dataset.hs | Módulo contendo a implementação das funções do conjunto de dados. O conjunto de dados é o detentor dos dados usados ​​para treinar o algoritmo AInet. |
+| Manipuladores.hs | Módulo contendo implementação de funções de manipulação de expressão. |
+| AInet.hs | Algoritmo de regressão simbólica. A pesquisa de regressão é feita por meio da estrutura de dados de TI, e a estrutura geral do algoritmo é baseada no algoritmo AInet. |
+| Main.hs | Implementação de Haskell do algoritmo de regressão simbólica baseado em AInet, usando a estrutura de dados de TI.
+
+
+
+## <a id="2.1p"> 2.1 Nossos tipos, novos tipos e classes </a>
+
+Para aumentar a legibilidade do nosso código, criamos vários novos tipos de dados, listados abaixo:
+
+
+
+## <a id="2.1.1p"> 2.1.1 Módulo do Conjunto de Dados </a>
+
+| Nome | Tipo de dados | O que é isso |
+|: ----- |: --------- |: ------------- |
+| X | type (Matrix Double) | Matriz de variáveis ​​explicativas |
+| Y | type (Matrix Double) | Matriz de colunas das variáveis-alvo |
+| Conjunto de dados | tipo ((X, Y)) | Tuple com variáveis ​​explicativas associadas à variável de destino |
+| Ponto de dados | type (([Double], Double)) | Uma única linha de um DataSet em um tipo de função amigável |
+
+
+
+### <a id="2.1.2p"> 2.1.2 Módulo de Manipuladores </a>
+
+| Nome | Tipo de dados | O que é isso |
+|: ----- |: --------- |: ------------- |
+| Pontuação | newtype (Double, derivando Eq, Ord, Show) | Dupla variando de [0,1] indicando o desempenho da solução para um determinado conjunto de dados |
+| Coeff | newtype (Double, derivando Eq, Ord, Show) | Coeficiente associado às TIs |
+| Exps | newtype ([Int], derivando Eq, Ord, Show) | Vetor de expoentes de ITs, a serem aplicados às amostras em avaliação de TI |
+| Op | newtype (Int, derivando Eq, Ord, Show) | Índice do * operador * das TI |
+| It | | Estrutura de dados de TI |
+| Le | | Combinação linear de ITs |
+| Pop | | Vector contendo muitos Les, chamado população |
+| Operador | | Funções de um argumento, usadas para compor as TIs |
+| Op'n'Name | | Tupla contendo um operador e uma string para imprimi-lo |
+| SimplifyT | | Limiar de simplificação |
+SupressionT | | Limiar de supressão |
+PopSize | | Tamanho da população |
+| LeSize | | Tamanho das expressões |
+
+
+
+### <a id="2.1.3p"> 2.1.3 Módulo Ainet </a>
+
+| Nome | Tipo de dados | O que é isso |
+|: ----- |: --------- |: ------------- |
+| NumGen | tipo (Int) | Número de gerações para realizar a regressão |
+| NumClones | tipo (Int) | Maior número de clones para criar no algoritmo AInet |
+
+
+
+-----
+
+# <a id="3p"> 3 Instalação <a>
+
+Abra a pasta SymbolicRegression em um terminal e execute os seguintes comandos:
+
+`` `
+compilação de pilha
+`` `
+
+`` `
+pilha exec SymbolicRegression-exe
+`` `
+
+
+-----
+
+# <a id="4p"> 4 Uso </a>
+
+Basta definir os parâmetros e obter o resultado da regressão IO (Le). Para uma melhor descrição, confira o oficial [página de documentação] (https://galdeia.github.io/AInet-based-Symbolic-Regression/).
+
+`` `haskell
+seja g = 10 :: NumGen - número de gerações
+vamos p = 10 :: PopSize - tamanho da população inicial
+vamos l = 2 :: LeSize - tamanho das expressões
+seja c = 5 :: NumClones --número de clones
+vamos supT = 3 :: SupressionT - limiar de supressão
+vamos simT = 0.005 :: SimplifyT - limiar de simplificação
+
+vamos ds = listsToDataset sample --sample dataset
+
+- executar a regressão simbólica e salvar o resultado
+res <- ainet g p l c sup SIMs ds
+
+- imprimindo o resultado
+imprimir (textRepresentation res)
+imprimir (avaliar res ds)
+`` `
+
+
+
+-----
+-----
