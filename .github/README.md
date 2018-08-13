@@ -17,7 +17,11 @@ The samples are the values of the database used to train the algorithm, or unkno
 
 The IT is a tuple containing one function and one vector of expoents to be applied to the sample.
 
+> <img src="https://latex.codecogs.com/gif.latex?(\mathrm{op},&space;\mathrm{exp})" title="(\mathrm{op}, \mathrm{exp})"/>
+
 To evaluate a IT, first we perform the *g* function, that takes as argument the sample and the expoent's vector, then aplies each expoent to the respective variable of the sample, and finally multiplicate all results obtained.
+
+> <img src="https://latex.codecogs.com/gif.latex?g(X,&space;E)&space;=&space;\prod_{i=1}^{\left&space;\|&space;X&space;\right&space;\|}&space;x_{i}^{e_{i}}" title="g(X, E) = \prod_{i=1}^{\left \| X \right \|} x_{i}^{e_{i}}"/>
 
 After that, the *f* function is applied to the result obtained from *g*, *f* being the first element of the tuple that represents one IT.
 
