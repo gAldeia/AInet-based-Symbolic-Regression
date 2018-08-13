@@ -1,7 +1,7 @@
 AInet Symbolic Regression
 =====
 
-[Lista](#12_the_ainet_algorithm)
+[contact](#1.1)
 
 
 Haskell implementation of a symbolic regression algorithm. The regression search is done by means of the IT data structure, and the general algorithm is based on the AInet (artificial immune network) family algorithms.
@@ -10,7 +10,7 @@ The regression is done by creating a random population of solutions, where each 
 
 
 
-## 1.1 The IT (Interaction-Transformation) data structure
+## <a id="1.1">1.1 The IT (Interaction-Transformation) data structure</a>
 
 The IT data structure is like the building block of expressions in this symbolic regression algorithm. The expressions are composed of a linear sum of many ITs, where each IT is a function composition that can be applied to a sample. 
 
