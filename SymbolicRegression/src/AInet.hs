@@ -23,17 +23,14 @@ import Data.Matrix
 import Data.List     (sort, map)
 
 
--- AINET ALGORITHM -------------------------------------------------------------
+-- AInet algorithm -------------------------------------------------------------
 type NumGen      = Int
 type NumClones   = Int
 
-
 ainet' :: NumGen -> Pop -> LeSize -> NumClones -> SupressionT -> Dataset -> IO (Pop)
---one interation of the ainet. the pop must be ordered by scores
+-- ^Recursive call of the AInet algorithm, for internal use only.
 ainet' 0 pop _ _ _    _  = do return pop
 ainet' g pop l c supT ds = do
-    --the number of clones is the index of each solution (since the solutions are ordered from worst to best). this way there will be more best solutions and few bad solutions)
-
     let clones = concat population
     mutatedClones <- mutatePop clones (ncols $ fst ds)
 
@@ -50,10 +47,11 @@ ainet' g pop l c supT ds = do
         afinityCloning (leIndex, c') = [pop !! leIndex | i<- [0..c']]
         afinityZipping = zip [(length pop - 1)..0] [0..c]
 
+
 ainet :: NumGen -> PopSize -> LeSize -> NumClones -> SupressionT -> SimplifyT -> Dataset -> IO (Le)
---performs an AInet based symbolic regression for the given number of generations
+-- ^Performs an AInet based symbolic regression for the given number of generations.
 ainet g p l c supT simS ds = do
-    pop <- rndPopulation p l ds --needs to be '<-' to use the result without IO
+    pop <- rndPopulation p l ds
     let adjustedPop = map (`adjust` ds) pop
 
     iterated <- ainet' g (sortByScore adjustedPop ds) l c supT ds
