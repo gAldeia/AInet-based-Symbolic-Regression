@@ -22,8 +22,7 @@ import Data.Matrix (fromLists, fromList, toList, --lists manipulation
                     nrows, ncols)                --accessing functions
 
 
--- EXPRESSION OPERATIONS -------------------------------------------------------
---defining the auxiliary types for representing the IT
+-- Types declarations ----------------------------------------------------------
 newtype Score    = Score Double         deriving (Eq, Ord, Show)
 newtype Coeff    = Coeff Double         deriving (Eq, Ord, Show)
 newtype Exps     = Exps [Int]           deriving (Eq, Ord, Show)
@@ -39,9 +38,7 @@ type PopSize     = Int
 type LeSize      = Int
 
 
--- OPERATORS -------------------------------------------------------------------
---operators used for the ITs. if you want a new operator, first add it here
---then create an aplication of the operator in the "solve" method
+-- Operators creation and manipulation -----------------------------------------
 ops = [
     (id, "id"),
     (sin, "sin"),
@@ -52,20 +49,24 @@ ops = [
     (log, "log"),
     (sqrt.abs, "sqrt.abs")
     ] :: [Op'n'Name]
+-- ^set of operators used to create ITs. Each operator is a tuple containing a
+--  function (Double -> Double) and a string to print the name of the operation.
+--  To add new operators to the ITs, create a new tuple of type Op'n'Name here.
 
 operator :: Op'n'Name -> Operator
---returns the operator from a tuple
+-- ^Takes one Op'n'Name tuple and returns the operator (first element).
 operator (o,_) = o
 
 nomeator :: Op'n'Name -> String
---returns the name associated with the operator
+-- ^Takes one Op'n'Name tuple and returns the name (second element).
 nomeator (_,s) = s
 
 
---MANIPULATORS ----------------------------------------------------------------
---EXPRESSION CREATORS -----------------------------------------------------------
+-- Expressions creation --------------------------------------------------------
 linearExpression :: Int -> Le
---returns an LE that is a linear combination of n variables
+-- ^Takes the number of variables n and returns an Le with n ITs, where each
+--  the linear combination of the ITs results in a linear combination of the n
+--  variables.
 linearExpression n = [It (Coeff 1.0, Op 0, Exps e) | e <- (exps n)]
     where
         exps n  = [one n i | i <- [1..n]]
@@ -75,7 +76,8 @@ linearExpression n = [It (Coeff 1.0, Op 0, Exps e) | e <- (exps n)]
             | otherwise = 0
 
 randomExps :: Int -> IO ([Int])
---return random expoents
+-- ^Takes the number of variables n and return n random expoents ranging from
+--  [0,7].
 randomExps 0 = do return []
 randomExps n = do
     r  <- randomRIO(0,7)
@@ -83,14 +85,15 @@ randomExps n = do
     return (r:r')
 
 randomIt :: Int -> IO (It)
---return an it of n variables
+-- ^Takes the number of variables n and return an random IT.
 randomIt n = do
     randOp <- randomRIO(0, (length ops-1))
-    exps <- randomExps n
+    exps   <- randomExps n
     return (It (Coeff 1.0, Op randOp, Exps exps))
 
 randomExpression :: Int -> Int -> IO (Le)
---returns a random LE of m its of n variables
+-- ^Takes the number of ITs m and the number of variables n and returns a random
+--  LE of m its, each IT having n variables.
 randomExpression n 0 = do return []
 randomExpression n m = do
     le  <- randomIt n
@@ -98,26 +101,28 @@ randomExpression n m = do
     return (le:les)
 
 
--- single expression manipulators ----------------------------------------------
+-- Single expression manipulators ----------------------------------------------
 textRepresentation :: Le -> String
---get a friendly printable expression to better understanding
+-- ^Takes one LE and returns a friendly printable expression to get a better
+--  representation when printing out the expression.
 textRepresentation le = init $ concat [monomio it | it <- le]
     where
         monomio (It (Coeff c, Op o, Exps e)) = show c ++ "*" ++ nome o ++ exps e
         nome o' = nomeator (ops !! o')
         exps e' = "(" ++ concat[show ei ++ " " | ei <- e'] ++ ") "
 
--- (matrix propriety: if two lines
---are exactly the same, then the DET A = 0, so A is not inversible). we need
---to invert the matrix to adjust coeffs! so, it's important to remove duplicated
---ITs from an LE
 uniques :: Le -> Le
---returns an LE without duplicated elements 
+-- ^Takes one LE and returns this LE without duplicated elements. Matrix 
+--  propriety: given a matrix A, if two lines are identical, then the
+--  determinant of A is zero and, consequently, A is not inversible. Since the
+--  coefficient adjustment is done using OLS, it's important to avoid
+--  non-inversible matrices.
 uniques [] = []
 uniques (x:xs) = uniques $ filter (x/=) xs
 
 solve :: Le -> DataPoint -> [Double]
---returns an array with evaluated values for the given datapoint
+-- ^Takes one LE and one DataPoint and returns the expression evaluated to the
+--  given DataPoint.
 solve le (xs, y) = [(eval o e) * c | (It ( Coeff c, Op o, Exps e)) <- le]
     where
         value exps = product[x^e | (e, x) <- zip exps xs]
@@ -125,9 +130,10 @@ solve le (xs, y) = [(eval o e) * c | (It ( Coeff c, Op o, Exps e)) <- le]
             | op >= length ops = error ("Unknown operator")
             | otherwise        = operator (ops !! op) $ value exps
 
---NOTE: adjusting an expression twice results in the expression with all coeffs being 1
 adjust :: Le -> Dataset -> Le
---returns an array containing the optimum coeffs using OLS or an array of 1s if error
+-- ^Takes one LE and one Dataset and ajust the LE coefficients using Ordinary
+--  Least Squares, then returns the adjusted LE. NOTE: adjusting an expression
+--  twice results in the expression with all coefficients equal to 1.
 adjust le ds = [It (Coeff c, o, e) |  (c, It (_, o, e)) <- zip coeffs le]
     where
         x        = fromLists [solve le (i # ds) | i <- [1..nrows $ fst ds]]
@@ -139,7 +145,8 @@ adjust le ds = [It (Coeff c, o, e) |  (c, It (_, o, e)) <- zip coeffs le]
 
 
 evaluate :: Le -> Dataset -> Score
---returns the SCORE for a LE for a given dataset
+-- ^Takes one LE and one Dataset and returns the SCORE of the LE for the
+--  given dataset.
 evaluate le ds = Score (1.0 / (1.0 + mae))
     where
         mae     = m_e [abs $ diff (i # ds) | i <- [1..(nrows $ fst ds)]]
@@ -148,38 +155,44 @@ evaluate le ds = Score (1.0 / (1.0 + mae))
         length  = fromIntegral $ nrows $ fst ds
 
 simplify :: Le -> SimplifyT -> Maybe Le
---returns a simplified expression
+-- ^Takes one LE and the Simplification Threshold and returns an expression
+--  without ITs with coefficient below threshold. If all ITs have low
+--  coefficients, then returns the LE without removing any IT.
 simplify le sT
-    | leng == 0 = Nothing --garantee to return a non empty le
+    | leng == 0 = Nothing
     | otherwise = Just simplified
     where
         simplified = [It (Coeff c, o, e) | It (Coeff c, o, e) <- le, c >= sT]
-        leng = length simplified
+        leng       = length simplified
 
 mutateTrans :: Le -> IO (Le)
---returns a mutated LE
+-- ^Takes one LE and applies the transformation mutation on it. The
+--  transformation mutation changes the operator. Returns a mutated LE.
 mutateTrans le = do
     chosenIndex <- randomRIO(0, length le -1)
-    randOp <- randomRIO(0, (length ops-1))
+    randOp      <- randomRIO(0, (length ops-1))
     let newIt = [It (c, Op randOp, e) | It (c, _, e) <- [le !! chosenIndex]]
-    let le' = [it | it<-le, it /= (le !! chosenIndex)]
+    let le'   = [it | it<-le, it /= (le !! chosenIndex)]
 
     return (le' ++ newIt)
 
 mutateInter :: Int -> Le -> IO (Le)
---returns a mutated LE. you need to pass the number of variables of the problem
+-- ^Takes the number of variables n and one LE and applies the interaction
+--  mutation on it. The interaction mutation changes one expoent of one random
+--  IT. returns a mutated LE.
 mutateInter n le = do
     chosenIndex <- randomRIO(0, length le -1)
-    randExps <- randomExps n
+    randExps    <- randomExps n
     let newIt = [It (c, o, Exps randExps) | It (c, o, e) <- [le !! chosenIndex]]
-    let le' = [it | it<-le, it /= (le !! chosenIndex)]
+    let le'   = [it | it<-le, it /= (le !! chosenIndex)]
 
     return (le' ++ newIt)
 
 
---POPULATION METHODS -----------------------------------------------------------
+-- Population of expressions manipulators --------------------------------------
 simplifyPop :: Pop -> SimplifyT -> Pop
--- | calls the simplify method in all expressions, and handles with errors
+-- ^Takes one Population and the simplification Threshold and calls the
+--  simplify for every solution.
 simplifyPop pop sS = re'pop [] pop
     where
         re'pop p_p []        = p_p
@@ -189,13 +202,15 @@ simplifyPop pop sS = re'pop [] pop
                 where p_p' = le':p_p
 
 sortByScore :: Pop -> Dataset -> Pop
--- | suposes that all the Le in the pop is adjusted. sorts the population by score
+-- ^Takes one population and an dataset and returns the population sorted by
+--  their score. It's important that the given population is adjusted.
 sortByScore pop ds = [le' | (sort, le') <- sorted] 
     where
         sorted = sort[(evaluate le ds, le) | le <- pop]
 
 mutatePop :: Pop -> Int -> IO (Pop)
--- | Calls the mutation method in all expressions. need to pass as argument the number of variables
+-- ^Takes one Population and the number of variables and calls the mutation
+--  method in all expressions. returns a mutated population.
 mutatePop [] n      = do return []
 mutatePop (p:pop) n = do
     --mutatedI <- mutateInter n p
@@ -204,7 +219,7 @@ mutatePop (p:pop) n = do
     return (mutatedIT:remaining)
 
 rndPopulation ::  PopSize -> LeSize -> Dataset -> IO (Pop)
---returns a random population
+-- ^returns a random population
 rndPopulation 0 _ _  = do return []
 rndPopulation p l ds = do
     le  <- randomExpression (ncols $ fst ds) l

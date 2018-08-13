@@ -1,6 +1,6 @@
 {-|
 Module      : Dataset
-Description : Dataset creation and manipulation 
+Description : Dataset creation and manipulation .
 Copyright   : (c) Guilherme S I Aldeia, 2018
                   Heitor R Savegnago, 2018
 License     : GPL-3
@@ -10,7 +10,9 @@ Stability   : experimental
 Portability : POSIX
 
 Module containing implementation of dataset functions. The dataset is the holder
-for the data used to train the AInet algorithm.
+for the data used to train the AInet algorithm. Due to the necessity of
+performing many matrix operations, the dataset is defined as a tuple of
+matrices (Data.Matrix).
 -}
 
 module Dataset where
@@ -20,17 +22,17 @@ import Data.List     (sort)
 
 
 -- Type declarations -----------------------------------------------------------
--- |Matrix of explanatory variables
 type X = Matrix Double
+-- ^Matrix of explanatory variables
 
--- |Column matrix of target variables
 type Y = Matrix Double
+-- ^Column matrix of target variables
 
--- |Tuple with explanatory variables associated with the target variable
 type Dataset = (X, Y)
+-- ^Tuple with explanatory variables associated with the target variable
 
--- |A single line from a Dataset in a function friendly type
 type DataPoint = ([Double], Double) 
+-- ^A single line from a Dataset in a function friendly type
 
 
 -- Dataset creation and manipulation methods -----------------------------------
@@ -51,4 +53,4 @@ listsToDataset lss = (fromLists xs, fromLists ys)
 (#) i (xss,ys) = (xs', y')
     where
         xs' = [xss ! (i, j) | j <- [1..ncols xss]]
-        y' = ys ! (i, 1)
+        y'  = ys ! (i, 1)
