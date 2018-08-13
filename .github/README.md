@@ -72,12 +72,22 @@ The main project is within the SymbolicRegression folder. There are 4 modules th
 
 To increase readability of our code, we created several new datatypes, listed below:
 
+
+
+## 2.1.1 Dataset Module
+
 | Name | Datatype | What is this |
 |:-----|:---------|:-------------|
 | X| type (Matrix Double)| Matrix of explanatory variables|
 | Y| type (Matrix Double)| Column matrix of target variables|
 | Dataset| type ((X,Y))| Tuple with explanatory variables associated with the target variable|
 | Datapoint| type (([Double], Double))|A single line from a Dataset in a function friendly type|
+
+
+
+### 2.1.2 Manipulators Module
+
+| Name | Datatype | What is this |
 
 
 
