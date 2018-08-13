@@ -94,8 +94,16 @@ To increase readability of our code, we created several new datatypes, listed be
 | Score| newtype (Double, deriving Eq, Ord, Show)| Double ranging from [0,1] indicating the performance of the solution for a given dataset|
 | Coeff| newtype (Double, deriving Eq, Ord, Show)| Coefficient associated with the ITs|
 | Exps| newtype ([Int], deriving Eq, Ord, Show)| Vector of expoents of ITs, to be applied to the samples on IT evaluation|
-| Op| newtype (Int, deriving Eq, Ord, Show)| Index of the operator of the ITs|
-
+| Op| newtype (Int, deriving Eq, Ord, Show)| Index of the *operator* of the ITs|
+| It|  | IT data structure|
+| Le|  | Linear combination of ITs|
+| Pop|  | Vector containing many Les, called population|
+| Operator|  |  One-argument functions, used to compose ITs|
+| Op'n'Name|  |  Tuple containing One operator and one string to print it|
+|SimplifyT|  |  Simplification threshold|
+|SupressionT|  |  Supression threshold|
+|PopSize|  |  Size of the population|
+|LeSize|  |  Size of the expressions|
 
 
 ### 2.1.3 Ainet Module
