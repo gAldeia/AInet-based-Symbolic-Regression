@@ -11,6 +11,7 @@ Portability : POSIX
 Haskell implementation of AInet based symbolic regression algorithm, using
 the IT datastructure.
 -}
+
 module Main where
 
 import Dataset
@@ -19,8 +20,8 @@ import AInet
 import System.Random
 
 
--- |sample list-of-lists to create a dataset, function with 4 variables
 sample :: [[Double]]
+-- ^Auxiliary list of lists to create a dataset and run the AInet algorithm
 sample = [[1.0,1.0,1.0,1.0,1.0],
           [2.0,2.0,2.0,2.0,2.0],
           [3.0,3.0,3.0,3.0,3.0],
@@ -29,14 +30,14 @@ sample = [[1.0,1.0,1.0,1.0,1.0],
           [6.0,6.0,6.0,6.0,6.0]]
 
 
--- MAIN METHOD -----------------------------------------------------------------
 main :: IO ()
--- |Main method
+-- ^Main method with example of execution of the AInet algorithm. The given
+--  values here were used for testing the algorithm, and are our recomendated
+--  values.
 main = do
-    --seed of the global generator, used to make deterministic
+    -- |seed of the global generator, used to make deterministic
     let seed = 42 :: Int
 
-    --defining the global random generator
     setStdGen $ mkStdGen seed
 
     let g = 10       :: NumGen      --number of generations
