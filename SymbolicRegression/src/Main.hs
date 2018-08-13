@@ -40,10 +40,10 @@ main = do
 
     setStdGen $ mkStdGen seed
 
-    let g = 10       :: NumGen      --number of generations
+    let g = 3       :: NumGen      --number of generations
     let p = 10       :: PopSize     --size of the initial population
-    let l = 2        :: LeSize      --size of the expressions
-    let c = 5        :: NumClones   --number of clones
+    let l = 3        :: LeSize      --size of the expressions
+    let c = 6        :: NumClones   --number of clones
     let supT = 3     :: SupressionT --supression threshold
     let simT = 0.005 :: SimplifyT   --simplification threshold
 
