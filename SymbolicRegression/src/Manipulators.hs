@@ -228,14 +228,9 @@ distExpr (it:its) (it':its') = (itDist it it') + (distExpr its its')
             | otherwise = 1 + (expDist e e')
 
 supress :: Pop -> SupressionT -> Dataset -> Pop
-supress pop _ _ = pop
-
-{-supress [] _ _ = []
+supress [] _ _ = []
 supress (p:[]) _ _ = [p]
-supress (p:ps) supT ds = supress (ps') supT ds
+supress (p:ps) supT ds = (head neighbors):(supress (ps') supT ds)
     where
-        worst le1 le2
-            | (evaluate le1 ds)>(evaluate le2 ds) = le2
-            | otherwise            = le1
-        ps' = [l | l<-ps, (distExpr p l) > supT, ((worst p l)`elem`ps) == False]
-        -}
+        neighbors = sortByScore (p:[l | l<-ps, (distExpr p l) < supT]) ds
+        ps' = [l | l<-ps, (distExpr p l) > supT] --expressions with distances higher than treshold
