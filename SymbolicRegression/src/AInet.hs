@@ -30,7 +30,7 @@ type NumClones   = Int
 
 ainet' :: NumGen -> Pop -> LeSize -> NumClones -> SupressionT -> Dataset -> IO (Pop)
 --one interation of the ainet. the pop must be ordered by scores
-ainet' 0 pop _ _ _ _ = do return pop
+ainet' 0 pop _ _ _    _  = do return pop
 ainet' g pop l c supT ds = do
     --the number of clones is the index of each solution (since the solutions are ordered from worst to best). this way there will be more best solutions and few bad solutions)
 
