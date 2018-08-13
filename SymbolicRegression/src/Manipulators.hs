@@ -209,7 +209,7 @@ simplifyPop :: Pop -> SimplifyT -> Pop
 --  simplify for every solution.
 simplifyPop pop sS = re'pop [] pop
     where
-        re'pop p_p []        = p_p
+        re'pop p_p [       ] = p_p
         re'pop p_p (le:les') = case simplify le sS of
             Nothing  -> re'pop p_p les'
             Just le' -> p_p' `seq` re'pop p_p' les'
@@ -225,7 +225,7 @@ sortByScore pop ds = [le' | (sort, le') <- sorted]
 mutatePop :: Pop -> Int -> IO (Pop)
 -- ^Takes one Population and the number of variables and calls the mutation
 --  method in all expressions. returns a mutated population.
-mutatePop [] n      = do return []
+mutatePop [     ] n = do return []
 mutatePop (p:pop) n = do
     --mutatedI <- mutateInter n p
     mutatedIT <- mutateTrans p
@@ -246,9 +246,9 @@ dummyDist (It(Coeff c,_,Exps e))
         | otherwise =     sum[abs ex | ex <-e] 
 
 distExpr :: Le -> Le -> Int
-distExpr [ ] [ ] = 0
-distExpr [ ] (e:le) = (dummyDist e) + (distExpr [] le)
-distExpr (e:le) [ ] = (dummyDist e) + (distExpr [] le)
+distExpr [    ] [    ] = 0
+distExpr [    ] (e:le) = (dummyDist e) + (distExpr [] le)
+distExpr (e:le) [    ] = (dummyDist e) + (distExpr [] le)
 distExpr (it:its) (it':its') = (itDist it it') + (distExpr its its')
     where
         expDist exp exp' = sum[abs(e-e') | (e,e') <- zip exp exp']
@@ -257,7 +257,7 @@ distExpr (it:its) (it':its') = (itDist it it') + (distExpr its its')
             | otherwise = 1 + (expDist e e')
 
 supress :: Pop -> SupressionT -> Dataset -> Pop
-supress [] _ _ = []
+supress [    ] _ _ = []
 supress (p:[]) _ _ = [p]
 supress (p:ps) supT ds = (head neighbors):(supress (ps') supT ds)
     where
