@@ -1,6 +1,7 @@
 AInet Symbolic Regression
 =====
 
+[Lista](#12_the_ainet_algorithm)
 
 
 Haskell implementation of a symbolic regression algorithm. The regression search is done by means of the IT data structure, and the general algorithm is based on the AInet (artificial immune network) family algorithms.
