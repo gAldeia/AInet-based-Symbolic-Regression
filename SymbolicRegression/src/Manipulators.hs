@@ -211,18 +211,15 @@ rndPopulation p l ds = do
     le' <- rndPopulation (p-1) l ds
     return (le:le')
 
+dummyDist :: It -> Int
+dummyDist (c,o,e)
+        | c==0      = 1 + sum[abs ex | ex <-e]
+        | otherwise = sum[abs ex | ex <-e] 
+
 distExpr :: Le -> Le -> Int
 distExpr [ ] [ ] = 0
-distExpr [ ] (e:le) = (dummyDist $ e) + (distExpr [] le)
-    where
-        dummyDist (c,o,e)
-            | c==0      = 1 + sum[abs ex | ex <-e]
-            | otherwise = sum[abs ex | ex <-e] 
-distExpr (e:le) [ ] = (dummyDist $ e) + (distExpr [] le)
-    where
-        dummyDist (c,o,e)
-            | c==0      = 1 + sum[abs ex | ex <-e]
-            | otherwise = sum[abs ex | ex <-e] 
+distExpr [ ] (e:le) = (dummyDist e) + (distExpr [] le)
+distExpr (e:le) [ ] = (dummyDist e) + (distExpr [] le)
 distExpr (it:its) (it':its') = (itDist it it') + (distExpr its its')
     where
         expDist exp exp' = sum[abs(e-e') | (e,e') <- zip exp exp']
