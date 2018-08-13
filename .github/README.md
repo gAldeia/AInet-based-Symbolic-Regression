@@ -130,15 +130,15 @@ To increase readability of our code, we created several new datatypes, listed be
 | Coeff| newtype (Double, deriving Eq, Ord, Show)| Coefficient associated with the ITs|
 | Exps| newtype ([Int], deriving Eq, Ord, Show)| Vector of expoents of ITs, to be applied to the samples on IT evaluation|
 | Op| newtype (Int, deriving Eq, Ord, Show)| Index of the *operator* of the ITs|
-| It|  | IT data structure|
-| Le|  | Linear combination of ITs|
-| Pop|  | Vector containing many Les, called population|
-| Operator|  |  One-argument functions, used to compose ITs|
-| Op'n'Name|  |  Tuple containing One operator and one string to print it|
-|SimplifyT|  |  Simplification threshold|
-|SupressionT|  |  Supression threshold|
-|PopSize|  |  Size of the population|
-|LeSize|  |  Size of the expressions|
+| It| newtype ((Coeff, Op, Exps) deriving Eq, Ord, Show) | IT data structure|
+| Le| type ([It])  | Linear combination of ITs|
+| Pop| type ([Le]) | Vector containing many Les, called population|
+| Operator| type ((Double -> Double)) |  One-argument functions, used to compose ITs|
+| Op'n'Name| type ((Operator, String)) |  Tuple containing One operator and one string to print it|
+| SimplifyT| type (Double) |  Simplification threshold|
+| SupressionT| type (Int) |  Supression threshold|
+| PopSize| type (Int) |  Size of the population|
+| LeSize| type (Int) |  Size of the expressions|
 
 
 
@@ -291,15 +291,15 @@ Para aumentar a legibilidade do nosso código, criamos vários novos tipos de da
 | Coeff | newtype (Double, deriving Eq, Ord, Show) | Coeficiente associado às TIs |
 | Exps | newtype ([Int], deriving Eq, Ord, Show) | Vetor de expoentes de ITs, a serem aplicados às amostras em avaliação de TI |
 | Op | newtype (Int, deriving Eq, Ord, Show) | Índice do * operador * das TI |
-| It | | Estrutura de dados de TI |
-| Le | | Combinação linear de ITs |
-| Pop | | Vector contendo muitos Les, chamado população |
-| Operator | | Funções de um argumento, usadas para compor as TIs |
-| Op'n'Name | | Tupla contendo um operador e uma string para imprimi-lo |
-| SimplifyT | | Limiar de simplificação |
-|SupressionT | | Limiar de supressão |
-|PopSize | | Tamanho da população |
-| LeSize | | Tamanho das expressões |
+| It| newtype ((Coeff, Op, Exps) deriving Eq, Ord, Show) | Estrutura de dados de TI |
+| Le| type ([It]) | Combinação linear de ITs |
+| Pop| type ([Le]) | Vector contendo muitos Les, chamado população |
+| Operator| type ((Double -> Double)) | Funções de um argumento, usadas para compor as TIs |
+| Op'n'Name| type ((Operator, String)) | Tupla contendo um operador e uma string para imprimi-lo |
+| SimplifyT| type (Double) | Limiar de simplificação |
+| SupressionT| type (Int) | Limiar de supressão |
+| PopSize| type (Int) | Tamanho da população |
+| LeSize| type (Int) | Tamanho das expressões |
 
 
 
