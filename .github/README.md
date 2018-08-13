@@ -331,7 +331,7 @@ stack exec SymbolicRegression-exe
 
 # <a id="4p"> 4 Uso </a>
 
-Basta definir os parâmetros e obter o resultado da regressão IO (Le). Para uma melhor descrição, confira o oficial [página de documentação] (https://galdeia.github.io/AInet-based-Symbolic-Regression/).
+Basta definir os parâmetros e obter o resultado da regressão IO (Le). Para uma melhor descrição, confira a [página de documentação (em inglês)](https://galdeia.github.io/AInet-based-Symbolic-Regression/).
 
 ```haskell
 let g = 10       :: NumGen      --number of generations
