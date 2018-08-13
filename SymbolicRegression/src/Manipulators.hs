@@ -176,17 +176,31 @@ mutateTrans le = do
 
     return (le' ++ newIt)
 
+mutateExps :: Exps -> IO (Exps)
+-- ^Takes one Exps vector and iterate through with a small chance of changing some expoents randomly.
+mutateExps (Exps [])     = do return (Exps [])
+mutateExps (Exps (e:es)) = do
+    apply <- randomRIO(0, 100) 
+    randomExp <- randomRIO(0,7)
+
+    let e' = if ((apply :: (Int)) < 10) then randomExp else e
+    Exps es' <- mutateExps (Exps es)
+    return (Exps (e':es'))
+
 mutateInter :: Int -> Le -> IO (Le)
 -- ^Takes the number of variables n and one LE and applies the interaction
 --  mutation on it. The interaction mutation changes one expoent of one random
 --  IT. returns a mutated LE.
 mutateInter n le = do
-    chosenIndex <- randomRIO(0, length le -1)
-    randExps    <- randomExps n
-    let newIt = [It (c, o, Exps randExps) | It (c, o, e) <- [le !! chosenIndex]]
-    let le'   = [it | it<-le, it /= (le !! chosenIndex)]
+    chosenLeIndex <- randomRIO(0, length le -1)
 
-    return (le' ++ newIt)
+    let It (c,o,e) = le !! chosenLeIndex
+    mutatedExps <- mutateExps e
+
+    let newIt = It (c, o, mutatedExps)
+    let le'   = [it | it<-le, it /= (le !! chosenLeIndex)]
+
+    return (newIt:le')
 
 
 -- Population of expressions manipulators --------------------------------------
