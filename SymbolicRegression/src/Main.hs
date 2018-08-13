@@ -55,9 +55,3 @@ main = do
     --printing the result
     print (textRepresentation res)
     print (evaluate res ds)
-
-
---TODO LIST
---trainTestSplit method that returns the dataset divided in (Train, Test)
---create better comments (check if haskell have some standard of comments, like python have the "numPy way")
---use sequence and sequenceA in the monads population methods
