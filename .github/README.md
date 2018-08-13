@@ -258,7 +258,7 @@ O algoritmo usado para executar a regressão é baseado na família AInet e func
 O projeto principal está dentro da pasta SymbolicRegression. Existem 4 módulos que compõem o algoritmo:
 
 | Arquivo | Descrição |
-|: ----- |: ------------ |
+|:-----|:------------|
 | Dataset.hs | Módulo contendo a implementação das funções do _dataset_. O  _dataset_ é o detentor dos dados usados para treinar o algoritmo AInet. |
 | Manipulators.hs | Módulo contendo implementação de funções de manipulação de expressão. |
 | AInet.hs | Algoritmo de regressão simbólica. A pesquisa de regressão é feita por meio da estrutura de dados de IT, e a estrutura geral do algoritmo é baseada na família de algoritmos AInet. |
@@ -275,7 +275,7 @@ Para aumentar a legibilidade do nosso código, criamos vários novos tipos de da
 ## <a id="2.1.1p"> 2.1.1 Módulo _Dataset_ </a>
 
 | Nome | Tipo de dados | O que é isso |
-|: ----- |: --------- |: ------------- |
+|:-----|:---------|:-------------|
 | X | type (Matrix Double) | Matriz de variáveis-explicativas |
 | Y | type (Matrix Double) | Matriz de colunas das variáveis-alvo |
 | Dataset | type ((X, Y)) | Tupla com variáveis explicativas associadas à variável de destino |
@@ -286,7 +286,7 @@ Para aumentar a legibilidade do nosso código, criamos vários novos tipos de da
 ### <a id="2.1.2p"> 2.1.2 Módulo _Manipulators_ </a>
 
 | Nome | Tipo de dados | O que é isso |
-|: ----- |: --------- |: ------------- |
+|:-----|:---------|:-------------|
 | Score | newtype (Double, deriving Eq, Ord, Show) | Double variando de [0,1] indicando o desempenho da solução para um determinado _dataset_ |
 | Coeff | newtype (Double, deriving Eq, Ord, Show) | Coeficiente associado às TIs |
 | Exps | newtype ([Int], deriving Eq, Ord, Show) | Vetor de expoentes de ITs, a serem aplicados às amostras em avaliação de TI |
@@ -306,7 +306,7 @@ Para aumentar a legibilidade do nosso código, criamos vários novos tipos de da
 ### <a id="2.1.3p"> 2.1.3 Módulo Ainet </a>
 
 |Nome | Tipo de dados | O que é isso |
-|: ----- |: --------- |: ------------- |
+|:-----|:---------|:-------------|
 | NumGen | type (Int) | Número de gerações para realizar a regressão |
 | NumClones | type (Int) | Maior número de clones para criar no algoritmo AInet |
 
