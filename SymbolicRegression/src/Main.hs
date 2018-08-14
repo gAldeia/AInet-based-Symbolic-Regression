@@ -5,6 +5,7 @@ Copyright   : (c) Guilherme S I Aldeia, 2018
                   Heitor R Savegnago, 2018
 License     : GPL-3
 Maintainer  : guilherme.aldeia@aluno.ufabc.edu.br
+              heitor.rodrigues@aluno.ufabc.edu.br
 Stability   : experimental
 Portability : POSIX
 
