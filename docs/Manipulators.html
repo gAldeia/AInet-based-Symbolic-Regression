@@ -1,0 +1,2013 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><title
+    >Manipulators</title
+    ><link href="ocean.css" rel="stylesheet" type="text/css" title="Ocean"
+     /><link rel="stylesheet" type="text/css" href="quick-jump.css"
+     /><script src="haddock-bundle.min.js" async="async" type="text/javascript"
+    ></script
+    ><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"
+    ></script
+    ></head
+  ><body
+  ><div id="package-header"
+    ><ul class="links" id="page-menu"
+      ><li
+	><a href="index.html"
+	  >Contents</a
+	  ></li
+	><li
+	><a href="doc-index.html"
+	  >Index</a
+	  ></li
+	></ul
+      ><p class="caption"
+      >ml</p
+      ></div
+    ><div id="content"
+    ><div id="module-header"
+      ><table class="info"
+	><tr
+	  ><th valign="top"
+	    >Copyright</th
+	    ><td
+	    >(c) Guilherme S I Aldeia 2018<br
+	       />Heitor R Savegnago 2018</td
+	    ></tr
+	  ><tr
+	  ><th
+	    >License</th
+	    ><td
+	    >GPL-3</td
+	    ></tr
+	  ><tr
+	  ><th
+	    >Maintainer</th
+	    ><td
+	    >guilherme.aldeia@aluno.ufabc.edu.br
+              heitor.rodrigues@aluno.ufabc.edu.br</td
+	    ></tr
+	  ><tr
+	  ><th
+	    >Stability</th
+	    ><td
+	    >experimental</td
+	    ></tr
+	  ><tr
+	  ><th
+	    >Portability</th
+	    ><td
+	    >POSIX</td
+	    ></tr
+	  ><tr
+	  ><th
+	    >Safe Haskell</th
+	    ><td
+	    >None</td
+	    ></tr
+	  ></table
+	><p class="caption"
+	>Manipulators</p
+	></div
+      ><div id="description"
+      ><p class="caption"
+	>Description</p
+	><div class="doc"
+	><p
+	  >Module containing implementation of expression manipulation functions.</p
+	  ></div
+	></div
+      ><div id="synopsis"
+      ><details id="syn"
+	><summary
+	  >Synopsis</summary
+	  ><ul class="details-toggle" data-details-id="syn"
+	  ><li class="src short"
+	    ><span class="keyword"
+	      >newtype</span
+	      > <a href="#t:Score"
+	      >Score</a
+	      > = <a href="#v:Score"
+	      >Score</a
+	      > Double</li
+	    ><li class="src short"
+	    ><span class="keyword"
+	      >newtype</span
+	      > <a href="#t:Coeff"
+	      >Coeff</a
+	      > = <a href="#v:Coeff"
+	      >Coeff</a
+	      > Double</li
+	    ><li class="src short"
+	    ><span class="keyword"
+	      >newtype</span
+	      > <a href="#t:Exps"
+	      >Exps</a
+	      > = <a href="#v:Exps"
+	      >Exps</a
+	      > [Int]</li
+	    ><li class="src short"
+	    ><span class="keyword"
+	      >newtype</span
+	      > <a href="#t:Op"
+	      >Op</a
+	      > = <a href="#v:Op"
+	      >Op</a
+	      > Int</li
+	    ><li class="src short"
+	    ><span class="keyword"
+	      >newtype</span
+	      > <a href="#t:It"
+	      >It</a
+	      > = <a href="#v:It"
+	      >It</a
+	      > (<a href="Manipulators.html#t:Coeff" title="Manipulators"
+	      >Coeff</a
+	      >, <a href="Manipulators.html#t:Op" title="Manipulators"
+	      >Op</a
+	      >, <a href="Manipulators.html#t:Exps" title="Manipulators"
+	      >Exps</a
+	      >)</li
+	    ><li class="src short"
+	    ><span class="keyword"
+	      >type</span
+	      > <a href="#t:Le"
+	      >Le</a
+	      > = [<a href="Manipulators.html#t:It" title="Manipulators"
+	      >It</a
+	      >]</li
+	    ><li class="src short"
+	    ><span class="keyword"
+	      >type</span
+	      > <a href="#t:Pop"
+	      >Pop</a
+	      > = [<a href="Manipulators.html#t:Le" title="Manipulators"
+	      >Le</a
+	      >]</li
+	    ><li class="src short"
+	    ><span class="keyword"
+	      >type</span
+	      > <a href="#t:Operator"
+	      >Operator</a
+	      > = Double -&gt; Double</li
+	    ><li class="src short"
+	    ><span class="keyword"
+	      >type</span
+	      > <a href="#t:Op-39-n-39-Name"
+	      >Op'n'Name</a
+	      > = (<a href="Manipulators.html#t:Operator" title="Manipulators"
+	      >Operator</a
+	      >, String)</li
+	    ><li class="src short"
+	    ><span class="keyword"
+	      >type</span
+	      > <a href="#t:SimplifyT"
+	      >SimplifyT</a
+	      > = Double</li
+	    ><li class="src short"
+	    ><span class="keyword"
+	      >type</span
+	      > <a href="#t:SupressionT"
+	      >SupressionT</a
+	      > = Int</li
+	    ><li class="src short"
+	    ><span class="keyword"
+	      >type</span
+	      > <a href="#t:PopSize"
+	      >PopSize</a
+	      > = Int</li
+	    ><li class="src short"
+	    ><span class="keyword"
+	      >type</span
+	      > <a href="#t:LeSize"
+	      >LeSize</a
+	      > = Int</li
+	    ><li class="src short"
+	    ><a href="#v:ops"
+	      >ops</a
+	      > :: [<a href="Manipulators.html#t:Op-39-n-39-Name" title="Manipulators"
+	      >Op'n'Name</a
+	      >]</li
+	    ><li class="src short"
+	    ><a href="#v:operator"
+	      >operator</a
+	      > :: <a href="Manipulators.html#t:Op-39-n-39-Name" title="Manipulators"
+	      >Op'n'Name</a
+	      > -&gt; <a href="Manipulators.html#t:Operator" title="Manipulators"
+	      >Operator</a
+	      ></li
+	    ><li class="src short"
+	    ><a href="#v:nomeator"
+	      >nomeator</a
+	      > :: <a href="Manipulators.html#t:Op-39-n-39-Name" title="Manipulators"
+	      >Op'n'Name</a
+	      > -&gt; String</li
+	    ><li class="src short"
+	    ><a href="#v:linearExpression"
+	      >linearExpression</a
+	      > :: Int -&gt; <a href="Manipulators.html#t:Le" title="Manipulators"
+	      >Le</a
+	      ></li
+	    ><li class="src short"
+	    ><a href="#v:randomExps"
+	      >randomExps</a
+	      > :: Int -&gt; IO [Int]</li
+	    ><li class="src short"
+	    ><a href="#v:randomIt"
+	      >randomIt</a
+	      > :: Int -&gt; IO <a href="Manipulators.html#t:It" title="Manipulators"
+	      >It</a
+	      ></li
+	    ><li class="src short"
+	    ><a href="#v:randomExpression"
+	      >randomExpression</a
+	      > :: Int -&gt; Int -&gt; IO <a href="Manipulators.html#t:Le" title="Manipulators"
+	      >Le</a
+	      ></li
+	    ><li class="src short"
+	    ><a href="#v:textRepresentation"
+	      >textRepresentation</a
+	      > :: <a href="Manipulators.html#t:Le" title="Manipulators"
+	      >Le</a
+	      > -&gt; String</li
+	    ><li class="src short"
+	    ><a href="#v:uniques"
+	      >uniques</a
+	      > :: <a href="Manipulators.html#t:Le" title="Manipulators"
+	      >Le</a
+	      > -&gt; <a href="Manipulators.html#t:Le" title="Manipulators"
+	      >Le</a
+	      ></li
+	    ><li class="src short"
+	    ><a href="#v:solve"
+	      >solve</a
+	      > :: <a href="Manipulators.html#t:Le" title="Manipulators"
+	      >Le</a
+	      > -&gt; <a href="Dataset.html#t:DataPoint" title="Dataset"
+	      >DataPoint</a
+	      > -&gt; [Double]</li
+	    ><li class="src short"
+	    ><a href="#v:adjust"
+	      >adjust</a
+	      > :: <a href="Manipulators.html#t:Le" title="Manipulators"
+	      >Le</a
+	      > -&gt; <a href="Dataset.html#t:Dataset" title="Dataset"
+	      >Dataset</a
+	      > -&gt; <a href="Manipulators.html#t:Le" title="Manipulators"
+	      >Le</a
+	      ></li
+	    ><li class="src short"
+	    ><a href="#v:evaluate"
+	      >evaluate</a
+	      > :: <a href="Manipulators.html#t:Le" title="Manipulators"
+	      >Le</a
+	      > -&gt; <a href="Dataset.html#t:Dataset" title="Dataset"
+	      >Dataset</a
+	      > -&gt; <a href="Manipulators.html#t:Score" title="Manipulators"
+	      >Score</a
+	      ></li
+	    ><li class="src short"
+	    ><a href="#v:simplify"
+	      >simplify</a
+	      > :: <a href="Manipulators.html#t:Le" title="Manipulators"
+	      >Le</a
+	      > -&gt; <a href="Manipulators.html#t:SimplifyT" title="Manipulators"
+	      >SimplifyT</a
+	      > -&gt; Maybe <a href="Manipulators.html#t:Le" title="Manipulators"
+	      >Le</a
+	      ></li
+	    ><li class="src short"
+	    ><a href="#v:mutateTrans"
+	      >mutateTrans</a
+	      > :: <a href="Manipulators.html#t:Le" title="Manipulators"
+	      >Le</a
+	      > -&gt; IO <a href="Manipulators.html#t:Le" title="Manipulators"
+	      >Le</a
+	      ></li
+	    ><li class="src short"
+	    ><a href="#v:mutateExps"
+	      >mutateExps</a
+	      > :: <a href="Manipulators.html#t:Exps" title="Manipulators"
+	      >Exps</a
+	      > -&gt; IO <a href="Manipulators.html#t:Exps" title="Manipulators"
+	      >Exps</a
+	      ></li
+	    ><li class="src short"
+	    ><a href="#v:mutateInter"
+	      >mutateInter</a
+	      > :: Int -&gt; <a href="Manipulators.html#t:Le" title="Manipulators"
+	      >Le</a
+	      > -&gt; IO <a href="Manipulators.html#t:Le" title="Manipulators"
+	      >Le</a
+	      ></li
+	    ><li class="src short"
+	    ><a href="#v:simplifyPop"
+	      >simplifyPop</a
+	      > :: <a href="Manipulators.html#t:Pop" title="Manipulators"
+	      >Pop</a
+	      > -&gt; <a href="Manipulators.html#t:SimplifyT" title="Manipulators"
+	      >SimplifyT</a
+	      > -&gt; <a href="Manipulators.html#t:Pop" title="Manipulators"
+	      >Pop</a
+	      ></li
+	    ><li class="src short"
+	    ><a href="#v:sortByScore"
+	      >sortByScore</a
+	      > :: <a href="Manipulators.html#t:Pop" title="Manipulators"
+	      >Pop</a
+	      > -&gt; <a href="Dataset.html#t:Dataset" title="Dataset"
+	      >Dataset</a
+	      > -&gt; <a href="Manipulators.html#t:Pop" title="Manipulators"
+	      >Pop</a
+	      ></li
+	    ><li class="src short"
+	    ><a href="#v:mutatePop"
+	      >mutatePop</a
+	      > :: <a href="Manipulators.html#t:Pop" title="Manipulators"
+	      >Pop</a
+	      > -&gt; Int -&gt; IO <a href="Manipulators.html#t:Pop" title="Manipulators"
+	      >Pop</a
+	      ></li
+	    ><li class="src short"
+	    ><a href="#v:rndPopulation"
+	      >rndPopulation</a
+	      > :: <a href="Manipulators.html#t:PopSize" title="Manipulators"
+	      >PopSize</a
+	      > -&gt; <a href="Manipulators.html#t:LeSize" title="Manipulators"
+	      >LeSize</a
+	      > -&gt; <a href="Dataset.html#t:Dataset" title="Dataset"
+	      >Dataset</a
+	      > -&gt; IO <a href="Manipulators.html#t:Pop" title="Manipulators"
+	      >Pop</a
+	      ></li
+	    ><li class="src short"
+	    ><a href="#v:dummyDist"
+	      >dummyDist</a
+	      > :: <a href="Manipulators.html#t:It" title="Manipulators"
+	      >It</a
+	      > -&gt; Int</li
+	    ><li class="src short"
+	    ><a href="#v:distExpr"
+	      >distExpr</a
+	      > :: <a href="Manipulators.html#t:Le" title="Manipulators"
+	      >Le</a
+	      > -&gt; <a href="Manipulators.html#t:Le" title="Manipulators"
+	      >Le</a
+	      > -&gt; Int</li
+	    ><li class="src short"
+	    ><a href="#v:supress"
+	      >supress</a
+	      > :: <a href="Manipulators.html#t:Pop" title="Manipulators"
+	      >Pop</a
+	      > -&gt; <a href="Manipulators.html#t:SupressionT" title="Manipulators"
+	      >SupressionT</a
+	      > -&gt; <a href="Dataset.html#t:Dataset" title="Dataset"
+	      >Dataset</a
+	      > -&gt; <a href="Manipulators.html#t:Pop" title="Manipulators"
+	      >Pop</a
+	      ></li
+	    ></ul
+	  ></details
+	></div
+      ><div id="interface"
+      ><h1
+	>Documentation</h1
+	><div class="top"
+	><p class="src"
+	  ><span class="keyword"
+	    >newtype</span
+	    > <a id="t:Score" class="def"
+	    >Score</a
+	    > <a href="#t:Score" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Double ranging from [0,1] indicating the performance of the solution for 
+ a given dataset</p
+	    ></div
+	  ><div class="subs constructors"
+	  ><p class="caption"
+	    >Constructors</p
+	    ><table
+	    ><tr
+	      ><td class="src"
+		><a id="v:Score" class="def"
+		  >Score</a
+		  > Double</td
+		><td class="doc empty"
+		>&nbsp;</td
+		></tr
+	      ></table
+	    ></div
+	  ><div class="subs instances"
+	  ><details id="i:Score" open="open"
+	    ><summary
+	      >Instances</summary
+	      ><table
+	      ><tr
+		><td class="src clearfix"
+		  ><span class="inst-left"
+		    ><span class="instance details-toggle-control details-toggle" data-details-id="i:id:Score:Eq:1"
+		      ></span
+		      > Eq <a href="Manipulators.html#t:Score" title="Manipulators"
+		      >Score</a
+		      ></span
+		    > <a href="#t:Score" class="selflink"
+		    >#</a
+		    ></td
+		  ><td class="doc empty"
+		  >&nbsp;</td
+		  ></tr
+		><tr
+		><td colspan="2"
+		  ><details id="i:id:Score:Eq:1"
+		    ><summary class="hide-when-js-enabled"
+		      >Instance details</summary
+		      ><p
+		      >Defined in <a href="Manipulators.html"
+			>Manipulators</a
+			></p
+		      > <div class="subs methods"
+		      ><p class="caption"
+			>Methods</p
+			><p class="src"
+			><a href="#v:-61--61-"
+			  >(==)</a
+			  > :: <a href="Manipulators.html#t:Score" title="Manipulators"
+			  >Score</a
+			  > -&gt; <a href="Manipulators.html#t:Score" title="Manipulators"
+			  >Score</a
+			  > -&gt; Bool</p
+			><p class="src"
+			><a href="#v:-47--61-"
+			  >(/=)</a
+			  > :: <a href="Manipulators.html#t:Score" title="Manipulators"
+			  >Score</a
+			  > -&gt; <a href="Manipulators.html#t:Score" title="Manipulators"
+			  >Score</a
+			  > -&gt; Bool</p
+			></div
+		      ></details
+		    ></td
+		  ></tr
+		><tr
+		><td class="src clearfix"
+		  ><span class="inst-left"
+		    ><span class="instance details-toggle-control details-toggle" data-details-id="i:id:Score:Ord:2"
+		      ></span
+		      > Ord <a href="Manipulators.html#t:Score" title="Manipulators"
+		      >Score</a
+		      ></span
+		    > <a href="#t:Score" class="selflink"
+		    >#</a
+		    ></td
+		  ><td class="doc empty"
+		  >&nbsp;</td
+		  ></tr
+		><tr
+		><td colspan="2"
+		  ><details id="i:id:Score:Ord:2"
+		    ><summary class="hide-when-js-enabled"
+		      >Instance details</summary
+		      ><p
+		      >Defined in <a href="Manipulators.html"
+			>Manipulators</a
+			></p
+		      > <div class="subs methods"
+		      ><p class="caption"
+			>Methods</p
+			><p class="src"
+			><a href="#v:compare"
+			  >compare</a
+			  > :: <a href="Manipulators.html#t:Score" title="Manipulators"
+			  >Score</a
+			  > -&gt; <a href="Manipulators.html#t:Score" title="Manipulators"
+			  >Score</a
+			  > -&gt; Ordering</p
+			><p class="src"
+			><a href="#v:-60-"
+			  >(&lt;)</a
+			  > :: <a href="Manipulators.html#t:Score" title="Manipulators"
+			  >Score</a
+			  > -&gt; <a href="Manipulators.html#t:Score" title="Manipulators"
+			  >Score</a
+			  > -&gt; Bool</p
+			><p class="src"
+			><a href="#v:-60--61-"
+			  >(&lt;=)</a
+			  > :: <a href="Manipulators.html#t:Score" title="Manipulators"
+			  >Score</a
+			  > -&gt; <a href="Manipulators.html#t:Score" title="Manipulators"
+			  >Score</a
+			  > -&gt; Bool</p
+			><p class="src"
+			><a href="#v:-62-"
+			  >(&gt;)</a
+			  > :: <a href="Manipulators.html#t:Score" title="Manipulators"
+			  >Score</a
+			  > -&gt; <a href="Manipulators.html#t:Score" title="Manipulators"
+			  >Score</a
+			  > -&gt; Bool</p
+			><p class="src"
+			><a href="#v:-62--61-"
+			  >(&gt;=)</a
+			  > :: <a href="Manipulators.html#t:Score" title="Manipulators"
+			  >Score</a
+			  > -&gt; <a href="Manipulators.html#t:Score" title="Manipulators"
+			  >Score</a
+			  > -&gt; Bool</p
+			><p class="src"
+			><a href="#v:max"
+			  >max</a
+			  > :: <a href="Manipulators.html#t:Score" title="Manipulators"
+			  >Score</a
+			  > -&gt; <a href="Manipulators.html#t:Score" title="Manipulators"
+			  >Score</a
+			  > -&gt; <a href="Manipulators.html#t:Score" title="Manipulators"
+			  >Score</a
+			  ></p
+			><p class="src"
+			><a href="#v:min"
+			  >min</a
+			  > :: <a href="Manipulators.html#t:Score" title="Manipulators"
+			  >Score</a
+			  > -&gt; <a href="Manipulators.html#t:Score" title="Manipulators"
+			  >Score</a
+			  > -&gt; <a href="Manipulators.html#t:Score" title="Manipulators"
+			  >Score</a
+			  ></p
+			></div
+		      ></details
+		    ></td
+		  ></tr
+		><tr
+		><td class="src clearfix"
+		  ><span class="inst-left"
+		    ><span class="instance details-toggle-control details-toggle" data-details-id="i:id:Score:Show:3"
+		      ></span
+		      > Show <a href="Manipulators.html#t:Score" title="Manipulators"
+		      >Score</a
+		      ></span
+		    > <a href="#t:Score" class="selflink"
+		    >#</a
+		    ></td
+		  ><td class="doc empty"
+		  >&nbsp;</td
+		  ></tr
+		><tr
+		><td colspan="2"
+		  ><details id="i:id:Score:Show:3"
+		    ><summary class="hide-when-js-enabled"
+		      >Instance details</summary
+		      ><p
+		      >Defined in <a href="Manipulators.html"
+			>Manipulators</a
+			></p
+		      > <div class="subs methods"
+		      ><p class="caption"
+			>Methods</p
+			><p class="src"
+			><a href="#v:showsPrec"
+			  >showsPrec</a
+			  > :: Int -&gt; <a href="Manipulators.html#t:Score" title="Manipulators"
+			  >Score</a
+			  > -&gt; ShowS</p
+			><p class="src"
+			><a href="#v:show"
+			  >show</a
+			  > :: <a href="Manipulators.html#t:Score" title="Manipulators"
+			  >Score</a
+			  > -&gt; String</p
+			><p class="src"
+			><a href="#v:showList"
+			  >showList</a
+			  > :: [<a href="Manipulators.html#t:Score" title="Manipulators"
+			  >Score</a
+			  >] -&gt; ShowS</p
+			></div
+		      ></details
+		    ></td
+		  ></tr
+		></table
+	      ></details
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><span class="keyword"
+	    >newtype</span
+	    > <a id="t:Coeff" class="def"
+	    >Coeff</a
+	    > <a href="#t:Coeff" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Coefficient associated with the ITs</p
+	    ></div
+	  ><div class="subs constructors"
+	  ><p class="caption"
+	    >Constructors</p
+	    ><table
+	    ><tr
+	      ><td class="src"
+		><a id="v:Coeff" class="def"
+		  >Coeff</a
+		  > Double</td
+		><td class="doc empty"
+		>&nbsp;</td
+		></tr
+	      ></table
+	    ></div
+	  ><div class="subs instances"
+	  ><details id="i:Coeff" open="open"
+	    ><summary
+	      >Instances</summary
+	      ><table
+	      ><tr
+		><td class="src clearfix"
+		  ><span class="inst-left"
+		    ><span class="instance details-toggle-control details-toggle" data-details-id="i:id:Coeff:Eq:1"
+		      ></span
+		      > Eq <a href="Manipulators.html#t:Coeff" title="Manipulators"
+		      >Coeff</a
+		      ></span
+		    > <a href="#t:Coeff" class="selflink"
+		    >#</a
+		    ></td
+		  ><td class="doc empty"
+		  >&nbsp;</td
+		  ></tr
+		><tr
+		><td colspan="2"
+		  ><details id="i:id:Coeff:Eq:1"
+		    ><summary class="hide-when-js-enabled"
+		      >Instance details</summary
+		      ><p
+		      >Defined in <a href="Manipulators.html"
+			>Manipulators</a
+			></p
+		      > <div class="subs methods"
+		      ><p class="caption"
+			>Methods</p
+			><p class="src"
+			><a href="#v:-61--61-"
+			  >(==)</a
+			  > :: <a href="Manipulators.html#t:Coeff" title="Manipulators"
+			  >Coeff</a
+			  > -&gt; <a href="Manipulators.html#t:Coeff" title="Manipulators"
+			  >Coeff</a
+			  > -&gt; Bool</p
+			><p class="src"
+			><a href="#v:-47--61-"
+			  >(/=)</a
+			  > :: <a href="Manipulators.html#t:Coeff" title="Manipulators"
+			  >Coeff</a
+			  > -&gt; <a href="Manipulators.html#t:Coeff" title="Manipulators"
+			  >Coeff</a
+			  > -&gt; Bool</p
+			></div
+		      ></details
+		    ></td
+		  ></tr
+		><tr
+		><td class="src clearfix"
+		  ><span class="inst-left"
+		    ><span class="instance details-toggle-control details-toggle" data-details-id="i:id:Coeff:Ord:2"
+		      ></span
+		      > Ord <a href="Manipulators.html#t:Coeff" title="Manipulators"
+		      >Coeff</a
+		      ></span
+		    > <a href="#t:Coeff" class="selflink"
+		    >#</a
+		    ></td
+		  ><td class="doc empty"
+		  >&nbsp;</td
+		  ></tr
+		><tr
+		><td colspan="2"
+		  ><details id="i:id:Coeff:Ord:2"
+		    ><summary class="hide-when-js-enabled"
+		      >Instance details</summary
+		      ><p
+		      >Defined in <a href="Manipulators.html"
+			>Manipulators</a
+			></p
+		      > <div class="subs methods"
+		      ><p class="caption"
+			>Methods</p
+			><p class="src"
+			><a href="#v:compare"
+			  >compare</a
+			  > :: <a href="Manipulators.html#t:Coeff" title="Manipulators"
+			  >Coeff</a
+			  > -&gt; <a href="Manipulators.html#t:Coeff" title="Manipulators"
+			  >Coeff</a
+			  > -&gt; Ordering</p
+			><p class="src"
+			><a href="#v:-60-"
+			  >(&lt;)</a
+			  > :: <a href="Manipulators.html#t:Coeff" title="Manipulators"
+			  >Coeff</a
+			  > -&gt; <a href="Manipulators.html#t:Coeff" title="Manipulators"
+			  >Coeff</a
+			  > -&gt; Bool</p
+			><p class="src"
+			><a href="#v:-60--61-"
+			  >(&lt;=)</a
+			  > :: <a href="Manipulators.html#t:Coeff" title="Manipulators"
+			  >Coeff</a
+			  > -&gt; <a href="Manipulators.html#t:Coeff" title="Manipulators"
+			  >Coeff</a
+			  > -&gt; Bool</p
+			><p class="src"
+			><a href="#v:-62-"
+			  >(&gt;)</a
+			  > :: <a href="Manipulators.html#t:Coeff" title="Manipulators"
+			  >Coeff</a
+			  > -&gt; <a href="Manipulators.html#t:Coeff" title="Manipulators"
+			  >Coeff</a
+			  > -&gt; Bool</p
+			><p class="src"
+			><a href="#v:-62--61-"
+			  >(&gt;=)</a
+			  > :: <a href="Manipulators.html#t:Coeff" title="Manipulators"
+			  >Coeff</a
+			  > -&gt; <a href="Manipulators.html#t:Coeff" title="Manipulators"
+			  >Coeff</a
+			  > -&gt; Bool</p
+			><p class="src"
+			><a href="#v:max"
+			  >max</a
+			  > :: <a href="Manipulators.html#t:Coeff" title="Manipulators"
+			  >Coeff</a
+			  > -&gt; <a href="Manipulators.html#t:Coeff" title="Manipulators"
+			  >Coeff</a
+			  > -&gt; <a href="Manipulators.html#t:Coeff" title="Manipulators"
+			  >Coeff</a
+			  ></p
+			><p class="src"
+			><a href="#v:min"
+			  >min</a
+			  > :: <a href="Manipulators.html#t:Coeff" title="Manipulators"
+			  >Coeff</a
+			  > -&gt; <a href="Manipulators.html#t:Coeff" title="Manipulators"
+			  >Coeff</a
+			  > -&gt; <a href="Manipulators.html#t:Coeff" title="Manipulators"
+			  >Coeff</a
+			  ></p
+			></div
+		      ></details
+		    ></td
+		  ></tr
+		><tr
+		><td class="src clearfix"
+		  ><span class="inst-left"
+		    ><span class="instance details-toggle-control details-toggle" data-details-id="i:id:Coeff:Show:3"
+		      ></span
+		      > Show <a href="Manipulators.html#t:Coeff" title="Manipulators"
+		      >Coeff</a
+		      ></span
+		    > <a href="#t:Coeff" class="selflink"
+		    >#</a
+		    ></td
+		  ><td class="doc empty"
+		  >&nbsp;</td
+		  ></tr
+		><tr
+		><td colspan="2"
+		  ><details id="i:id:Coeff:Show:3"
+		    ><summary class="hide-when-js-enabled"
+		      >Instance details</summary
+		      ><p
+		      >Defined in <a href="Manipulators.html"
+			>Manipulators</a
+			></p
+		      > <div class="subs methods"
+		      ><p class="caption"
+			>Methods</p
+			><p class="src"
+			><a href="#v:showsPrec"
+			  >showsPrec</a
+			  > :: Int -&gt; <a href="Manipulators.html#t:Coeff" title="Manipulators"
+			  >Coeff</a
+			  > -&gt; ShowS</p
+			><p class="src"
+			><a href="#v:show"
+			  >show</a
+			  > :: <a href="Manipulators.html#t:Coeff" title="Manipulators"
+			  >Coeff</a
+			  > -&gt; String</p
+			><p class="src"
+			><a href="#v:showList"
+			  >showList</a
+			  > :: [<a href="Manipulators.html#t:Coeff" title="Manipulators"
+			  >Coeff</a
+			  >] -&gt; ShowS</p
+			></div
+		      ></details
+		    ></td
+		  ></tr
+		></table
+	      ></details
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><span class="keyword"
+	    >newtype</span
+	    > <a id="t:Exps" class="def"
+	    >Exps</a
+	    > <a href="#t:Exps" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Vector of expoents of ITs, to be applied to the samples on IT evaluation</p
+	    ></div
+	  ><div class="subs constructors"
+	  ><p class="caption"
+	    >Constructors</p
+	    ><table
+	    ><tr
+	      ><td class="src"
+		><a id="v:Exps" class="def"
+		  >Exps</a
+		  > [Int]</td
+		><td class="doc empty"
+		>&nbsp;</td
+		></tr
+	      ></table
+	    ></div
+	  ><div class="subs instances"
+	  ><details id="i:Exps" open="open"
+	    ><summary
+	      >Instances</summary
+	      ><table
+	      ><tr
+		><td class="src clearfix"
+		  ><span class="inst-left"
+		    ><span class="instance details-toggle-control details-toggle" data-details-id="i:id:Exps:Eq:1"
+		      ></span
+		      > Eq <a href="Manipulators.html#t:Exps" title="Manipulators"
+		      >Exps</a
+		      ></span
+		    > <a href="#t:Exps" class="selflink"
+		    >#</a
+		    ></td
+		  ><td class="doc empty"
+		  >&nbsp;</td
+		  ></tr
+		><tr
+		><td colspan="2"
+		  ><details id="i:id:Exps:Eq:1"
+		    ><summary class="hide-when-js-enabled"
+		      >Instance details</summary
+		      ><p
+		      >Defined in <a href="Manipulators.html"
+			>Manipulators</a
+			></p
+		      > <div class="subs methods"
+		      ><p class="caption"
+			>Methods</p
+			><p class="src"
+			><a href="#v:-61--61-"
+			  >(==)</a
+			  > :: <a href="Manipulators.html#t:Exps" title="Manipulators"
+			  >Exps</a
+			  > -&gt; <a href="Manipulators.html#t:Exps" title="Manipulators"
+			  >Exps</a
+			  > -&gt; Bool</p
+			><p class="src"
+			><a href="#v:-47--61-"
+			  >(/=)</a
+			  > :: <a href="Manipulators.html#t:Exps" title="Manipulators"
+			  >Exps</a
+			  > -&gt; <a href="Manipulators.html#t:Exps" title="Manipulators"
+			  >Exps</a
+			  > -&gt; Bool</p
+			></div
+		      ></details
+		    ></td
+		  ></tr
+		><tr
+		><td class="src clearfix"
+		  ><span class="inst-left"
+		    ><span class="instance details-toggle-control details-toggle" data-details-id="i:id:Exps:Ord:2"
+		      ></span
+		      > Ord <a href="Manipulators.html#t:Exps" title="Manipulators"
+		      >Exps</a
+		      ></span
+		    > <a href="#t:Exps" class="selflink"
+		    >#</a
+		    ></td
+		  ><td class="doc empty"
+		  >&nbsp;</td
+		  ></tr
+		><tr
+		><td colspan="2"
+		  ><details id="i:id:Exps:Ord:2"
+		    ><summary class="hide-when-js-enabled"
+		      >Instance details</summary
+		      ><p
+		      >Defined in <a href="Manipulators.html"
+			>Manipulators</a
+			></p
+		      > <div class="subs methods"
+		      ><p class="caption"
+			>Methods</p
+			><p class="src"
+			><a href="#v:compare"
+			  >compare</a
+			  > :: <a href="Manipulators.html#t:Exps" title="Manipulators"
+			  >Exps</a
+			  > -&gt; <a href="Manipulators.html#t:Exps" title="Manipulators"
+			  >Exps</a
+			  > -&gt; Ordering</p
+			><p class="src"
+			><a href="#v:-60-"
+			  >(&lt;)</a
+			  > :: <a href="Manipulators.html#t:Exps" title="Manipulators"
+			  >Exps</a
+			  > -&gt; <a href="Manipulators.html#t:Exps" title="Manipulators"
+			  >Exps</a
+			  > -&gt; Bool</p
+			><p class="src"
+			><a href="#v:-60--61-"
+			  >(&lt;=)</a
+			  > :: <a href="Manipulators.html#t:Exps" title="Manipulators"
+			  >Exps</a
+			  > -&gt; <a href="Manipulators.html#t:Exps" title="Manipulators"
+			  >Exps</a
+			  > -&gt; Bool</p
+			><p class="src"
+			><a href="#v:-62-"
+			  >(&gt;)</a
+			  > :: <a href="Manipulators.html#t:Exps" title="Manipulators"
+			  >Exps</a
+			  > -&gt; <a href="Manipulators.html#t:Exps" title="Manipulators"
+			  >Exps</a
+			  > -&gt; Bool</p
+			><p class="src"
+			><a href="#v:-62--61-"
+			  >(&gt;=)</a
+			  > :: <a href="Manipulators.html#t:Exps" title="Manipulators"
+			  >Exps</a
+			  > -&gt; <a href="Manipulators.html#t:Exps" title="Manipulators"
+			  >Exps</a
+			  > -&gt; Bool</p
+			><p class="src"
+			><a href="#v:max"
+			  >max</a
+			  > :: <a href="Manipulators.html#t:Exps" title="Manipulators"
+			  >Exps</a
+			  > -&gt; <a href="Manipulators.html#t:Exps" title="Manipulators"
+			  >Exps</a
+			  > -&gt; <a href="Manipulators.html#t:Exps" title="Manipulators"
+			  >Exps</a
+			  ></p
+			><p class="src"
+			><a href="#v:min"
+			  >min</a
+			  > :: <a href="Manipulators.html#t:Exps" title="Manipulators"
+			  >Exps</a
+			  > -&gt; <a href="Manipulators.html#t:Exps" title="Manipulators"
+			  >Exps</a
+			  > -&gt; <a href="Manipulators.html#t:Exps" title="Manipulators"
+			  >Exps</a
+			  ></p
+			></div
+		      ></details
+		    ></td
+		  ></tr
+		><tr
+		><td class="src clearfix"
+		  ><span class="inst-left"
+		    ><span class="instance details-toggle-control details-toggle" data-details-id="i:id:Exps:Show:3"
+		      ></span
+		      > Show <a href="Manipulators.html#t:Exps" title="Manipulators"
+		      >Exps</a
+		      ></span
+		    > <a href="#t:Exps" class="selflink"
+		    >#</a
+		    ></td
+		  ><td class="doc empty"
+		  >&nbsp;</td
+		  ></tr
+		><tr
+		><td colspan="2"
+		  ><details id="i:id:Exps:Show:3"
+		    ><summary class="hide-when-js-enabled"
+		      >Instance details</summary
+		      ><p
+		      >Defined in <a href="Manipulators.html"
+			>Manipulators</a
+			></p
+		      > <div class="subs methods"
+		      ><p class="caption"
+			>Methods</p
+			><p class="src"
+			><a href="#v:showsPrec"
+			  >showsPrec</a
+			  > :: Int -&gt; <a href="Manipulators.html#t:Exps" title="Manipulators"
+			  >Exps</a
+			  > -&gt; ShowS</p
+			><p class="src"
+			><a href="#v:show"
+			  >show</a
+			  > :: <a href="Manipulators.html#t:Exps" title="Manipulators"
+			  >Exps</a
+			  > -&gt; String</p
+			><p class="src"
+			><a href="#v:showList"
+			  >showList</a
+			  > :: [<a href="Manipulators.html#t:Exps" title="Manipulators"
+			  >Exps</a
+			  >] -&gt; ShowS</p
+			></div
+		      ></details
+		    ></td
+		  ></tr
+		></table
+	      ></details
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><span class="keyword"
+	    >newtype</span
+	    > <a id="t:Op" class="def"
+	    >Op</a
+	    > <a href="#t:Op" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Index of the operator of the ITs</p
+	    ></div
+	  ><div class="subs constructors"
+	  ><p class="caption"
+	    >Constructors</p
+	    ><table
+	    ><tr
+	      ><td class="src"
+		><a id="v:Op" class="def"
+		  >Op</a
+		  > Int</td
+		><td class="doc empty"
+		>&nbsp;</td
+		></tr
+	      ></table
+	    ></div
+	  ><div class="subs instances"
+	  ><details id="i:Op" open="open"
+	    ><summary
+	      >Instances</summary
+	      ><table
+	      ><tr
+		><td class="src clearfix"
+		  ><span class="inst-left"
+		    ><span class="instance details-toggle-control details-toggle" data-details-id="i:id:Op:Eq:1"
+		      ></span
+		      > Eq <a href="Manipulators.html#t:Op" title="Manipulators"
+		      >Op</a
+		      ></span
+		    > <a href="#t:Op" class="selflink"
+		    >#</a
+		    ></td
+		  ><td class="doc empty"
+		  >&nbsp;</td
+		  ></tr
+		><tr
+		><td colspan="2"
+		  ><details id="i:id:Op:Eq:1"
+		    ><summary class="hide-when-js-enabled"
+		      >Instance details</summary
+		      ><p
+		      >Defined in <a href="Manipulators.html"
+			>Manipulators</a
+			></p
+		      > <div class="subs methods"
+		      ><p class="caption"
+			>Methods</p
+			><p class="src"
+			><a href="#v:-61--61-"
+			  >(==)</a
+			  > :: <a href="Manipulators.html#t:Op" title="Manipulators"
+			  >Op</a
+			  > -&gt; <a href="Manipulators.html#t:Op" title="Manipulators"
+			  >Op</a
+			  > -&gt; Bool</p
+			><p class="src"
+			><a href="#v:-47--61-"
+			  >(/=)</a
+			  > :: <a href="Manipulators.html#t:Op" title="Manipulators"
+			  >Op</a
+			  > -&gt; <a href="Manipulators.html#t:Op" title="Manipulators"
+			  >Op</a
+			  > -&gt; Bool</p
+			></div
+		      ></details
+		    ></td
+		  ></tr
+		><tr
+		><td class="src clearfix"
+		  ><span class="inst-left"
+		    ><span class="instance details-toggle-control details-toggle" data-details-id="i:id:Op:Ord:2"
+		      ></span
+		      > Ord <a href="Manipulators.html#t:Op" title="Manipulators"
+		      >Op</a
+		      ></span
+		    > <a href="#t:Op" class="selflink"
+		    >#</a
+		    ></td
+		  ><td class="doc empty"
+		  >&nbsp;</td
+		  ></tr
+		><tr
+		><td colspan="2"
+		  ><details id="i:id:Op:Ord:2"
+		    ><summary class="hide-when-js-enabled"
+		      >Instance details</summary
+		      ><p
+		      >Defined in <a href="Manipulators.html"
+			>Manipulators</a
+			></p
+		      > <div class="subs methods"
+		      ><p class="caption"
+			>Methods</p
+			><p class="src"
+			><a href="#v:compare"
+			  >compare</a
+			  > :: <a href="Manipulators.html#t:Op" title="Manipulators"
+			  >Op</a
+			  > -&gt; <a href="Manipulators.html#t:Op" title="Manipulators"
+			  >Op</a
+			  > -&gt; Ordering</p
+			><p class="src"
+			><a href="#v:-60-"
+			  >(&lt;)</a
+			  > :: <a href="Manipulators.html#t:Op" title="Manipulators"
+			  >Op</a
+			  > -&gt; <a href="Manipulators.html#t:Op" title="Manipulators"
+			  >Op</a
+			  > -&gt; Bool</p
+			><p class="src"
+			><a href="#v:-60--61-"
+			  >(&lt;=)</a
+			  > :: <a href="Manipulators.html#t:Op" title="Manipulators"
+			  >Op</a
+			  > -&gt; <a href="Manipulators.html#t:Op" title="Manipulators"
+			  >Op</a
+			  > -&gt; Bool</p
+			><p class="src"
+			><a href="#v:-62-"
+			  >(&gt;)</a
+			  > :: <a href="Manipulators.html#t:Op" title="Manipulators"
+			  >Op</a
+			  > -&gt; <a href="Manipulators.html#t:Op" title="Manipulators"
+			  >Op</a
+			  > -&gt; Bool</p
+			><p class="src"
+			><a href="#v:-62--61-"
+			  >(&gt;=)</a
+			  > :: <a href="Manipulators.html#t:Op" title="Manipulators"
+			  >Op</a
+			  > -&gt; <a href="Manipulators.html#t:Op" title="Manipulators"
+			  >Op</a
+			  > -&gt; Bool</p
+			><p class="src"
+			><a href="#v:max"
+			  >max</a
+			  > :: <a href="Manipulators.html#t:Op" title="Manipulators"
+			  >Op</a
+			  > -&gt; <a href="Manipulators.html#t:Op" title="Manipulators"
+			  >Op</a
+			  > -&gt; <a href="Manipulators.html#t:Op" title="Manipulators"
+			  >Op</a
+			  ></p
+			><p class="src"
+			><a href="#v:min"
+			  >min</a
+			  > :: <a href="Manipulators.html#t:Op" title="Manipulators"
+			  >Op</a
+			  > -&gt; <a href="Manipulators.html#t:Op" title="Manipulators"
+			  >Op</a
+			  > -&gt; <a href="Manipulators.html#t:Op" title="Manipulators"
+			  >Op</a
+			  ></p
+			></div
+		      ></details
+		    ></td
+		  ></tr
+		><tr
+		><td class="src clearfix"
+		  ><span class="inst-left"
+		    ><span class="instance details-toggle-control details-toggle" data-details-id="i:id:Op:Show:3"
+		      ></span
+		      > Show <a href="Manipulators.html#t:Op" title="Manipulators"
+		      >Op</a
+		      ></span
+		    > <a href="#t:Op" class="selflink"
+		    >#</a
+		    ></td
+		  ><td class="doc empty"
+		  >&nbsp;</td
+		  ></tr
+		><tr
+		><td colspan="2"
+		  ><details id="i:id:Op:Show:3"
+		    ><summary class="hide-when-js-enabled"
+		      >Instance details</summary
+		      ><p
+		      >Defined in <a href="Manipulators.html"
+			>Manipulators</a
+			></p
+		      > <div class="subs methods"
+		      ><p class="caption"
+			>Methods</p
+			><p class="src"
+			><a href="#v:showsPrec"
+			  >showsPrec</a
+			  > :: Int -&gt; <a href="Manipulators.html#t:Op" title="Manipulators"
+			  >Op</a
+			  > -&gt; ShowS</p
+			><p class="src"
+			><a href="#v:show"
+			  >show</a
+			  > :: <a href="Manipulators.html#t:Op" title="Manipulators"
+			  >Op</a
+			  > -&gt; String</p
+			><p class="src"
+			><a href="#v:showList"
+			  >showList</a
+			  > :: [<a href="Manipulators.html#t:Op" title="Manipulators"
+			  >Op</a
+			  >] -&gt; ShowS</p
+			></div
+		      ></details
+		    ></td
+		  ></tr
+		></table
+	      ></details
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><span class="keyword"
+	    >newtype</span
+	    > <a id="t:It" class="def"
+	    >It</a
+	    > <a href="#t:It" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >IT data structure</p
+	    ></div
+	  ><div class="subs constructors"
+	  ><p class="caption"
+	    >Constructors</p
+	    ><table
+	    ><tr
+	      ><td class="src"
+		><a id="v:It" class="def"
+		  >It</a
+		  > (<a href="Manipulators.html#t:Coeff" title="Manipulators"
+		  >Coeff</a
+		  >, <a href="Manipulators.html#t:Op" title="Manipulators"
+		  >Op</a
+		  >, <a href="Manipulators.html#t:Exps" title="Manipulators"
+		  >Exps</a
+		  >)</td
+		><td class="doc empty"
+		>&nbsp;</td
+		></tr
+	      ></table
+	    ></div
+	  ><div class="subs instances"
+	  ><details id="i:It" open="open"
+	    ><summary
+	      >Instances</summary
+	      ><table
+	      ><tr
+		><td class="src clearfix"
+		  ><span class="inst-left"
+		    ><span class="instance details-toggle-control details-toggle" data-details-id="i:id:It:Eq:1"
+		      ></span
+		      > Eq <a href="Manipulators.html#t:It" title="Manipulators"
+		      >It</a
+		      ></span
+		    > <a href="#t:It" class="selflink"
+		    >#</a
+		    ></td
+		  ><td class="doc empty"
+		  >&nbsp;</td
+		  ></tr
+		><tr
+		><td colspan="2"
+		  ><details id="i:id:It:Eq:1"
+		    ><summary class="hide-when-js-enabled"
+		      >Instance details</summary
+		      ><p
+		      >Defined in <a href="Manipulators.html"
+			>Manipulators</a
+			></p
+		      > <div class="subs methods"
+		      ><p class="caption"
+			>Methods</p
+			><p class="src"
+			><a href="#v:-61--61-"
+			  >(==)</a
+			  > :: <a href="Manipulators.html#t:It" title="Manipulators"
+			  >It</a
+			  > -&gt; <a href="Manipulators.html#t:It" title="Manipulators"
+			  >It</a
+			  > -&gt; Bool</p
+			><p class="src"
+			><a href="#v:-47--61-"
+			  >(/=)</a
+			  > :: <a href="Manipulators.html#t:It" title="Manipulators"
+			  >It</a
+			  > -&gt; <a href="Manipulators.html#t:It" title="Manipulators"
+			  >It</a
+			  > -&gt; Bool</p
+			></div
+		      ></details
+		    ></td
+		  ></tr
+		><tr
+		><td class="src clearfix"
+		  ><span class="inst-left"
+		    ><span class="instance details-toggle-control details-toggle" data-details-id="i:id:It:Ord:2"
+		      ></span
+		      > Ord <a href="Manipulators.html#t:It" title="Manipulators"
+		      >It</a
+		      ></span
+		    > <a href="#t:It" class="selflink"
+		    >#</a
+		    ></td
+		  ><td class="doc empty"
+		  >&nbsp;</td
+		  ></tr
+		><tr
+		><td colspan="2"
+		  ><details id="i:id:It:Ord:2"
+		    ><summary class="hide-when-js-enabled"
+		      >Instance details</summary
+		      ><p
+		      >Defined in <a href="Manipulators.html"
+			>Manipulators</a
+			></p
+		      > <div class="subs methods"
+		      ><p class="caption"
+			>Methods</p
+			><p class="src"
+			><a href="#v:compare"
+			  >compare</a
+			  > :: <a href="Manipulators.html#t:It" title="Manipulators"
+			  >It</a
+			  > -&gt; <a href="Manipulators.html#t:It" title="Manipulators"
+			  >It</a
+			  > -&gt; Ordering</p
+			><p class="src"
+			><a href="#v:-60-"
+			  >(&lt;)</a
+			  > :: <a href="Manipulators.html#t:It" title="Manipulators"
+			  >It</a
+			  > -&gt; <a href="Manipulators.html#t:It" title="Manipulators"
+			  >It</a
+			  > -&gt; Bool</p
+			><p class="src"
+			><a href="#v:-60--61-"
+			  >(&lt;=)</a
+			  > :: <a href="Manipulators.html#t:It" title="Manipulators"
+			  >It</a
+			  > -&gt; <a href="Manipulators.html#t:It" title="Manipulators"
+			  >It</a
+			  > -&gt; Bool</p
+			><p class="src"
+			><a href="#v:-62-"
+			  >(&gt;)</a
+			  > :: <a href="Manipulators.html#t:It" title="Manipulators"
+			  >It</a
+			  > -&gt; <a href="Manipulators.html#t:It" title="Manipulators"
+			  >It</a
+			  > -&gt; Bool</p
+			><p class="src"
+			><a href="#v:-62--61-"
+			  >(&gt;=)</a
+			  > :: <a href="Manipulators.html#t:It" title="Manipulators"
+			  >It</a
+			  > -&gt; <a href="Manipulators.html#t:It" title="Manipulators"
+			  >It</a
+			  > -&gt; Bool</p
+			><p class="src"
+			><a href="#v:max"
+			  >max</a
+			  > :: <a href="Manipulators.html#t:It" title="Manipulators"
+			  >It</a
+			  > -&gt; <a href="Manipulators.html#t:It" title="Manipulators"
+			  >It</a
+			  > -&gt; <a href="Manipulators.html#t:It" title="Manipulators"
+			  >It</a
+			  ></p
+			><p class="src"
+			><a href="#v:min"
+			  >min</a
+			  > :: <a href="Manipulators.html#t:It" title="Manipulators"
+			  >It</a
+			  > -&gt; <a href="Manipulators.html#t:It" title="Manipulators"
+			  >It</a
+			  > -&gt; <a href="Manipulators.html#t:It" title="Manipulators"
+			  >It</a
+			  ></p
+			></div
+		      ></details
+		    ></td
+		  ></tr
+		><tr
+		><td class="src clearfix"
+		  ><span class="inst-left"
+		    ><span class="instance details-toggle-control details-toggle" data-details-id="i:id:It:Show:3"
+		      ></span
+		      > Show <a href="Manipulators.html#t:It" title="Manipulators"
+		      >It</a
+		      ></span
+		    > <a href="#t:It" class="selflink"
+		    >#</a
+		    ></td
+		  ><td class="doc empty"
+		  >&nbsp;</td
+		  ></tr
+		><tr
+		><td colspan="2"
+		  ><details id="i:id:It:Show:3"
+		    ><summary class="hide-when-js-enabled"
+		      >Instance details</summary
+		      ><p
+		      >Defined in <a href="Manipulators.html"
+			>Manipulators</a
+			></p
+		      > <div class="subs methods"
+		      ><p class="caption"
+			>Methods</p
+			><p class="src"
+			><a href="#v:showsPrec"
+			  >showsPrec</a
+			  > :: Int -&gt; <a href="Manipulators.html#t:It" title="Manipulators"
+			  >It</a
+			  > -&gt; ShowS</p
+			><p class="src"
+			><a href="#v:show"
+			  >show</a
+			  > :: <a href="Manipulators.html#t:It" title="Manipulators"
+			  >It</a
+			  > -&gt; String</p
+			><p class="src"
+			><a href="#v:showList"
+			  >showList</a
+			  > :: [<a href="Manipulators.html#t:It" title="Manipulators"
+			  >It</a
+			  >] -&gt; ShowS</p
+			></div
+		      ></details
+		    ></td
+		  ></tr
+		></table
+	      ></details
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><span class="keyword"
+	    >type</span
+	    > <a id="t:Le" class="def"
+	    >Le</a
+	    > = [<a href="Manipulators.html#t:It" title="Manipulators"
+	    >It</a
+	    >] <a href="#t:Le" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Linear combination of ITs</p
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><span class="keyword"
+	    >type</span
+	    > <a id="t:Pop" class="def"
+	    >Pop</a
+	    > = [<a href="Manipulators.html#t:Le" title="Manipulators"
+	    >Le</a
+	    >] <a href="#t:Pop" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Vector containing many Les, called population</p
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><span class="keyword"
+	    >type</span
+	    > <a id="t:Operator" class="def"
+	    >Operator</a
+	    > = Double -&gt; Double <a href="#t:Operator" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >One-argument functions, used to compose ITs</p
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><span class="keyword"
+	    >type</span
+	    > <a id="t:Op-39-n-39-Name" class="def"
+	    >Op'n'Name</a
+	    > = (<a href="Manipulators.html#t:Operator" title="Manipulators"
+	    >Operator</a
+	    >, String) <a href="#t:Op-39-n-39-Name" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Tuple containing One operator and one string to print it</p
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><span class="keyword"
+	    >type</span
+	    > <a id="t:SimplifyT" class="def"
+	    >SimplifyT</a
+	    > = Double <a href="#t:SimplifyT" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Simplification threshold</p
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><span class="keyword"
+	    >type</span
+	    > <a id="t:SupressionT" class="def"
+	    >SupressionT</a
+	    > = Int <a href="#t:SupressionT" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Supression threshold</p
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><span class="keyword"
+	    >type</span
+	    > <a id="t:PopSize" class="def"
+	    >PopSize</a
+	    > = Int <a href="#t:PopSize" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Size of the population</p
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><span class="keyword"
+	    >type</span
+	    > <a id="t:LeSize" class="def"
+	    >LeSize</a
+	    > = Int <a href="#t:LeSize" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Size of the expressions</p
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:ops" class="def"
+	    >ops</a
+	    > :: [<a href="Manipulators.html#t:Op-39-n-39-Name" title="Manipulators"
+	    >Op'n'Name</a
+	    >] <a href="#v:ops" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >set of operators used to create ITs. Each operator is a tuple containing a
+  function (Double -&gt; Double) and a string to print the name of the operation.
+  To add new operators to the ITs, create a new tuple of type Op<code
+	      >n</code
+	      >Name here.</p
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:operator" class="def"
+	    >operator</a
+	    > :: <a href="Manipulators.html#t:Op-39-n-39-Name" title="Manipulators"
+	    >Op'n'Name</a
+	    > -&gt; <a href="Manipulators.html#t:Operator" title="Manipulators"
+	    >Operator</a
+	    > <a href="#v:operator" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Takes one Op<code
+	      >n</code
+	      >Name tuple and returns the operator (first element).</p
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:nomeator" class="def"
+	    >nomeator</a
+	    > :: <a href="Manipulators.html#t:Op-39-n-39-Name" title="Manipulators"
+	    >Op'n'Name</a
+	    > -&gt; String <a href="#v:nomeator" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Takes one Op<code
+	      >n</code
+	      >Name tuple and returns the name (second element).</p
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:linearExpression" class="def"
+	    >linearExpression</a
+	    > :: Int -&gt; <a href="Manipulators.html#t:Le" title="Manipulators"
+	    >Le</a
+	    > <a href="#v:linearExpression" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Takes the number of variables n and returns an Le with n ITs, where each
+  the linear combination of the ITs results in a linear combination of the n
+  variables.</p
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:randomExps" class="def"
+	    >randomExps</a
+	    > :: Int -&gt; IO [Int] <a href="#v:randomExps" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Takes the number of variables n and return n random expoents ranging from
+  [0,7].</p
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:randomIt" class="def"
+	    >randomIt</a
+	    > :: Int -&gt; IO <a href="Manipulators.html#t:It" title="Manipulators"
+	    >It</a
+	    > <a href="#v:randomIt" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Takes the number of variables n and return an random IT.</p
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:randomExpression" class="def"
+	    >randomExpression</a
+	    > :: Int -&gt; Int -&gt; IO <a href="Manipulators.html#t:Le" title="Manipulators"
+	    >Le</a
+	    > <a href="#v:randomExpression" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Takes the number of ITs m and the number of variables n and returns a random
+  LE of m its, each IT having n variables.</p
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:textRepresentation" class="def"
+	    >textRepresentation</a
+	    > :: <a href="Manipulators.html#t:Le" title="Manipulators"
+	    >Le</a
+	    > -&gt; String <a href="#v:textRepresentation" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Takes one LE and returns a friendly printable expression to get a better
+  representation when printing out the expression.</p
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:uniques" class="def"
+	    >uniques</a
+	    > :: <a href="Manipulators.html#t:Le" title="Manipulators"
+	    >Le</a
+	    > -&gt; <a href="Manipulators.html#t:Le" title="Manipulators"
+	    >Le</a
+	    > <a href="#v:uniques" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Takes one LE and returns this LE without duplicated elements. Matrix 
+  propriety: given a matrix A, if two lines are identical, then the
+  determinant of A is zero and, consequently, A is not inversible. Since the
+  coefficient adjustment is done using OLS, it's important to avoid
+  non-inversible matrices.</p
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:solve" class="def"
+	    >solve</a
+	    > :: <a href="Manipulators.html#t:Le" title="Manipulators"
+	    >Le</a
+	    > -&gt; <a href="Dataset.html#t:DataPoint" title="Dataset"
+	    >DataPoint</a
+	    > -&gt; [Double] <a href="#v:solve" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Takes one LE and one DataPoint and returns the expression evaluated to the
+  given DataPoint.</p
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:adjust" class="def"
+	    >adjust</a
+	    > :: <a href="Manipulators.html#t:Le" title="Manipulators"
+	    >Le</a
+	    > -&gt; <a href="Dataset.html#t:Dataset" title="Dataset"
+	    >Dataset</a
+	    > -&gt; <a href="Manipulators.html#t:Le" title="Manipulators"
+	    >Le</a
+	    > <a href="#v:adjust" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Takes one LE and one Dataset and ajust the LE coefficients using Ordinary
+  Least Squares, then returns the adjusted LE. NOTE: adjusting an expression
+  twice results in the expression with all coefficients equal to 1.</p
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:evaluate" class="def"
+	    >evaluate</a
+	    > :: <a href="Manipulators.html#t:Le" title="Manipulators"
+	    >Le</a
+	    > -&gt; <a href="Dataset.html#t:Dataset" title="Dataset"
+	    >Dataset</a
+	    > -&gt; <a href="Manipulators.html#t:Score" title="Manipulators"
+	    >Score</a
+	    > <a href="#v:evaluate" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Takes one LE and one Dataset and returns the SCORE of the LE for the
+  given dataset.</p
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:simplify" class="def"
+	    >simplify</a
+	    > :: <a href="Manipulators.html#t:Le" title="Manipulators"
+	    >Le</a
+	    > -&gt; <a href="Manipulators.html#t:SimplifyT" title="Manipulators"
+	    >SimplifyT</a
+	    > -&gt; Maybe <a href="Manipulators.html#t:Le" title="Manipulators"
+	    >Le</a
+	    > <a href="#v:simplify" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Takes one LE and the Simplification Threshold and returns an expression
+  without ITs with coefficient below threshold. If all ITs have low
+  coefficients, then returns the LE without removing any IT.</p
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:mutateTrans" class="def"
+	    >mutateTrans</a
+	    > :: <a href="Manipulators.html#t:Le" title="Manipulators"
+	    >Le</a
+	    > -&gt; IO <a href="Manipulators.html#t:Le" title="Manipulators"
+	    >Le</a
+	    > <a href="#v:mutateTrans" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Takes one LE and applies the transformation mutation on it. The
+  transformation mutation changes the operator. Returns a mutated LE.</p
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:mutateExps" class="def"
+	    >mutateExps</a
+	    > :: <a href="Manipulators.html#t:Exps" title="Manipulators"
+	    >Exps</a
+	    > -&gt; IO <a href="Manipulators.html#t:Exps" title="Manipulators"
+	    >Exps</a
+	    > <a href="#v:mutateExps" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Takes one Exps vector and iterate through with a small chance of changing some expoents randomly.</p
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:mutateInter" class="def"
+	    >mutateInter</a
+	    > :: Int -&gt; <a href="Manipulators.html#t:Le" title="Manipulators"
+	    >Le</a
+	    > -&gt; IO <a href="Manipulators.html#t:Le" title="Manipulators"
+	    >Le</a
+	    > <a href="#v:mutateInter" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Takes the number of variables n and one LE and applies the interaction
+  mutation on it. The interaction mutation changes one expoent of one random
+  IT. returns a mutated LE.</p
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:simplifyPop" class="def"
+	    >simplifyPop</a
+	    > :: <a href="Manipulators.html#t:Pop" title="Manipulators"
+	    >Pop</a
+	    > -&gt; <a href="Manipulators.html#t:SimplifyT" title="Manipulators"
+	    >SimplifyT</a
+	    > -&gt; <a href="Manipulators.html#t:Pop" title="Manipulators"
+	    >Pop</a
+	    > <a href="#v:simplifyPop" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Takes one Population and the simplification Threshold and calls the
+  simplify for every solution.</p
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:sortByScore" class="def"
+	    >sortByScore</a
+	    > :: <a href="Manipulators.html#t:Pop" title="Manipulators"
+	    >Pop</a
+	    > -&gt; <a href="Dataset.html#t:Dataset" title="Dataset"
+	    >Dataset</a
+	    > -&gt; <a href="Manipulators.html#t:Pop" title="Manipulators"
+	    >Pop</a
+	    > <a href="#v:sortByScore" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Takes one population and an dataset and returns the population sorted by
+  their score. It's important that the given population is adjusted.</p
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:mutatePop" class="def"
+	    >mutatePop</a
+	    > :: <a href="Manipulators.html#t:Pop" title="Manipulators"
+	    >Pop</a
+	    > -&gt; Int -&gt; IO <a href="Manipulators.html#t:Pop" title="Manipulators"
+	    >Pop</a
+	    > <a href="#v:mutatePop" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Takes one Population and the number of variables and calls the mutation
+  method in all expressions. returns a mutated population.</p
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:rndPopulation" class="def"
+	    >rndPopulation</a
+	    > :: <a href="Manipulators.html#t:PopSize" title="Manipulators"
+	    >PopSize</a
+	    > -&gt; <a href="Manipulators.html#t:LeSize" title="Manipulators"
+	    >LeSize</a
+	    > -&gt; <a href="Dataset.html#t:Dataset" title="Dataset"
+	    >Dataset</a
+	    > -&gt; IO <a href="Manipulators.html#t:Pop" title="Manipulators"
+	    >Pop</a
+	    > <a href="#v:rndPopulation" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Takes the size of the population, the size of the expressions and a dataset
+  used to train the population. Then returns a random population.</p
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:dummyDist" class="def"
+	    >dummyDist</a
+	    > :: <a href="Manipulators.html#t:It" title="Manipulators"
+	    >It</a
+	    > -&gt; Int <a href="#v:dummyDist" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Takes one It and calculates the distance between the IT and a dummy it
+  (internal use only).</p
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:distExpr" class="def"
+	    >distExpr</a
+	    > :: <a href="Manipulators.html#t:Le" title="Manipulators"
+	    >Le</a
+	    > -&gt; <a href="Manipulators.html#t:Le" title="Manipulators"
+	    >Le</a
+	    > -&gt; Int <a href="#v:distExpr" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Takes two LEs and return an integer representing the index of similarity.</p
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:supress" class="def"
+	    >supress</a
+	    > :: <a href="Manipulators.html#t:Pop" title="Manipulators"
+	    >Pop</a
+	    > -&gt; <a href="Manipulators.html#t:SupressionT" title="Manipulators"
+	    >SupressionT</a
+	    > -&gt; <a href="Dataset.html#t:Dataset" title="Dataset"
+	    >Dataset</a
+	    > -&gt; <a href="Manipulators.html#t:Pop" title="Manipulators"
+	    >Pop</a
+	    > <a href="#v:supress" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Takes an population, a supression threshold and a dataset and searchs for
+  nearly identical solutions. Then, keeps the best of them and discarts the
+  remaining.</p
+	    ></div
+	  ></div
+	></div
+      ></div
+    ><div id="footer"
+    ><p
+      >Produced by <a href="http://www.haskell.org/haddock/"
+	>Haddock</a
+	> version 2.20.0</p
+      ></div
+    ></body
+  ></html
+>

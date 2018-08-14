@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><title
+    >AInet</title
+    ><link href="ocean.css" rel="stylesheet" type="text/css" title="Ocean"
+     /><link rel="stylesheet" type="text/css" href="quick-jump.css"
+     /><script src="haddock-bundle.min.js" async="async" type="text/javascript"
+    ></script
+    ><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"
+    ></script
+    ></head
+  ><body
+  ><div id="package-header"
+    ><ul class="links" id="page-menu"
+      ><li
+	><a href="index.html"
+	  >Contents</a
+	  ></li
+	><li
+	><a href="doc-index.html"
+	  >Index</a
+	  ></li
+	></ul
+      ><p class="caption"
+      >ml</p
+      ></div
+    ><div id="content"
+    ><div id="module-header"
+      ><table class="info"
+	><tr
+	  ><th valign="top"
+	    >Copyright</th
+	    ><td
+	    >(c) Guilherme S I Aldeia 2018<br
+	       />Heitor R Savegnago 2018</td
+	    ></tr
+	  ><tr
+	  ><th
+	    >License</th
+	    ><td
+	    >GPL-3</td
+	    ></tr
+	  ><tr
+	  ><th
+	    >Maintainer</th
+	    ><td
+	    >guilherme.aldeia@aluno.ufabc.edu.br
+              heitor.rodrigues@aluno.ufabc.edu.br</td
+	    ></tr
+	  ><tr
+	  ><th
+	    >Stability</th
+	    ><td
+	    >experimental</td
+	    ></tr
+	  ><tr
+	  ><th
+	    >Portability</th
+	    ><td
+	    >POSIX</td
+	    ></tr
+	  ><tr
+	  ><th
+	    >Safe Haskell</th
+	    ><td
+	    >None</td
+	    ></tr
+	  ></table
+	><p class="caption"
+	>AInet</p
+	></div
+      ><div id="description"
+      ><p class="caption"
+	>Description</p
+	><div class="doc"
+	><p
+	  >Symbolic regression algorithm. The regression search is done by means of the IT
+data structure, and the general structure of the algorithm is based on the AInet
+algorithm (artificial imunne network).</p
+	  ></div
+	></div
+      ><div id="synopsis"
+      ><details id="syn"
+	><summary
+	  >Synopsis</summary
+	  ><ul class="details-toggle" data-details-id="syn"
+	  ><li class="src short"
+	    ><span class="keyword"
+	      >type</span
+	      > <a href="#t:NumGen"
+	      >NumGen</a
+	      > = Int</li
+	    ><li class="src short"
+	    ><span class="keyword"
+	      >type</span
+	      > <a href="#t:NumClones"
+	      >NumClones</a
+	      > = Int</li
+	    ><li class="src short"
+	    ><a href="#v:ainet-39-"
+	      >ainet'</a
+	      > :: <a href="AInet.html#t:NumGen" title="AInet"
+	      >NumGen</a
+	      > -&gt; <a href="Manipulators.html#t:Pop" title="Manipulators"
+	      >Pop</a
+	      > -&gt; <a href="Manipulators.html#t:LeSize" title="Manipulators"
+	      >LeSize</a
+	      > -&gt; <a href="AInet.html#t:NumClones" title="AInet"
+	      >NumClones</a
+	      > -&gt; <a href="Manipulators.html#t:SupressionT" title="Manipulators"
+	      >SupressionT</a
+	      > -&gt; <a href="Dataset.html#t:Dataset" title="Dataset"
+	      >Dataset</a
+	      > -&gt; IO <a href="Manipulators.html#t:Pop" title="Manipulators"
+	      >Pop</a
+	      ></li
+	    ><li class="src short"
+	    ><a href="#v:ainet"
+	      >ainet</a
+	      > :: <a href="AInet.html#t:NumGen" title="AInet"
+	      >NumGen</a
+	      > -&gt; <a href="Manipulators.html#t:PopSize" title="Manipulators"
+	      >PopSize</a
+	      > -&gt; <a href="Manipulators.html#t:LeSize" title="Manipulators"
+	      >LeSize</a
+	      > -&gt; <a href="AInet.html#t:NumClones" title="AInet"
+	      >NumClones</a
+	      > -&gt; <a href="Manipulators.html#t:SupressionT" title="Manipulators"
+	      >SupressionT</a
+	      > -&gt; <a href="Manipulators.html#t:SimplifyT" title="Manipulators"
+	      >SimplifyT</a
+	      > -&gt; <a href="Dataset.html#t:Dataset" title="Dataset"
+	      >Dataset</a
+	      > -&gt; IO <a href="Manipulators.html#t:Le" title="Manipulators"
+	      >Le</a
+	      ></li
+	    ></ul
+	  ></details
+	></div
+      ><div id="interface"
+      ><h1
+	>Documentation</h1
+	><div class="top"
+	><p class="src"
+	  ><span class="keyword"
+	    >type</span
+	    > <a id="t:NumGen" class="def"
+	    >NumGen</a
+	    > = Int <a href="#t:NumGen" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Number of generations to perform the regression</p
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><span class="keyword"
+	    >type</span
+	    > <a id="t:NumClones" class="def"
+	    >NumClones</a
+	    > = Int <a href="#t:NumClones" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Highest number of clones to create on the AInet algorithm</p
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:ainet-39-" class="def"
+	    >ainet'</a
+	    > :: <a href="AInet.html#t:NumGen" title="AInet"
+	    >NumGen</a
+	    > -&gt; <a href="Manipulators.html#t:Pop" title="Manipulators"
+	    >Pop</a
+	    > -&gt; <a href="Manipulators.html#t:LeSize" title="Manipulators"
+	    >LeSize</a
+	    > -&gt; <a href="AInet.html#t:NumClones" title="AInet"
+	    >NumClones</a
+	    > -&gt; <a href="Manipulators.html#t:SupressionT" title="Manipulators"
+	    >SupressionT</a
+	    > -&gt; <a href="Dataset.html#t:Dataset" title="Dataset"
+	    >Dataset</a
+	    > -&gt; IO <a href="Manipulators.html#t:Pop" title="Manipulators"
+	    >Pop</a
+	    > <a href="#v:ainet-39-" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Recursive call of the AInet algorithm, for internal use only.</p
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:ainet" class="def"
+	    >ainet</a
+	    > :: <a href="AInet.html#t:NumGen" title="AInet"
+	    >NumGen</a
+	    > -&gt; <a href="Manipulators.html#t:PopSize" title="Manipulators"
+	    >PopSize</a
+	    > -&gt; <a href="Manipulators.html#t:LeSize" title="Manipulators"
+	    >LeSize</a
+	    > -&gt; <a href="AInet.html#t:NumClones" title="AInet"
+	    >NumClones</a
+	    > -&gt; <a href="Manipulators.html#t:SupressionT" title="Manipulators"
+	    >SupressionT</a
+	    > -&gt; <a href="Manipulators.html#t:SimplifyT" title="Manipulators"
+	    >SimplifyT</a
+	    > -&gt; <a href="Dataset.html#t:Dataset" title="Dataset"
+	    >Dataset</a
+	    > -&gt; IO <a href="Manipulators.html#t:Le" title="Manipulators"
+	    >Le</a
+	    > <a href="#v:ainet" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Performs an AInet based symbolic regression for the given number of generations.</p
+	    ></div
+	  ></div
+	></div
+      ></div
+    ><div id="footer"
+    ><p
+      >Produced by <a href="http://www.haskell.org/haddock/"
+	>Haddock</a
+	> version 2.20.0</p
+      ></div
+    ></body
+  ></html
+>
