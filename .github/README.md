@@ -162,7 +162,7 @@ stack build
 ```
 
 ```
-stack exec SymbolicRegression-exe
+stack exec SymbolicRegression
 ```
 
 
@@ -323,7 +323,7 @@ stack build
 ```
 
 ```
-stack exec SymbolicRegression-exe
+stack exec SymbolicRegression
 ```
 
 
