@@ -37,10 +37,10 @@ ainet' g pop l c supT ds = do
     let clones = concat population
     mutatedClones <- mutatePop clones (ncols $ fst ds)
 
-    let adjustedMutatedCLones = map (`adjust` ds) mutatedClones
-    newRandomSolutions <- rndPopulation (length pop) l ds
+    let adjustedMutatedCLones = map (`adjust` ds) [uniques (adjust c ds) | c <-mutatedClones]
+    newSolutions <- rndPopulation (length pop) l ds
 
-    let newPop = pop ++ adjustedMutatedCLones ++ newRandomSolutions
+    let newPop = pop ++ adjustedMutatedCLones ++ [adjust nrs ds | nrs <-newSolutions]
 
     pop' <- ainet' (g-1) (sortByScore (supress newPop supT ds) ds) l c supT ds
 
@@ -55,7 +55,7 @@ ainet :: NumGen -> PopSize -> LeSize -> NumClones -> SupressionT -> SimplifyT ->
 -- ^Performs an AInet based symbolic regression for the given number of generations.
 ainet g p l c supT simS ds = do
     pop <- rndPopulation p l ds
-    let adjustedPop = map (`adjust` ds) pop
+    let adjustedPop = map (`adjust` ds) [uniques p | p <-pop]
 
     iterated <- ainet' g (sortByScore adjustedPop ds) l c supT ds
 
