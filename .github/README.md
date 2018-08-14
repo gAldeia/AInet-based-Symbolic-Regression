@@ -36,7 +36,7 @@ AInet Symbolic Regression
 -----
 
 
-## <a id="introi">1 AInet Symbolic Regression</a>
+# <a id="introi">1 AInet Symbolic Regression</a>
 
 Haskell implementation of a symbolic regression algorithm. The regression search is done by means of the IT data structure, and the general algorithm is based on the AInet (artificial immune network) family algorithms.
 
@@ -111,7 +111,7 @@ To increase readability of our code, we created several new datatypes, listed be
 
 
 
-## <a id="2.1.1i">2.1.1 Dataset Module</a>
+### <a id="2.1.1i">2.1.1 Dataset Module</a>
 
 | Name | Datatype | What is this |
 |:-----|:---------|:-------------|
@@ -196,7 +196,7 @@ print (evaluate res ds)
 -----
 
 
-## <a id="introp"> 1 Regressão simbólica AInet </a>
+# <a id="introp"> 1 Regressão simbólica AInet </a>
 
 Implementação em Haskell de um algoritmo de regressão simbólica. A busca da regressão é feita por meio da estrutura de dados IT, e o algoritmo geral é baseado nos algoritmos da família AInet (rede imune artificial).
 
@@ -272,7 +272,7 @@ Para aumentar a legibilidade do nosso código, criamos vários novos tipos de da
 
 
 
-## <a id="2.1.1p"> 2.1.1 Módulo _Dataset_ </a>
+### <a id="2.1.1p"> 2.1.1 Módulo _Dataset_ </a>
 
 | Nome | Tipo de dados | O que é isso |
 |:-----|:---------|:-------------|
