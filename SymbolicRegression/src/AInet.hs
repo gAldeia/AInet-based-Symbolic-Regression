@@ -25,7 +25,10 @@ import Data.List     (sort, map)
 
 -- AInet algorithm -------------------------------------------------------------
 type NumGen      = Int
+-- ^Number of generations to perform the regression
+
 type NumClones   = Int
+-- ^Highest number of clones to create on the AInet algorithm
 
 ainet' :: NumGen -> Pop -> LeSize -> NumClones -> SupressionT -> Dataset -> IO (Pop)
 -- ^Recursive call of the AInet algorithm, for internal use only.

@@ -24,18 +24,44 @@ import Data.Matrix (fromLists, fromList, toList, --lists manipulation
 
 -- Types declarations ----------------------------------------------------------
 newtype Score    = Score Double         deriving (Eq, Ord, Show)
+-- ^Double ranging from [0,1] indicating the performance of the solution for 
+-- a given dataset
+
 newtype Coeff    = Coeff Double         deriving (Eq, Ord, Show)
+-- ^Coefficient associated with the ITs
+
 newtype Exps     = Exps [Int]           deriving (Eq, Ord, Show)
+-- ^Vector of expoents of ITs, to be applied to the samples on IT evaluation
+
 newtype Op       = Op Int               deriving (Eq, Ord, Show)
+-- ^ 	Index of the operator of the ITs
+
 newtype It       = It (Coeff, Op, Exps) deriving (Eq, Ord, Show)
+-- ^IT data structure
+
 type Le          = [It]
+-- ^Linear combination of ITs
+
 type Pop         = [Le]
+-- ^Vector containing many Les, called population
+
 type Operator    = (Double -> Double)
+-- ^One-argument functions, used to compose ITs
+
 type Op'n'Name   = (Operator, String)
+-- ^Tuple containing One operator and one string to print it
+
 type SimplifyT   = Double
+-- ^Simplification threshold
+
 type SupressionT = Int
+-- ^Supression threshold
+
 type PopSize     = Int
+-- ^Size of the population
+
 type LeSize      = Int
+-- ^Size of the expressions
 
 
 -- Operators creation and manipulation -----------------------------------------
